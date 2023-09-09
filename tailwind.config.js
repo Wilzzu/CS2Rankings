@@ -12,6 +12,8 @@ export default {
 				cswhitebright: "#efefef",
 				cswhite: "#DADADA",
 				csgray: "#BFBFBF",
+				csgraydark: "#AAAAAA",
+				csgraydarkest: "#575757",
 				csorange: "#e38618",
 				csorangedark: "#d36512",
 				csblue: "#3c4468",

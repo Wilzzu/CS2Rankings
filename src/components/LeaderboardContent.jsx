@@ -1,29 +1,52 @@
 import LeaderboardItem from "./LeaderboardItem";
 import { nanoid } from "nanoid";
+import { Ring } from "@uiball/loaders";
+import infoIcon from "../assets/infoIcon.svg";
+import LeaderboardStatus from "./LeaderboardStatus";
 
 const LeaderboardContent = (props) => {
+	// Handle loading and errors
 	if (props.isError) {
-		return <p>Error!</p>;
+		return (
+			<LeaderboardStatus icon={infoIcon} name={"Info"} text={"Error while loading leaderboard"} />
+		);
 	}
 
 	if (props.isLoading) {
-		return <p>Loading...</p>;
+		return (
+			<LeaderboardStatus
+				loader={<Ring size={42} lineWeight={6} speed={2} color="#777777" />}
+				text={"Loading Leaderboard..."}
+			/>
+		);
 	}
 
 	if (props.data && props.data.players.length <= 0) {
-		return <p>No players found {"(Replace with cs2's message)"}</p>;
+		return (
+			<LeaderboardStatus
+				icon={infoIcon}
+				name={"Info"}
+				text={"No data found for this leaderboard"}
+			/>
+		);
+	}
+
+	if (!props.isLoading && !props.data) {
+		return (
+			<LeaderboardStatus icon={infoIcon} name={"Info"} text={"Error while loading leaderboard"} />
+		);
 	}
 
 	return (
 		<>
 			{props.data &&
 				props.data.players.map((e, i) => {
-					// if e.missing return, when missing players are turned off
+					// TODO: if e.missing return, when missing players are turned off
 					return (
 						<div
 							key={nanoid()}
 							className={
-								"grid grid-cols-[100px_auto_200px] gap-2 text-lg p-2 " +
+								"grid grid-cols-[100px_auto_200px] gap-3 text-lg p-2 font-poppins " +
 								(i % 2 !== 1 && "bg-[#e6e6e6]")
 							}>
 							<LeaderboardItem data={e} />
