@@ -7,6 +7,7 @@ const RatingIcon = (props) => {
 		);
 	return (
 		<div>
+			{/* TODO: Maybe font-header */}
 			<p className="text-center font-score text-lg">
 				{props.score.big}
 				<span className="font-sans font-bold ml-[-1px]">,</span>

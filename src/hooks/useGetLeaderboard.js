@@ -17,7 +17,10 @@ const useGetLeaderboard = (region) => {
 	);
 
 	const refetchLeaderboard = () => {
-		if (isStale) refetch();
+		if (isStale) {
+			console.log("refetching");
+			refetch();
+		}
 	};
 
 	return { data, isLoading, isError, refetchLeaderboard };

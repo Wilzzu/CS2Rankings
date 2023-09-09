@@ -3,7 +3,9 @@ import "./App.css";
 import usePrefetchLeaderboard from "./hooks/usePrefetchLeaderboard";
 import MainContent from "./components/MainContent";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-
+import Header from "./components/Header";
+import Signature from "./components/Signature";
+let firstScroll = true;
 // TODO: Show missing ranks as unknown/grayed out, since their name hasn't been approved yet
 
 function App() {
@@ -18,14 +20,21 @@ function App() {
 	});
 
 	useMotionValueEvent(scrollYProgress, "change", (latest) => {
-		if (latest >= 1) return;
-		ref.current.style.backgroundPositionX = latest * 4000 + "px";
+		if (firstScroll) {
+			firstScroll = false;
+			return;
+		}
+		ref.current.style.backgroundPositionX = latest * 1000 + "px";
 	});
 
 	return (
 		<motion.div
 			ref={ref}
-			className="min-h-[100dvh] bg-[url('./assets/testbg.svg')] bg-fixed duration-500 ease-out ">
+			className="min-h-[100dvh] bg-[url('./assets/testbg.svg')] bg-fixed duration-500 ease-out p-4 py-10">
+			<Signature />
+			<div className="flex justify-center mb-10">
+				<Header />
+			</div>
 			<div className="flex justify-center">
 				<MainContent />
 			</div>

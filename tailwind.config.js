@@ -7,6 +7,7 @@ export default {
 				poppins: ["Poppins"],
 				hanken: ['"Hanken Grotesk"'],
 				score: ["Arimo"],
+				header: ["Archivo"],
 			},
 			colors: {
 				cswhitebright: "#efefef",
@@ -19,6 +20,13 @@ export default {
 				csblue: "#3c4468",
 				csdarkblue: "#1f2130",
 				cslightblue: "#4e546e",
+			},
+			dropShadow: {
+				header: "3px 2px 1px rgba(0, 0, 0, 0.15)",
+				signature: "0px 2px 2px rgba(0,0,0, 0.25)",
+			},
+			boxShadow: {
+				scoreboard: "4px 10px 10px rgba(0, 0, 0, 0.2)",
 			},
 		},
 	},
