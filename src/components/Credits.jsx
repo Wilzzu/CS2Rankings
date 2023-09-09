@@ -1,8 +1,8 @@
-const Signature = () => {
+const Credits = () => {
 	return (
-		<div className="absolute flex items-center top-2 left-4 py-1 px-3 shadow-md">
+		<div className="absolute flex items-center top-2 right-4 py-1 px-3 shadow-md">
 			<div className="absolute left-0 bg-cswhitebright w-full h-full -skew-x-12" />
-			<p className="font-header text-xs text-[#323a47] drop-shadow-signature font-semibold">
+			<p className="font-header text-xs text-darktext drop-shadow-signature font-semibold">
 				Made with 💙 by{" "}
 				<a
 					target="_blank"
@@ -16,4 +16,4 @@ const Signature = () => {
 	);
 };
 
-export default Signature;
+export default Credits;

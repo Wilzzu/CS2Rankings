@@ -22,10 +22,10 @@ const MainContent = () => {
 				<TopBar refetch={refetchLeaderboard} />
 			</div>
 			{/* Leaderboard */}
-			<div className="bg-cswhitebright p-2 min-h-[90dvh] shadow-scoreboard">
+			<ul className="bg-cswhitebright p-2 min-h-[90dvh] shadow-scoreboard none">
 				<LeaderboardColumnNames />
 				<LeaderboardContent data={data} isLoading={isLoading} isError={isError} />
-			</div>
+			</ul>
 		</div>
 	);
 };
