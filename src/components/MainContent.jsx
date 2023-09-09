@@ -2,6 +2,7 @@ import useGetLeaderboard from "../hooks/useGetLeaderboard";
 import LeaderboardContent from "./LeaderboardContent";
 import LeaderboardColumnNames from "./LeaderboardColumnNames";
 import { useEffect } from "react";
+import TopBar from "./TopBar/TopBar";
 
 const MainContent = () => {
 	const { data, isLoading, isError, refetchLeaderboard } = useGetLeaderboard("world");
@@ -17,9 +18,11 @@ const MainContent = () => {
 	// Searching players shows all the players containing search phrase in a same kind of drop down like region, when clicked scroll to the player
 	return (
 		<div className="w-[768px]">
-			<button onClick={() => refetchLeaderboard()}>Refetch</button>
+			<div className="sticky top-4 mb-4 z-10">
+				<TopBar refetch={refetchLeaderboard} />
+			</div>
 			{/* Leaderboard */}
-			<div className="bg-cswhitebright p-2 min-h-[90dvh]">
+			<div className="bg-cswhitebright p-2 min-h-[90dvh] shadow-scoreboard">
 				<LeaderboardColumnNames />
 				<LeaderboardContent data={data} isLoading={isLoading} isError={isError} />
 			</div>
