@@ -30,7 +30,7 @@ function App() {
 	return (
 		<motion.div
 			ref={ref}
-			className="min-h-[100dvh] bg-[url('./assets/testbg.svg')] bg-fixed duration-500 ease-out p-4 py-10">
+			className="min-h-[100dvh] bg-[url('./assets/background.svg')] bg-repeat-x bg-cover bg-fixed duration-500 ease-out p-4 py-10">
 			<Signature />
 			<div className="flex justify-center mb-10">
 				<Header />

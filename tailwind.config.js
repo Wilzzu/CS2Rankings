@@ -24,6 +24,7 @@ export default {
 			dropShadow: {
 				header: "3px 2px 1px rgba(0, 0, 0, 0.15)",
 				signature: "0px 2px 2px rgba(0,0,0, 0.25)",
+				glow: "0px 0px 4px rgba(255,255,255, 0.5)",
 			},
 			boxShadow: {
 				scoreboard: "4px 10px 10px rgba(0, 0, 0, 0.2)",
