@@ -20,10 +20,11 @@ export default {
 				csblue: "#3c4468",
 				csdarkblue: "#1f2130",
 				cslightblue: "#4e546e",
+				darktext: "#323a47",
 			},
 			dropShadow: {
 				header: "3px 2px 1px rgba(0, 0, 0, 0.15)",
-				signature: "0px 2px 2px rgba(0,0,0, 0.25)",
+				signature: "1px 2px 1px rgba(0,0,0, 0.2)",
 				glow: "0px 0px 4px rgba(255,255,255, 0.5)",
 			},
 			boxShadow: {

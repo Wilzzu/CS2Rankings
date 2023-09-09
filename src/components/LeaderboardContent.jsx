@@ -43,14 +43,14 @@ const LeaderboardContent = (props) => {
 				props.data.players.map((e, i) => {
 					// TODO: if e.missing return, when missing players are turned off
 					return (
-						<div
+						<li
 							key={nanoid()}
 							className={
-								"grid grid-cols-[100px_auto_200px] gap-3 text-lg p-2 font-poppins " +
+								"grid grid-cols-[100px_auto_200px] gap-3 text-lg p-2 font-poppins list-none " +
 								(i % 2 !== 1 && "bg-[#e6e6e6]")
 							}>
 							<LeaderboardItem data={e} />
-						</div>
+						</li>
 					);
 				})}
 		</>
