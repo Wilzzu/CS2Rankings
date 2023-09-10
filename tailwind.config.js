@@ -20,6 +20,7 @@ export default {
 				csblue: "#3c4468",
 				csdarkblue: "#1f2130",
 				cslightblue: "#4e546e",
+				csbrightblue: "#4A68FF",
 				darktext: "#323a47",
 			},
 			dropShadow: {

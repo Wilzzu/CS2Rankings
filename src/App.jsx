@@ -15,11 +15,11 @@ function App() {
 		prefetchLeaderboard();
 	}, [prefetchLeaderboard]);
 
+	// Change background position on scroll
 	const ref = useRef(null);
 	const { scrollYProgress } = useScroll({
 		target: ref,
 	});
-
 	useMotionValueEvent(scrollYProgress, "change", (latest) => {
 		if (firstScroll) {
 			firstScroll = false;
