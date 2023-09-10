@@ -25,7 +25,7 @@ function App() {
 			firstScroll = false;
 			return;
 		}
-		ref.current.style.backgroundPositionX = latest * 1000 + "px";
+		ref.current.style.backgroundPositionX = Math.floor(latest * 1000) + "px";
 	});
 
 	return (

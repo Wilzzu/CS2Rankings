@@ -2,7 +2,7 @@ const Credits = () => {
 	return (
 		<div className="absolute flex items-center top-2 right-4 py-1 px-3 shadow-md">
 			<div className="absolute left-0 bg-cswhitebright w-full h-full -skew-x-12" />
-			<p className="font-header text-xs text-darktext font-semibold z-10">
+			<p className="font-header text-sm text-darktext z-10">
 				Made with 💙 by{" "}
 				<a
 					target="_blank"
