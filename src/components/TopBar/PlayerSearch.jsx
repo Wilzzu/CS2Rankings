@@ -58,26 +58,30 @@ const PlayerSearch = (props) => {
 			/>
 			{/* Search list */}
 			{search && (notFound || filtered.length >= 1) && (
-				<ul
-					onMouseEnter={() => setListHover(true)}
-					onMouseLeave={() => setListHover(false)}
-					onClick={() => clearSearch()}
-					className="z-10 py-2 bg-csblue w-full">
-					{notFound ? (
-						<li className="text-cswhitebright pl-4 py-1">No players found</li>
-					) : (
-						filtered.length &&
-						filtered.map((e) => (
-							<SearchItem
-								key={e.id}
-								name={e.name}
-								rank={e.rank}
-								id={e.id}
-								setFocusId={props.setFocusId}
-							/>
-						))
-					)}
-				</ul>
+				// Padding for scrollbar
+				<div className="bg-csblue pr-1 py-2">
+					<ul
+						onMouseEnter={() => setListHover(true)}
+						onMouseLeave={() => setListHover(false)}
+						onClick={() => clearSearch()}
+						className="z-10 pr-1 w-full max-h-52 overflow-y-auto scrollbar-thin scrollbar-thumb-cswhitebright scrollbar-thumb-rounded-sm"
+						style={{ scrollbarGutter: true }}>
+						{notFound ? (
+							<li className="text-cswhitebright pl-4 py-1">No players found</li>
+						) : (
+							filtered.length &&
+							filtered.map((e) => (
+								<SearchItem
+									key={e.id}
+									name={e.name}
+									rank={e.rank}
+									id={e.id}
+									setFocusId={props.setFocusId}
+								/>
+							))
+						)}
+					</ul>
+				</div>
 			)}
 		</div>
 	);

@@ -14,7 +14,7 @@ const Rank = (props) => {
 					alt="Arrow down icon"
 				/>
 			) : (
-				<p className="w-5 text-[2.25rem] text-center opacity-30">-</p>
+				<p className="w-5 text-[2.25rem] text-center opacity-30 select-none">-</p>
 			)}
 		</div>
 	);
