@@ -47,10 +47,10 @@ const PlayerSearch = (props) => {
 	};
 
 	return (
-		<div className="w-full h-full font-poppins z-20">
+		<div className="w-full h-full font-poppins z-20 max-w-[304px]">
 			<input
 				ref={ref}
-				className="w-full h-full px-4 text-darktext bg-cswhitebright outline-none"
+				className="w-full h-full px-4 duration-200 text-darktext bg-cswhitebright outline-none hover:bg-hoverwhite"
 				type="text"
 				placeholder="Search..."
 				onChange={(e) => setSearch(e.target.value)}

@@ -8,6 +8,7 @@ export default {
 				hanken: ['"Hanken Grotesk"'],
 				score: ["Arimo"],
 				header: ["Archivo"],
+				mono: ['"Noto Sans Mono"'],
 			},
 			colors: {
 				cswhitebright: "#efefef",
@@ -22,6 +23,7 @@ export default {
 				cslightblue: "#4e546e",
 				csbrightblue: "#4A68FF",
 				darktext: "#323a47",
+				hoverwhite: "rgb(232, 232, 232)",
 			},
 			dropShadow: {
 				header: "3px 2px 1px rgba(0, 0, 0, 0.15)",

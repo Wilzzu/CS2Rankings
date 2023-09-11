@@ -20,7 +20,7 @@ const TopBar = (props) => {
 	}, [isSticky]);
 
 	return (
-		<motion.div className="sticky top-4 mb-4 flex w-full justify-between gap-12 h-14 z-10 drop-shadow">
+		<motion.div className="sticky top-4 mb-4 flex w-full justify-between gap-6 h-14 z-10 drop-shadow">
 			<RefreshButton
 				isSticky={isSticky}
 				data={props.data}
