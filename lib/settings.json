@@ -1,0 +1,14 @@
+{
+	"regions": [
+		"World",
+		"Africa",
+		"Asia",
+		"Australia",
+		"China",
+		"Europe",
+		"North America",
+		"South America"
+	],
+	"seasons": ["Beta Season"],
+	"currentSeason": "season1"
+}

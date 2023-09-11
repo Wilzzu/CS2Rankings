@@ -3,17 +3,7 @@ import Dropdown from "./Dropdown";
 import PlayerSearch from "./PlayerSearch";
 import RefreshButton from "./RefreshButton";
 import { motion } from "framer-motion";
-
-const regions = [
-	"World",
-	"Africa",
-	"Asia",
-	"Australia",
-	"China",
-	"Europe",
-	"North America",
-	"South America",
-];
+import settings from "../../../lib/settings.json";
 
 const TopBar = (props) => {
 	const [isSticky, setIsSticky] = useState(false);
@@ -43,11 +33,16 @@ const TopBar = (props) => {
 			/>
 			<PlayerSearch data={props.data?.players} setFocusId={props.setFocusId} />
 			<div className="flex gap-6">
-				<Dropdown type={"Season"} />
+				<Dropdown
+					header={props.selectedSeason}
+					data={settings.seasons}
+					setSelected={props.setSelectedSeason}
+					disabled={true}
+				/>
 				<Dropdown
 					header={props.selectedRegion}
-					data={regions}
-					setSelectedRegion={props.setSelectedRegion}
+					data={settings.regions}
+					setSelected={props.setSelectedRegion}
 				/>
 			</div>
 		</motion.div>
