@@ -7,6 +7,7 @@ import { useState } from "react";
 const MainContent = () => {
 	const [focusId, setFocusId] = useState(null);
 	const [selectedRegion, setSelectedRegion] = useState("World");
+	const [selectedSeason, setSelectedSeason] = useState("Beta Season");
 
 	const {
 		cachedData,
@@ -16,11 +17,8 @@ const MainContent = () => {
 		isRefetching,
 		isRefetchError,
 		fakeRefetch,
-	} = useGetLeaderboard(selectedRegion);
-
+	} = useGetLeaderboard(selectedSeason, selectedRegion);
 	// TODO: Button for toggling missing players on and off
-	// Region select https://www.npmjs.com/package/react-dropdown
-	// Searching players shows all the players containing search phrase in a same kind of drop down like region, when clicked scroll to the player
 	return (
 		<div className="w-[768px]">
 			<TopBar
@@ -34,6 +32,8 @@ const MainContent = () => {
 				setFocusId={setFocusId}
 				selectedRegion={selectedRegion}
 				setSelectedRegion={setSelectedRegion}
+				selectedSeason={selectedSeason}
+				setSelectedSeason={setSelectedSeason}
 			/>
 			{/* Leaderboard */}
 			<ul className="bg-cswhitebright p-2 min-h-[90dvh] shadow-scoreboard none">

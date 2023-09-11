@@ -2,29 +2,31 @@ import axios from "axios";
 import { useState } from "react";
 import { useQuery, useQueryClient } from "react-query";
 
-const useGetLeaderboard = (region) => {
+const useGetLeaderboard = (season, region) => {
 	const [fakeRefetch, setFakeRefetch] = useState(false);
 	const queryClient = useQueryClient();
 	const parseRegion = region.toLowerCase().replace(/\s/g, "");
+	let parseSeason;
+	if (season === "Beta Season") parseSeason = "season1";
 	const { isLoading, isError, refetch, isRefetching, isRefetchError, isStale } = useQuery(
-		[parseRegion],
+		[parseSeason, parseRegion],
 		async () => {
 			return axios
-				.get(`${import.meta.env.VITE_APILOCATION}${parseRegion}`)
+				.get(`${import.meta.env.VITE_APILOCATION}/${parseSeason}/${parseRegion}`)
 				.then((res) => res.data)
 				.catch((err) => {
 					console.log(err);
+					throw err;
 				});
 		},
-		{ staleTime: 10000 }
+		{ staleTime: 10000, retry: false }
 		// TODO: Change to 30000
 	);
 
 	const refetchLeaderboard = () => {
-		if (isStale) {
-			console.log("refetching");
-			refetch();
-		} else {
+		if (isStale) refetch();
+		// Fake refetch if not stale
+		else {
 			setFakeRefetch(true);
 			setTimeout(() => {
 				setFakeRefetch(false);
@@ -32,8 +34,9 @@ const useGetLeaderboard = (region) => {
 		}
 	};
 
-	const cachedData = queryClient.getQueryData([parseRegion]);
-	if (!cachedData) queryClient.refetchQueries([parseRegion]);
+	// Refetch cache if no data, else serve cache
+	const cachedData = queryClient.getQueryData([parseSeason, parseRegion]);
+	if (!cachedData && !isError) queryClient.refetchQueries([parseSeason, parseRegion]);
 
 	return {
 		cachedData,

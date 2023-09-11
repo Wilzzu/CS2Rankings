@@ -6,7 +6,7 @@ const Dropdown = (props) => {
 	const [btnHover, setBtnHover] = useState(false);
 
 	const handleClick = (clicked) => {
-		if (props.header !== clicked) props.setSelectedRegion(clicked);
+		if (props.header !== clicked) props.setSelected(clicked);
 		setToggle(false);
 	};
 
@@ -24,11 +24,12 @@ const Dropdown = (props) => {
 	}, [btnHover, listHover]);
 
 	return (
-		<div className="h-14 w-40 bg-cswhitebright font-poppins">
+		<div className="h-14 w-40 font-poppins">
 			<button
+				disabled={props.disabled}
 				onMouseEnter={() => setBtnHover(true)}
 				onMouseLeave={() => setBtnHover(false)}
-				className="w-full h-full flex justify-between items-center px-3"
+				className="w-full h-full flex justify-between items-center px-3 bg-cswhitebright disabled:opacity-50"
 				onClick={() => setToggle((prev) => !prev)}>
 				<p className="text-darktext">{props.header}</p>
 				<p>/</p>
