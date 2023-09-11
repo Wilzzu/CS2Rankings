@@ -46,7 +46,8 @@ const RefreshButton = (props) => {
 		<button
 			disabled={state !== "none"}
 			className={cn(
-				"group duration-200 aspect-square h-14 w-14 p-4 flex items-center justify-center bg-cswhitebright"
+				"group duration-200 aspect-square h-14 w-14 p-4 flex items-center justify-center bg-cswhitebright",
+				state === "none" && "hover:bg-hoverwhite"
 			)}
 			onClick={() => handleClick()}>
 			{/* Button image */}

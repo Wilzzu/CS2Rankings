@@ -23,15 +23,16 @@ const useGetLeaderboard = (season, region) => {
 		// TODO: Change to 30000
 	);
 
+	const doFakeRefetch = () => {
+		setFakeRefetch(true);
+		setTimeout(() => {
+			setFakeRefetch(false);
+		}, 400);
+	};
+
 	const refetchLeaderboard = () => {
 		if (isStale) refetch();
-		// Fake refetch if not stale
-		else {
-			setFakeRefetch(true);
-			setTimeout(() => {
-				setFakeRefetch(false);
-			}, 400);
-		}
+		else doFakeRefetch();
 	};
 
 	// Refetch cache if no data, else serve cache
