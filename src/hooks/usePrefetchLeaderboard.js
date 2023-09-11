@@ -14,7 +14,7 @@ const usePrefetchLeaderboard = () => {
 	const client = useQueryClient();
 
 	const prefetchLeaderboard = async () => {
-		await client.prefetchQuery(["leaderboardData"], fetchLeaderboard);
+		await client.prefetchQuery(["world"], fetchLeaderboard);
 	};
 
 	return { prefetchLeaderboard };
