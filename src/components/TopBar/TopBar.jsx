@@ -29,7 +29,7 @@ const TopBar = (props) => {
 				isRefetching={props.isRefetching}
 				isRefetchError={props.isRefetchError}
 			/>
-			<PlayerSearch />
+			<PlayerSearch data={props.data?.players} setFocusId={props.setFocusId} />
 			<div className="flex gap-6">
 				<Dropdown type={"Season"} />
 				<Dropdown type={"Region"} />

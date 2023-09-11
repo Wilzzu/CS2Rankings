@@ -2,8 +2,11 @@ import useGetLeaderboard from "../hooks/useGetLeaderboard";
 import LeaderboardContent from "./LeaderboardContent";
 import LeaderboardColumnNames from "./LeaderboardColumnNames";
 import TopBar from "./TopBar/TopBar";
+import { useState } from "react";
 
 const MainContent = () => {
+	const [focusId, setFocusId] = useState(null);
+
 	const {
 		data,
 		isLoading,
@@ -27,11 +30,12 @@ const MainContent = () => {
 				refetch={refetchLeaderboard}
 				isRefetching={isRefetching}
 				isRefetchError={isRefetchError}
+				setFocusId={setFocusId}
 			/>
 			{/* Leaderboard */}
 			<ul className="bg-cswhitebright p-2 min-h-[90dvh] shadow-scoreboard none">
 				<LeaderboardColumnNames />
-				<LeaderboardContent data={data} isLoading={isLoading} isError={isError} />
+				<LeaderboardContent data={data} isLoading={isLoading} isError={isError} focusId={focusId} />
 			</ul>
 		</div>
 	);
