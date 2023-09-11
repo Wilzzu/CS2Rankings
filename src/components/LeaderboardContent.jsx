@@ -19,13 +19,13 @@ const LeaderboardContent = (props) => {
 	}, [props.focusId]);
 
 	// Handle loading and errors
-	if (props.isError) {
+	if (props.isError || props.isRefetchError) {
 		return (
 			<LeaderboardStatus icon={infoIcon} name={"Info"} text={"Error while loading leaderboard"} />
 		);
 	}
 
-	if (props.isLoading) {
+	if (props.isLoading || props.isRefetching || props.fakeRefetch) {
 		return (
 			<LeaderboardStatus
 				loader={<Ring size={42} lineWeight={6} speed={2} color="#777777" />}

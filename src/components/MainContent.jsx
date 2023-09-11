@@ -6,16 +6,17 @@ import { useState } from "react";
 
 const MainContent = () => {
 	const [focusId, setFocusId] = useState(null);
+	const [selectedRegion, setSelectedRegion] = useState("World");
 
 	const {
-		data,
+		cachedData,
 		isLoading,
 		isError,
 		refetchLeaderboard,
-		fakeRefetch,
 		isRefetching,
 		isRefetchError,
-	} = useGetLeaderboard("world");
+		fakeRefetch,
+	} = useGetLeaderboard(selectedRegion);
 
 	// TODO: Button for toggling missing players on and off
 	// Region select https://www.npmjs.com/package/react-dropdown
@@ -23,19 +24,29 @@ const MainContent = () => {
 	return (
 		<div className="w-[768px]">
 			<TopBar
-				data={data}
+				data={cachedData}
 				isLoading={isLoading}
 				isError={isError}
-				fakeRefetch={fakeRefetch}
 				refetch={refetchLeaderboard}
 				isRefetching={isRefetching}
 				isRefetchError={isRefetchError}
+				fakeRefetch={fakeRefetch}
 				setFocusId={setFocusId}
+				selectedRegion={selectedRegion}
+				setSelectedRegion={setSelectedRegion}
 			/>
 			{/* Leaderboard */}
 			<ul className="bg-cswhitebright p-2 min-h-[90dvh] shadow-scoreboard none">
 				<LeaderboardColumnNames />
-				<LeaderboardContent data={data} isLoading={isLoading} isError={isError} focusId={focusId} />
+				<LeaderboardContent
+					data={cachedData}
+					isLoading={isLoading}
+					isError={isError}
+					focusId={focusId}
+					fakeRefetch={fakeRefetch}
+					isRefetching={isRefetching}
+					isRefetchError={isRefetchError}
+				/>
 			</ul>
 		</div>
 	);
