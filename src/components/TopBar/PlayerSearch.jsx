@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import SearchItem from "./SearchItem";
+import { cn } from "../../../lib/utils";
 
 const PlayerSearch = (props) => {
 	const [search, setSearch] = useState("");
@@ -47,10 +48,17 @@ const PlayerSearch = (props) => {
 	};
 
 	return (
-		<div className="w-full h-full font-poppins z-20 max-w-[304px]">
+		<div
+			className={cn(
+				"w-full h-14 font-poppins z-20",
+				props.isSticky ? "max-w-[404px]" : "max-w-[304px]"
+			)}>
 			<input
 				ref={ref}
-				className="w-full h-full px-4 duration-200 text-darktext bg-cswhitebright outline-none hover:bg-hoverwhite"
+				className={cn(
+					"w-full h-full px-4 duration-200 text-darktext outline-none hover:bg-hoverwhite",
+					props.isSticky ? "bg-cswhite" : "bg-cswhitebright"
+				)}
 				type="text"
 				placeholder="Search..."
 				onChange={(e) => setSearch(e.target.value)}

@@ -60,7 +60,7 @@ const LeaderboardContent = (props) => {
 							ref={e.id === props.focusId ? ref : null}
 							key={e.id}
 							className={cn(
-								"grid grid-cols-[100px_auto_200px] gap-3 text-lg p-2 font-poppins list-none scroll-m-[8.5rem]",
+								"grid grid-cols-[100px_auto_200px] gap-3 text-lg p-2 font-poppins list-none scroll-m-[9rem]",
 								i % 2 !== 1 && "bg-[#e6e6e6]"
 							)}>
 							<LeaderboardItem data={e} />
