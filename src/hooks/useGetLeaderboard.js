@@ -19,10 +19,11 @@ const useGetLeaderboard = (season, region) => {
 					throw err;
 				});
 		},
-		{ staleTime: 10000, retry: false }
-		// TODO: Change to 30000
+		{ staleTime: 0, retry: false }
+		// TODO: Change to 30000 if you need stale
 	);
 
+	// Remove this if no stale time
 	const doFakeRefetch = () => {
 		setFakeRefetch(true);
 		setTimeout(() => {

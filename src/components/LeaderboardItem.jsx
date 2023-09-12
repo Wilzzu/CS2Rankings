@@ -16,7 +16,7 @@ const LeaderboardItem = (props) => {
 		<>
 			<Rank position={props.data.position} rank={props.data.rank} />
 			<p className="truncate">{props.data.name}</p>
-			<RatingIcon score={props.data.formattedScore} color={props.data.color} />
+			<RatingIcon score={props.data.formattedScore} tier={props.data.tier} />
 		</>
 	);
 };
