@@ -1,18 +1,92 @@
+// import ranknormal from "../assets/ranks/ranknormal.png";
+// import rankup from "../assets/ranks/rankup.png";
+// import rankdown from "../assets/ranks/rankdown.png";
+// import ranknormalGold from "../assets/ranks/ranknormalGold.png";
+// import rankupGold from "../assets/ranks/rankupGold.png";
+import { cn } from "../../lib/utils";
+import { useEffect, useState } from "react";
+
+const tierFilter = [
+	"hue-rotate-[265deg] saturate-[6%] brightness-[160%]",
+	"hue-rotate-[260deg] saturate-[59%] brightness-[169%] contrast-[90%]",
+	"hue-rotate-[292deg] contrast-[75%]",
+	"hue-rotate-[337deg] contrast-[75%]",
+	"",
+	"hue-rotate-[65deg]",
+	"hue-rotate-[353deg] brightness-[110%] contrast-[86%]",
+];
+
+// TODO: Add rankdownGold
+// Gold original: "brightness-[105%] saturate-[120%]",
+// Gold: "hue-rotate-[353deg] brightness-[110%] contrast-[86%]"
+
+const tierColor = [
+	"text-[#C7CFD3]",
+	"text-[#9BDCF6]",
+	"text-[#5E90FF]",
+	"text-[#CB6FFF]",
+	"text-[#FE5AFE]",
+	"text-[#FC6758]",
+	"text-[#FFD619]",
+];
+
 const RatingIcon = (props) => {
+	const [showRank, setShowRank] = useState(false);
+
+	const calcIcon = (tier, small) => {
+		let path = "/assets/ranks/rank";
+		if (small === "000") path = path + "down";
+		else if (small === "999") path = path + "up";
+		if (tier === 6) path = path + "Gold";
+		return path + ".png";
+	};
+
+	useEffect(() => {
+		setTimeout(() => {
+			setShowRank(true);
+		}, 2000);
+	}, []);
+
 	if (props.missing)
 		return (
-			<div>
-				<p className="text-center font-score text-lg tracking-tighter">{props.score}</p>
+			<div className="relative w-full h-full flex items-center justify-center opacity-50">
+				{showRank && (
+					<p
+						className={cn(
+							"text-center font-score text-lg tracking-tighter ml-3 z-[1] leading-none drop-shadow-rating opacity-80 text-[#C2BDC2]"
+						)}>
+						{props.score}
+					</p>
+				)}
+				<img
+					src="/assets/ranks/rankGold.png"
+					alt="Rank down icon"
+					className={cn("absolute filter", tierFilter[0])}
+					onLoad={() => setShowRank(true)}
+				/>
 			</div>
 		);
 	return (
-		<div>
-			{/* TODO: Maybe font-header */}
-			<p className="text-center font-score text-lg">
-				{props.score.big}
-				<span className="font-sans font-bold ml-[-1px]">,</span>
-				<span className="text-sm">{props.score.small}</span>
-			</p>
+		<div className="relative w-full h-full flex items-center justify-center">
+			{/* Rating text */}
+			{showRank && (
+				<p
+					className={cn(
+						"text-center font-score text-2xl ml-3 z-[1] leading-none drop-shadow-rating",
+						tierColor[props.tier]
+					)}>
+					{props.score.big}
+					<span className="font-sans font-bold ml-[-1px] text-xl leading-none">,</span>
+					<span className="text-base leading-none">{props.score.small}</span>
+				</p>
+			)}
+			{/* Rating icon */}
+			<img
+				src={calcIcon(props.tier, props.score.small)}
+				alt="Rank down icon"
+				className={cn("absolute filter", tierFilter[props.tier])}
+				onLoad={() => setShowRank(true)}
+			/>
 		</div>
 	);
 };
