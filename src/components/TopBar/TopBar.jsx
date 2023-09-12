@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
 import PlayerSearch from "./PlayerSearch";
 import RefreshButton from "./RefreshButton";
-import { motion } from "framer-motion";
 import settings from "../../../lib/settings.json";
+import { cn } from "../../../lib/utils";
 
 const TopBar = (props) => {
 	const [isSticky, setIsSticky] = useState(false);
@@ -12,15 +12,21 @@ const TopBar = (props) => {
 	useEffect(() => {
 		const handleScroll = () => {
 			const currentScrollY = window.scrollY;
-			if (currentScrollY >= 128 && !isSticky) setIsSticky(true);
-			else if (currentScrollY < 128 && isSticky) setIsSticky(false);
+			if (currentScrollY >= 122 && !isSticky) setIsSticky(true);
+			else if (currentScrollY < 122 && isSticky) setIsSticky(false);
 		};
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [isSticky]);
 
+	// TODO: Try old method since top-0 now
+
 	return (
-		<motion.div className="sticky top-4 mb-4 flex w-full justify-between gap-6 h-14 z-10 drop-shadow">
+		<div
+			className={cn(
+				"sticky max-w-[768px] duration-100 top-0 flex w-full justify-between items-center gap-6 h-[6.5rem] z-10 drop-shadow -mb-2",
+				isSticky && "bg-cswhitebright outline-blue-500 max-w-[850px] px-6"
+			)}>
 			<RefreshButton
 				isSticky={isSticky}
 				data={props.data}
@@ -31,21 +37,23 @@ const TopBar = (props) => {
 				isRefetching={props.isRefetching}
 				isRefetchError={props.isRefetchError}
 			/>
-			<PlayerSearch data={props.data?.players} setFocusId={props.setFocusId} />
+			<PlayerSearch data={props.data?.players} setFocusId={props.setFocusId} isSticky={isSticky} />
 			<div className="flex gap-6">
 				<Dropdown
 					header={props.selectedSeason}
 					data={settings.seasons}
 					setSelected={props.setSelectedSeason}
 					disabled={true}
+					isSticky={isSticky}
 				/>
 				<Dropdown
 					header={props.selectedRegion}
 					data={settings.regions}
 					setSelected={props.setSelectedRegion}
+					isSticky={isSticky}
 				/>
 			</div>
-		</motion.div>
+		</div>
 	);
 };
 

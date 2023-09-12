@@ -10,6 +10,7 @@ const Dropdown = (props) => {
 		if (props.header !== clicked) props.setSelected(clicked);
 		setListHover(false);
 		setToggle(false);
+		window.scrollTo(0, 0);
 	};
 
 	const handleUnfocus = () => {
@@ -22,7 +23,8 @@ const Dropdown = (props) => {
 			{/* Button text */}
 			<div
 				className={cn(
-					"bg-cswhitebright flex justify-between items-center px-3 w-full h-full duration-200",
+					"flex justify-between items-center px-3 w-full h-full duration-200",
+					props.isSticky ? "bg-cswhite" : "bg-cswhitebright",
 					props.disabled ? "opacity-50" : "group-hover:bg-hoverwhite"
 				)}>
 				<p className="text-darktext">{props.header}</p>
