@@ -13,8 +13,9 @@ let firstScroll = true;
 const preloadImgs = [
 	"/assets/ranks/rank.png",
 	"/assets/ranks/rankdown.png",
-	"/assets/ranks/rankGold.png",
 	"/assets/ranks/rankup.png",
+	"/assets/ranks/rankGold.png",
+	"/assets/ranks/rankdownGold.png",
 	"/assets/ranks/rankupGold.png",
 ];
 
@@ -44,7 +45,7 @@ function App() {
 			newImage.src = image;
 			window[image] = newImage;
 		});
-	});
+	}, []);
 
 	return (
 		<div
