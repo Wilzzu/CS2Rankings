@@ -1,8 +1,3 @@
-// import ranknormal from "../assets/ranks/ranknormal.png";
-// import rankup from "../assets/ranks/rankup.png";
-// import rankdown from "../assets/ranks/rankdown.png";
-// import ranknormalGold from "../assets/ranks/ranknormalGold.png";
-// import rankupGold from "../assets/ranks/rankupGold.png";
 import { cn } from "../../lib/utils";
 
 const tierFilter = [
@@ -32,8 +27,11 @@ const tierColor = [
 const RatingIcon = (props) => {
 	const calcIcon = (tier, small) => {
 		let path = "/assets/ranks/rank";
+		if (tier === 6 && small === "000") return path + "Gold.png"; // TODO: Remove this when rankdownGold image is available
+
 		if (small === "000") path = path + "down";
 		else if (small === "999") path = path + "up";
+
 		if (tier === 6) path = path + "Gold";
 		return path + ".png";
 	};

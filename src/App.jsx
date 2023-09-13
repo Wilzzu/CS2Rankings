@@ -36,7 +36,7 @@ function App() {
 		}
 		ref.current.style.backgroundPositionX = Math.floor(latest * 1000) + "px";
 	});
-
+	//TODO: Preload fonts
 	// Preload images
 	useEffect(() => {
 		preloadImgs.forEach((image) => {
