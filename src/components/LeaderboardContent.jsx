@@ -20,6 +20,7 @@ const LeaderboardContent = (props) => {
 
 			// Highlight player
 			setHighlightId(props.focusId);
+			// TODO: Clear highlight so it doesnt retrigger when it comes back to view
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [props.focusId, props?.data?.players]);

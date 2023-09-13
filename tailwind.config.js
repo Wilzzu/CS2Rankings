@@ -36,13 +36,15 @@ export default {
 				scoreboard: "4px 10px 10px rgba(0, 0, 0, 0.2)",
 				listitem: "0px 0px 2px rgba(0, 0, 0, 0.1)",
 			},
+			// TODO: Make this better
 			animation: {
-				highlight: "highlight 2s ease-in-out",
+				highlight: "highlight 4s cubic-bezier(.43,.23,.63,.8)",
+				// 3.7s cubic-bezier(0,.13,.02,-0.1) fast start
 			},
 			keyframes: {
 				highlight: {
-					"0%, 100%": {},
-					"33%": { backgroundColor: "#E3A25E" },
+					"0%": { backgroundPosition: "0 0" },
+					"100%": { backgroundPosition: "0 168%" },
 				},
 			},
 		},
