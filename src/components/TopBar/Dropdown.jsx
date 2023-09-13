@@ -8,6 +8,7 @@ const Dropdown = (props) => {
 
 	const handleClick = (clicked) => {
 		if (props.header !== clicked) props.setSelected(clicked);
+		props.setFocusId(null);
 		setListHover(false);
 		setToggle(false);
 		window.scrollTo(0, 0);

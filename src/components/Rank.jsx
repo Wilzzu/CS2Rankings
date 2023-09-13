@@ -4,7 +4,7 @@ import positionArrowDown from "../assets/positionArrowDown.svg";
 const Rank = (props) => {
 	return (
 		<div className="flex flex-row-reverse justify-between px-2">
-			<p className="text-right">{props.rank}.</p>
+			<p className="w-12 text-center">{props.rank}.</p>
 			{props.position === "up" ? (
 				<img src={positionArrowUp} className="w-5 opacity-80" alt="Arrow up icon" />
 			) : props.position === "down" ? (
