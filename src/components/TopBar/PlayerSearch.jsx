@@ -51,7 +51,7 @@ const PlayerSearch = (props) => {
 		<div
 			className={cn(
 				"w-full h-14 font-poppins z-20",
-				props.isSticky ? "max-w-[404px]" : "max-w-[304px]"
+				props.isSticky ? "max-w-[338px]" : "max-w-[304px]"
 			)}>
 			<input
 				ref={ref}
