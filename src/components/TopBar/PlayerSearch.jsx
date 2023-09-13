@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import SearchItem from "./SearchItem";
 import { cn } from "../../../lib/utils";
+import searchIcon from "../../assets/searchIcon.svg";
 
 const PlayerSearch = (props) => {
 	const [search, setSearch] = useState("");
@@ -48,15 +49,17 @@ const PlayerSearch = (props) => {
 	};
 
 	return (
+		// Container
 		<div
 			className={cn(
-				"w-full h-14 font-poppins z-20",
+				"relative w-full h-14 font-poppins z-20",
 				props.isSticky ? "max-w-[338px]" : "max-w-[304px]"
 			)}>
+			{/* Search field */}
 			<input
 				ref={ref}
 				className={cn(
-					"w-full h-full px-4 duration-200 text-darktext outline-none hover:bg-hoverwhite",
+					"w-full h-full px-4 pr-14 duration-200 text-darktext outline-none hover:bg-hoverwhite",
 					props.isSticky ? "bg-cswhite" : "bg-cswhitebright"
 				)}
 				type="text"
@@ -64,6 +67,9 @@ const PlayerSearch = (props) => {
 				onChange={(e) => setSearch(e.target.value)}
 				onBlur={(e) => handleUnfocus(e)}
 			/>
+			<div className="h-full aspect-square flex items-center justify-center absolute top-0 right-0">
+				<img src={searchIcon} alt="Search icon" className="w-6" />
+			</div>
 			{/* Search list */}
 			{search && (notFound || filtered.length >= 1) && (
 				// Padding for scrollbar

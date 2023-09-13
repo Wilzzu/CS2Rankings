@@ -24,7 +24,7 @@ const TopBar = (props) => {
 	return (
 		<div
 			className={cn(
-				"sticky max-w-[768px] duration-200 top-0 flex w-full justify-between items-center gap-6 h-[6.5rem] z-10 drop-shadow -mb-2",
+				"sticky max-w-[768px] bg-transparent duration-200 top-0 flex w-full justify-between items-center gap-6 h-[6.5rem] z-10 drop-shadow -mb-2",
 				isSticky && "bg-cswhitebright outline-blue-500 max-w-[850px] px-6"
 			)}>
 			<RefreshButton
