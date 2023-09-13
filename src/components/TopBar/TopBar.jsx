@@ -19,8 +19,6 @@ const TopBar = (props) => {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [isSticky]);
 
-	// TODO: Try old method since top-0 now
-
 	return (
 		<div
 			className={cn(

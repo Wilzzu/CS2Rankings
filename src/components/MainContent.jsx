@@ -18,7 +18,7 @@ const MainContent = () => {
 		isRefetchError,
 		fakeRefetch,
 	} = useGetLeaderboard(selectedSeason, selectedRegion);
-	// TODO: Button for toggling missing players on and off
+
 	return (
 		<div className="w-full flex flex-col items-center">
 			<TopBar
