@@ -19,8 +19,7 @@ const useGetLeaderboard = (season, region) => {
 					throw err;
 				});
 		},
-		{ staleTime: 0, retry: false }
-		// TODO: Change to 30000 if you need stale
+		{ staleTime: 30000, retry: false }
 	);
 
 	// Remove this if no stale time
