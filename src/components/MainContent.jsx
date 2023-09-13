@@ -42,6 +42,7 @@ const MainContent = () => {
 					data={cachedData}
 					isLoading={isLoading}
 					isError={isError}
+					setFocusId={setFocusId}
 					focusId={focusId}
 					fakeRefetch={fakeRefetch}
 					isRefetching={isRefetching}

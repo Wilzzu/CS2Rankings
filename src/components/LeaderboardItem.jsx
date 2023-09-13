@@ -3,23 +3,15 @@ import Rank from "./Rank";
 import RatingIcon from "./RatingIcon";
 import infoIcon from "../assets/infoIcon.svg";
 
-// const tierColor = [
-// 	"text-[#C7CFD3]",
-// 	"text-[#9BDCF6]",
-// 	"text-[#5E90FF]",
-// 	"text-[#CB6FFF]",
-// 	"text-[#FE5AFE]",
-// 	"text-[#FC6758]",
-// 	"text-[#FFD619]",
-// ];
-
 const LeaderboardItem = (props) => {
 	return (
 		<li
+			style={{ animationDelay: "100ms" }}
 			className={cn(
 				`grid grid-cols-[100px_auto_200px] gap-3 text-lg py-3 px-2 font-poppins list-none bg-cswhitesemi text-darktext shadow-listitem`,
 				props.index % 2 && "bg-opacity-30",
-				props.data.missing && "text-csgray"
+				props.data.missing && "text-csgray",
+				props.highlight && "animate-highlight"
 			)}>
 			{/* Rank */}
 			<Rank position={props.data.position} rank={props.data.rank} missing={props.data?.missing} />
@@ -33,14 +25,14 @@ const LeaderboardItem = (props) => {
 						<div className="bg-csblue bg-opacity-90 text-cswhitebright text-xs p-2 px-5 left-8 absolute hidden group-hover:block min-w-[240px]">
 							<p>
 								{
-									"Unknown players haven't submitted a leaderboard name or Valve hasn't approved it yet"
+									"Unknown players haven't submitted a leaderboard name or Valve hasn't approved it yet."
 								}
 							</p>
 						</div>
 					</div>
 				</div>
 			) : (
-				<p className={`truncate`}>{props.data.name}</p>
+				<p className="truncate">{props.data.name}</p>
 			)}
 			{/* Rating */}
 			<RatingIcon

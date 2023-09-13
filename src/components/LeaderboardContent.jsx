@@ -2,21 +2,26 @@ import LeaderboardItem from "./LeaderboardItem";
 import { Ring } from "@uiball/loaders";
 import infoIcon from "../assets/infoIcon.svg";
 import LeaderboardStatus from "./LeaderboardStatus";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ViewportList } from "react-viewport-list";
 
 const LeaderboardContent = (props) => {
 	const listRef = useRef(null);
+	const [highlightId, setHighlightId] = useState(null);
 
 	// Scroll to selected player
 	useEffect(() => {
 		if (props.focusId && props?.data?.players) {
 			listRef.current.scrollToIndex({
 				index: props.data.players.findIndex((e) => e.id === props.focusId),
-				offset: -144,
+				offset: -248, //144 1st
 			});
-			// Maybe add a highlight for a second after this
+			props.setFocusId("");
+
+			// Highlight player
+			setHighlightId(props.focusId);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [props.focusId, props?.data?.players]);
 
 	// Handle loading and errors
@@ -55,7 +60,14 @@ const LeaderboardContent = (props) => {
 		<div className="px-2">
 			<ViewportList ref={listRef} items={props.data.players} initialIndex={0} initialOffset={-300}>
 				{/* List items */}
-				{(item, index) => <LeaderboardItem key={item.id} data={item} index={index} />}
+				{(item, index) => (
+					<LeaderboardItem
+						key={item.id}
+						data={item}
+						index={index}
+						highlight={highlightId === item.id}
+					/>
+				)}
 			</ViewportList>
 		</div>
 	);

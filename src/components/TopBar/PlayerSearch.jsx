@@ -48,6 +48,14 @@ const PlayerSearch = (props) => {
 		setSearch("");
 	};
 
+	const handleEnter = (event) => {
+		if (event.key !== "Enter") return;
+		if (filtered.length !== 1) return;
+
+		props.setFocusId(filtered[0].id);
+		clearSearch("");
+	};
+
 	return (
 		// Container
 		<div
@@ -58,6 +66,7 @@ const PlayerSearch = (props) => {
 			{/* Search field */}
 			<input
 				ref={ref}
+				onKeyDown={(e) => handleEnter(e)}
 				className={cn(
 					"w-full h-full px-4 pr-14 duration-200 text-darktext outline-none hover:bg-hoverwhite",
 					props.isSticky ? "bg-cswhite" : "bg-cswhitebright"
