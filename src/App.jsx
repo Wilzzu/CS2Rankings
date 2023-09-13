@@ -7,9 +7,7 @@ import Header from "./components/Header";
 import Credits from "./components/Credits";
 import Footer from "./components/Footer";
 let firstScroll = true;
-// TODO: Show missing ranks as unknown/grayed out, since their name hasn't been approved yet
 
-// TODO: Add rankdownGold
 const preloadImgs = [
 	"/assets/ranks/rank.png",
 	"/assets/ranks/rankdown.png",
@@ -37,7 +35,6 @@ function App() {
 		}
 		ref.current.style.backgroundPositionX = Math.floor(latest * 1000) + "px";
 	});
-	//TODO: Preload fonts
 	// Preload images
 	useEffect(() => {
 		preloadImgs.forEach((image) => {
