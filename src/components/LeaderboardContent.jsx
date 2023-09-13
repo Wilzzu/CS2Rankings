@@ -3,21 +3,21 @@ import { Ring } from "@uiball/loaders";
 import infoIcon from "../assets/infoIcon.svg";
 import LeaderboardStatus from "./LeaderboardStatus";
 import { useEffect, useRef } from "react";
-import { cn } from "../../lib/utils";
 import { ViewportList } from "react-viewport-list";
 
 const LeaderboardContent = (props) => {
-	const selectedPlayerRef = useRef(null);
+	const listRef = useRef(null);
 
 	// Scroll to selected player
 	useEffect(() => {
-		if (!props.focusId) return;
-		selectedPlayerRef.current.scrollIntoView({
-			behavior: "smooth",
-			block: "start", //center to show in center, remove scroll-m- from "li" then
-		});
-		// Maybe add a highlight for a second after this
-	}, [props.focusId]);
+		if (props.focusId && props?.data?.players) {
+			listRef.current.scrollToIndex({
+				index: props.data.players.findIndex((e) => e.id === props.focusId),
+				offset: -144,
+			});
+			// Maybe add a highlight for a second after this
+		}
+	}, [props.focusId, props?.data?.players]);
 
 	// Handle loading and errors
 	if (props.isError || props.isRefetchError) {
@@ -52,20 +52,10 @@ const LeaderboardContent = (props) => {
 	}
 
 	return (
-		<>
-			<ViewportList items={props.data.players}>
-				{(item) => (
-					<li
-						ref={item.id === props.focusId ? selectedPlayerRef : null}
-						key={item.id}
-						className={cn(
-							"grid grid-cols-[100px_auto_200px] gap-3 text-lg p-2 font-poppins list-none scroll-m-[9rem]"
-						)}>
-						<LeaderboardItem data={item} />
-					</li>
-				)}
-			</ViewportList>
-		</>
+		<ViewportList ref={listRef} items={props.data.players} initialIndex={0} initialOffset={-300}>
+			{/* List items */}
+			{(item, index) => <LeaderboardItem key={item.id} data={item} index={index} />}
+		</ViewportList>
 	);
 };
 
