@@ -36,7 +36,7 @@ const MainContent = () => {
 				setSelectedSeason={setSelectedSeason}
 			/>
 			{/* Leaderboard */}
-			<ul className="w-[768px] bg-cswhitebright p-2 min-h-[90dvh] shadow-scoreboard none">
+			<ul className="w-[768px] bg-cswhitebright py-2 min-h-[90dvh] shadow-scoreboard none">
 				<LeaderboardColumnNames />
 				<LeaderboardContent
 					data={cachedData}

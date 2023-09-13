@@ -52,10 +52,12 @@ const LeaderboardContent = (props) => {
 	}
 
 	return (
-		<ViewportList ref={listRef} items={props.data.players} initialIndex={0} initialOffset={-300}>
-			{/* List items */}
-			{(item, index) => <LeaderboardItem key={item.id} data={item} index={index} />}
-		</ViewportList>
+		<div className="px-2">
+			<ViewportList ref={listRef} items={props.data.players} initialIndex={0} initialOffset={-300}>
+				{/* List items */}
+				{(item, index) => <LeaderboardItem key={item.id} data={item} index={index} />}
+			</ViewportList>
+		</div>
 	);
 };
 
