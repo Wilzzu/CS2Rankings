@@ -27,8 +27,6 @@ const tierColor = [
 const RatingIcon = (props) => {
 	const calcIcon = (tier, small) => {
 		let path = "/assets/ranks/rank";
-		if (tier === 6 && small === "000") return path + "Gold.png"; // TODO: Remove this when rankdownGold image is available
-
 		if (small === "000") path = path + "down";
 		else if (small === "999") path = path + "up";
 
