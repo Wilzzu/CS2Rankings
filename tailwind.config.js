@@ -31,12 +31,19 @@ export default {
 				signature: "1px 2px 1px rgba(0,0,0, 0.2)",
 				glow: "0px 0px 4px rgba(255,255,255, 0.5)",
 				rating: "1px 1px 1px rgba(0, 0, 0, 0.8)",
-				player: "0px 2px 5px var(--tw-shadow-color)",
 			},
 			boxShadow: {
 				scoreboard: "4px 10px 10px rgba(0, 0, 0, 0.2)",
-				// listitem: "0px 1px 2px rgba(0, 0, 0, 0.2)",
 				listitem: "0px 0px 2px rgba(0, 0, 0, 0.1)",
+			},
+			animation: {
+				highlight: "highlight 2s ease-in-out",
+			},
+			keyframes: {
+				highlight: {
+					"0%, 100%": {},
+					"33%": { backgroundColor: "#E3A25E" },
+				},
 			},
 		},
 	},
