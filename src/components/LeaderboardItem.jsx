@@ -16,7 +16,7 @@ const LeaderboardItem = (props) => {
 	return (
 		<li
 			className={cn(
-				`grid grid-cols-[100px_auto_200px] gap-3 text-lg p-2 py-3 font-poppins list-none bg-cswhite text-darktext shadow-listitem`,
+				`grid grid-cols-[100px_auto_200px] gap-3 text-lg py-3 px-2 font-poppins list-none bg-cswhitesemi text-darktext shadow-listitem`,
 				props.index % 2 && "bg-opacity-30",
 				props.data.missing && "text-csgray"
 			)}>

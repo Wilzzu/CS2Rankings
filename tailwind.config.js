@@ -12,6 +12,7 @@ export default {
 			},
 			colors: {
 				cswhitebright: "#efefef",
+				cswhitesemi: "#e6e6e6",
 				cswhite: "#DADADA",
 				csgray: "#BFBFBF",
 				csgraydark: "#AAAAAA",
@@ -34,7 +35,8 @@ export default {
 			},
 			boxShadow: {
 				scoreboard: "4px 10px 10px rgba(0, 0, 0, 0.2)",
-				listitem: "0px 1px 2px rgba(0, 0, 0, 0.2)",
+				// listitem: "0px 1px 2px rgba(0, 0, 0, 0.2)",
+				listitem: "0px 0px 2px rgba(0, 0, 0, 0.1)",
 			},
 		},
 	},
