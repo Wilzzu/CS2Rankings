@@ -1,4 +1,4 @@
-import { cn } from "../../lib/utils";
+import { cn } from "../../../lib/utils";
 
 const tierFilter = [
 	"hue-rotate-[265deg] saturate-[6%] brightness-[160%]",

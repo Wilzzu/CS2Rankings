@@ -1,5 +1,5 @@
-import positionArrowUp from "../assets/positionArrowUp.svg";
-import positionArrowDown from "../assets/positionArrowDown.svg";
+import positionArrowUp from "../../assets/positionArrowUp.svg";
+import positionArrowDown from "../../assets/positionArrowDown.svg";
 
 const Rank = (props) => {
 	return (
