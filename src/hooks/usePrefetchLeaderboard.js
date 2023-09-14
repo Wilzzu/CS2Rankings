@@ -4,7 +4,7 @@ import settings from "../../lib/settings.json";
 
 const fetchLeaderboard = async () => {
 	return axios
-		.get(`${import.meta.env.VITE_APILOCATION}/${settings.currentSeason}/world`)
+		.get(`${import.meta.env.VITE_APILOCATION}/leaderboard/${settings.currentSeason}/world`)
 		.then((res) => res.data)
 		.catch((err) => {
 			console.log(err);

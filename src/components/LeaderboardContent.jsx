@@ -1,13 +1,22 @@
-import LeaderboardItem from "./LeaderboardItem";
+import LeaderboardItem from "./LeaderboardItem/LeaderboardItem";
 import { Ring } from "@uiball/loaders";
 import infoIcon from "../assets/infoIcon.svg";
 import LeaderboardStatus from "./LeaderboardStatus";
 import { useEffect, useRef, useState } from "react";
 import { ViewportList } from "react-viewport-list";
+import useGetPlayerHistory from "../hooks/useGetPlayerHistory";
 
 const LeaderboardContent = (props) => {
 	const listRef = useRef(null);
 	const [highlightId, setHighlightId] = useState(null);
+	const [historyName, setHistoryName] = useState(null);
+
+	const { data, isRefetching, isRefetchError, refetch } = useGetPlayerHistory(historyName);
+
+	useEffect(() => {
+		if (historyName) refetch();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [historyName]);
 
 	// Scroll to selected player
 	useEffect(() => {
@@ -67,6 +76,11 @@ const LeaderboardContent = (props) => {
 						data={item}
 						index={index}
 						highlight={highlightId === item.id}
+						setHistoryName={setHistoryName}
+						stats={data}
+						isRefetching={isRefetching}
+						isRefetchError={isRefetchError}
+						showStats={historyName === encodeURIComponent(item.name)}
 					/>
 				)}
 			</ViewportList>

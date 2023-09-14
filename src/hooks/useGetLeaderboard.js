@@ -12,7 +12,7 @@ const useGetLeaderboard = (season, region) => {
 		[parseSeason, parseRegion],
 		async () => {
 			return axios
-				.get(`${import.meta.env.VITE_APILOCATION}/${parseSeason}/${parseRegion}`)
+				.get(`${import.meta.env.VITE_APILOCATION}/leaderboard/${parseSeason}/${parseRegion}`)
 				.then((res) => res.data)
 				.catch((err) => {
 					console.log(err);

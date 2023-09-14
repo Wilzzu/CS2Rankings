@@ -38,11 +38,11 @@ export default {
 			},
 			// TODO: Make this better
 			animation: {
-				highlight: "highlight 4s cubic-bezier(.43,.23,.63,.8)",
+				highlightBorder: "highlightBorder 2.5s cubic-bezier(.05,.12,.64,.83)",
 				// 3.7s cubic-bezier(0,.13,.02,-0.1) fast start
 			},
 			keyframes: {
-				highlight: {
+				highlightBorder: {
 					"0%": { backgroundPosition: "0 0" },
 					"100%": { backgroundPosition: "0 168%" },
 				},
