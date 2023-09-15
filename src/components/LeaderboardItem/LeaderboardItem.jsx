@@ -48,6 +48,7 @@ const LeaderboardItem = (props) => {
 					data={props.stats}
 					isRefetching={props.isRefetching}
 					isRefetchError={props.isRefetchError}
+					index={props.index}
 				/>
 			)}
 		</li>
