@@ -21,9 +21,10 @@ const useGetPlayerHistory = (name) => {
 		{ enabled: false }
 	);
 
+	// Serve cached data is player's history has been already requested by user
 	const refetchHistory = () => {
-		if (searchedPlayers.includes(name)) console.log("not refetching");
-		else refetch();
+		if (searchedPlayers.includes(name)) return;
+		refetch();
 	};
 
 	const data = queryClient.getQueryData(["playerHistory", name]);
