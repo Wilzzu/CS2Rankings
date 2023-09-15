@@ -47,6 +47,7 @@ const MainContent = () => {
 					fakeRefetch={fakeRefetch}
 					isRefetching={isRefetching}
 					isRefetchError={isRefetchError}
+					selectedRegion={selectedRegion}
 				/>
 			</ul>
 		</div>

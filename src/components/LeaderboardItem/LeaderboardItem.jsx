@@ -37,7 +37,7 @@ const LeaderboardItem = (props) => {
 					missing={props.data?.missing}
 				/>
 				{/* Stats button */}
-				{!props?.data?.missing && (
+				{props.selectedRegion === "World" && !props?.data?.missing && (
 					<button
 						onClick={() => handleClick()}
 						className="w-full p-[0.6rem] duration-300 hover:bg-cswhite">

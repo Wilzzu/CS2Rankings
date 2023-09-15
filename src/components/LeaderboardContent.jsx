@@ -81,6 +81,7 @@ const LeaderboardContent = (props) => {
 						isRefetching={isRefetching}
 						isRefetchError={isRefetchError}
 						showStats={historyName === encodeURIComponent(item.name)}
+						selectedRegion={props.selectedRegion}
 					/>
 				)}
 			</ViewportList>
