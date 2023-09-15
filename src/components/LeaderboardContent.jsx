@@ -11,10 +11,10 @@ const LeaderboardContent = (props) => {
 	const [highlightId, setHighlightId] = useState(null);
 	const [historyName, setHistoryName] = useState(null);
 
-	const { data, isRefetching, isRefetchError, refetch } = useGetPlayerHistory(historyName);
+	const { data, isRefetching, isRefetchError, refetchHistory } = useGetPlayerHistory(historyName);
 
 	useEffect(() => {
-		if (historyName) refetch();
+		if (historyName) refetchHistory();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [historyName]);
 

@@ -31,6 +31,10 @@ const customDay = (date) => {
 	return `${day}.`;
 };
 
+const customRank = (rating) => {
+	return Math.floor(rating);
+};
+
 const RankChart = (props) => {
 	return (
 		<div className="h-full w-1/2 font-hanken text-xs flex flex-col items-center">
@@ -39,11 +43,10 @@ const RankChart = (props) => {
 					<Area dataKey={"rank"} stroke="#447CE6" fill="#447CE6" />
 					<XAxis dataKey="date" axisLine={false} tickLine={false} tickFormatter={customDay} />
 					<YAxis
-						type="number"
 						domain={[1, "auto"]}
 						dataKey={"rank"}
 						minTickGap={0}
-						tickCount={10}
+						tickCount={4}
 						axisLine={false}
 						tickLine={false}
 						label={{
@@ -51,9 +54,9 @@ const RankChart = (props) => {
 							angle: -90,
 							position: "insideLeft",
 						}}
-						interval={"preserveStart"}
 						padding={{ bottom: 5 }}
 						reversed
+						tickFormatter={customRank}
 					/>
 					<Tooltip content={<CustomTooltip />} />
 					<CartesianGrid strokeDasharray="2 1" opacity={0.25} />

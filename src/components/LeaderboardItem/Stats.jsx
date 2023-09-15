@@ -91,22 +91,20 @@ const Stats = (props) => {
 				"flex items-center justify-center gap-4 h-40 text-darktext text-lg font-poppins",
 				props.index % 2 ? "bg-[#ECECEC]" : "bg-cswhitesemi"
 			)}>
-			{props.isRefetching ? (
-				showLoading && (
-					<div className="relative flex flex-col items-center justify-center w-full h-full p-2 gap-2 animate-pulse">
-						<p>Loading statistics...</p>
-						<Ring />
-					</div>
-				)
+			{props.isRefetching && showLoading ? (
+				<div className="relative flex flex-col items-center justify-center w-full h-full p-2 gap-2 animate-pulse">
+					<p>Loading statistics...</p>
+					<Ring />
+				</div>
 			) : props.isRefetchError ? (
 				<p>Error while loading data.</p>
-			) : props.data ? (
-				<div className="flex items-center justify-center w-full h-full p-2 gap-4">
-					<RankChart data={testData.history} />
-					<Chart data={testData.history} type={"Score"} />
-				</div>
 			) : (
-				<p>No data for user</p>
+				props.data && (
+					<div className="flex items-center justify-center w-full h-full p-2 gap-4">
+						<RankChart data={props.data.history} />
+						<Chart data={props.data.history} type={"Score"} />
+					</div>
+				)
 			)}
 		</div>
 	);

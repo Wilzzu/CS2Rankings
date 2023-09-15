@@ -1,13 +1,18 @@
 import axios from "axios";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
+let searchedPlayers = [];
 
 const useGetPlayerHistory = (name) => {
-	const { data, isRefetching, isRefetchError, refetch } = useQuery(
-		["playerHistory"],
+	const queryClient = useQueryClient();
+	const { isRefetching, isRefetchError, refetch } = useQuery(
+		["playerHistory", name],
 		async () => {
 			return axios
 				.get(`${import.meta.env.VITE_APILOCATION}/history/${name}`)
-				.then((res) => res.data)
+				.then((res) => {
+					searchedPlayers.push(name);
+					return res.data;
+				})
 				.catch((err) => {
 					console.log(err);
 					throw err;
@@ -16,7 +21,14 @@ const useGetPlayerHistory = (name) => {
 		{ enabled: false }
 	);
 
-	return { data, isRefetching, isRefetchError, refetch };
+	const refetchHistory = () => {
+		if (searchedPlayers.includes(name)) console.log("not refetching");
+		else refetch();
+	};
+
+	const data = queryClient.getQueryData(["playerHistory", name]);
+
+	return { data, isRefetching, isRefetchError, refetchHistory };
 };
 
 export default useGetPlayerHistory;

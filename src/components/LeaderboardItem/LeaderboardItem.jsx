@@ -6,6 +6,7 @@ import Stats from "./Stats";
 import statsIcon from "../../assets/statsIcon.svg";
 
 const LeaderboardItem = (props) => {
+	// Encode players name to URI compatible format
 	const handleClick = () => {
 		const uriName = encodeURIComponent(props.data.name);
 		props.setHistoryName((prev) => (prev === uriName ? null : uriName));
@@ -37,7 +38,9 @@ const LeaderboardItem = (props) => {
 				/>
 				{/* Stats button */}
 				{!props?.data?.missing && (
-					<button onClick={() => handleClick()} className="w-full p-[0.6rem]">
+					<button
+						onClick={() => handleClick()}
+						className="w-full p-[0.6rem] duration-300 hover:bg-cswhite">
 						<img src={statsIcon} alt="Statistics icon" />
 					</button>
 				)}
