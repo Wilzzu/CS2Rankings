@@ -4,60 +4,60 @@ import Chart from "./Chart";
 import RankChart from "./RankChart";
 import { useEffect, useState } from "react";
 
-const testData = {
-	name: "Kurosaki",
-	createdAt: "2023-09-14T15:53:36.609Z",
-	history: [
-		{
-			date: "2023-09-10T15:53:36.607Z",
-			rank: 2,
-			score: 35548,
-			_id: "65032c8017a1df4472ded4f4",
-		},
-		{
-			date: "2023-09-11T15:53:36.607Z",
-			rank: 2,
-			score: 38000,
-			_id: "65032c8017a1df4472ded4f4",
-		},
-		{
-			date: "2023-09-12T15:53:36.607Z",
-			rank: 1,
-			score: 40201,
-			_id: "65032c8017a1df4472ded4f4",
-		},
-		{
-			date: "2023-09-13T15:53:36.607Z",
-			rank: 4,
-			score: 36548,
-			_id: "65032c8017a1df4472ded4f4",
-		},
-		{
-			date: "2023-09-11T15:53:36.607Z",
-			rank: 2,
-			score: 38000,
-			_id: "65032c8017a1df4472ded4f4",
-		},
-		{
-			date: "2023-09-14T15:53:36.607Z",
-			rank: 10,
-			score: 34002,
-			_id: "65032c8017a1df4472ded4f4",
-		},
-		{
-			date: "2023-09-11T15:53:36.607Z",
-			rank: 2,
-			score: 38000,
-			_id: "65032c8017a1df4472ded4f4",
-		},
-		{
-			date: "2023-09-13T15:53:36.607Z",
-			rank: 7,
-			score: 32548,
-			_id: "65032c8017a1df4472ded4f4",
-		},
-	],
-};
+// const testData = {
+// 	name: "Kurosaki",
+// 	createdAt: "2023-09-14T15:53:36.609Z",
+// 	history: [
+// 		{
+// 			date: "2023-09-10T15:53:36.607Z",
+// 			rank: 2,
+// 			score: 35548,
+// 			_id: "65032c8017a1df4472ded4f4",
+// 		},
+// 		{
+// 			date: "2023-09-11T15:53:36.607Z",
+// 			rank: 2,
+// 			score: 38000,
+// 			_id: "65032c8017a1df4472ded4f4",
+// 		},
+// 		{
+// 			date: "2023-09-12T15:53:36.607Z",
+// 			rank: 1,
+// 			score: 40201,
+// 			_id: "65032c8017a1df4472ded4f4",
+// 		},
+// 		{
+// 			date: "2023-09-13T15:53:36.607Z",
+// 			rank: 4,
+// 			score: 36548,
+// 			_id: "65032c8017a1df4472ded4f4",
+// 		},
+// 		{
+// 			date: "2023-09-11T15:53:36.607Z",
+// 			rank: 2,
+// 			score: 38000,
+// 			_id: "65032c8017a1df4472ded4f4",
+// 		},
+// 		{
+// 			date: "2023-09-14T15:53:36.607Z",
+// 			rank: 10,
+// 			score: 34002,
+// 			_id: "65032c8017a1df4472ded4f4",
+// 		},
+// 		{
+// 			date: "2023-09-11T15:53:36.607Z",
+// 			rank: 2,
+// 			score: 38000,
+// 			_id: "65032c8017a1df4472ded4f4",
+// 		},
+// 		{
+// 			date: "2023-09-13T15:53:36.607Z",
+// 			rank: 7,
+// 			score: 32548,
+// 			_id: "65032c8017a1df4472ded4f4",
+// 		},
+// 	],
+// };
 
 // {
 //     "_id": "65032cab81e6fbbf1c39925c",
