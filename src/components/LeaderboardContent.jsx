@@ -11,7 +11,8 @@ const LeaderboardContent = (props) => {
 	const [highlightId, setHighlightId] = useState(null);
 	const [historyName, setHistoryName] = useState(null);
 
-	const { data, isRefetching, isRefetchError, refetchHistory } = useGetPlayerHistory(historyName);
+	const { data, isRefetching, isRefetchError, refetchHistory, isSuccess } =
+		useGetPlayerHistory(historyName);
 
 	useEffect(() => {
 		if (historyName) refetchHistory();
@@ -80,6 +81,7 @@ const LeaderboardContent = (props) => {
 						stats={data}
 						isRefetching={isRefetching}
 						isRefetchError={isRefetchError}
+						isSuccess={isSuccess}
 						showStats={historyName === encodeURIComponent(item.name)}
 						selectedRegion={props.selectedRegion}
 					/>

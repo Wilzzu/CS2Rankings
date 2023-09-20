@@ -4,7 +4,7 @@ let searchedPlayers = [];
 
 const useGetPlayerHistory = (name) => {
 	const queryClient = useQueryClient();
-	const { isRefetching, isRefetchError, refetch } = useQuery(
+	const { isRefetching, isRefetchError, isSuccess, refetch } = useQuery(
 		["playerHistory", name],
 		async () => {
 			return axios
@@ -29,7 +29,7 @@ const useGetPlayerHistory = (name) => {
 
 	const data = queryClient.getQueryData(["playerHistory", name]);
 
-	return { data, isRefetching, isRefetchError, refetchHistory };
+	return { data, isRefetching, isRefetchError, refetchHistory, isSuccess };
 };
 
 export default useGetPlayerHistory;

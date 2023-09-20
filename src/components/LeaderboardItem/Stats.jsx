@@ -1,63 +1,9 @@
 import { Ring } from "@uiball/loaders";
 import { cn } from "../../../lib/utils";
-import Chart from "./Chart";
 import RankChart from "./RankChart";
 import { useEffect, useState } from "react";
-
-// const testData = {
-// 	name: "Kurosaki",
-// 	createdAt: "2023-09-14T15:53:36.609Z",
-// 	history: [
-// 		{
-// 			date: "2023-09-10T15:53:36.607Z",
-// 			rank: 2,
-// 			score: 35548,
-// 			_id: "65032c8017a1df4472ded4f4",
-// 		},
-// 		{
-// 			date: "2023-09-11T15:53:36.607Z",
-// 			rank: 2,
-// 			score: 38000,
-// 			_id: "65032c8017a1df4472ded4f4",
-// 		},
-// 		{
-// 			date: "2023-09-12T15:53:36.607Z",
-// 			rank: 1,
-// 			score: 40201,
-// 			_id: "65032c8017a1df4472ded4f4",
-// 		},
-// 		{
-// 			date: "2023-09-13T15:53:36.607Z",
-// 			rank: 4,
-// 			score: 36548,
-// 			_id: "65032c8017a1df4472ded4f4",
-// 		},
-// 		{
-// 			date: "2023-09-11T15:53:36.607Z",
-// 			rank: 2,
-// 			score: 38000,
-// 			_id: "65032c8017a1df4472ded4f4",
-// 		},
-// 		{
-// 			date: "2023-09-14T15:53:36.607Z",
-// 			rank: 10,
-// 			score: 34002,
-// 			_id: "65032c8017a1df4472ded4f4",
-// 		},
-// 		{
-// 			date: "2023-09-11T15:53:36.607Z",
-// 			rank: 2,
-// 			score: 38000,
-// 			_id: "65032c8017a1df4472ded4f4",
-// 		},
-// 		{
-// 			date: "2023-09-13T15:53:36.607Z",
-// 			rank: 7,
-// 			score: 32548,
-// 			_id: "65032c8017a1df4472ded4f4",
-// 		},
-// 	],
-// };
+import infoIcon from "../../assets/infoIcon.svg";
+import RatingChart from "./RatingChart";
 
 // {
 //     "_id": "65032cab81e6fbbf1c39925c",
@@ -98,11 +44,17 @@ const Stats = (props) => {
 				</div>
 			) : props.isRefetchError ? (
 				<p>Error while loading data.</p>
+			) : props.data ? (
+				<div className="flex items-center justify-center w-full h-full p-2 gap-4">
+					<RankChart data={props.data.history} />
+					<RatingChart data={props.data.history} />
+				</div>
 			) : (
-				props.data && (
-					<div className="flex items-center justify-center w-full h-full p-2 gap-4">
-						<RankChart data={props.data.history} />
-						<Chart data={props.data.history} type={"Score"} />
+				props.isSuccess &&
+				!props.data && (
+					<div className="relative flex flex-col items-center justify-center w-full h-full p-2 gap-2">
+						<img src={infoIcon} alt="Info icon" className="w-8" />
+						<p>No history data found for player</p>
 					</div>
 				)
 			)}
