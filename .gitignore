@@ -25,3 +25,4 @@ dist-ssr
 .env
 .eslintrc.cjs
 start.cmd
+src/components/LeaderboardItem/HistoryChart.jsx

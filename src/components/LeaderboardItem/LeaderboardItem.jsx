@@ -11,6 +11,7 @@ const LeaderboardItem = (props) => {
 		const uriName = encodeURIComponent(props.data.name);
 		props.setHistoryName((prev) => (prev === uriName ? null : uriName));
 	};
+
 	return (
 		// Item container, used for making animated border
 		<li
@@ -52,6 +53,7 @@ const LeaderboardItem = (props) => {
 					isRefetching={props.isRefetching}
 					isRefetchError={props.isRefetchError}
 					index={props.index}
+					isSuccess={props.isSuccess}
 				/>
 			)}
 		</li>

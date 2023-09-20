@@ -12,7 +12,7 @@ const Name = (props) => {
 						<div className="bg-csblue bg-opacity-90 text-cswhitebright text-xs p-2 px-4 left-8 absolute hidden group-hover:block min-w-[240px]">
 							<p>
 								{
-									"Unknown players either haven't submitted a leaderboard name or it's awaiting approval from Valve."
+									"Unknown players either haven't submitted a leaderboard name or are awaiting approval from Valve."
 								}
 							</p>
 						</div>
