@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 const Privacy = () => {
 	return (
-		<div className="min-h-[100dvh] w-full bg-[url('./assets/background.svg')] bg-repeat-x bg-cover bg-fixed flex justify-center pt-20">
-			<div className="w-full max-w-[768px] h-full bg-cswhitebright p-4 flex flex-col gap-6 text-lg font-poppins text-darktext">
-				<h1 className="text-2xl">Privacy Policy for CS2Rankings</h1>
+		<div className="min-h-[100dvh] w-full bg-[url('./assets/background.svg')] bg-repeat-x bg-cover bg-fixed flex justify-center pt-20 px-2">
+			<div className="w-full max-w-[768px] h-full bg-cswhitebright p-4 flex flex-col gap-6 md:text-lg font-poppins text-darktext">
+				<h1 className="text-lg md:text-2xl">Privacy Policy for CS2Rankings</h1>
 				<p>
 					CS2Rankings <b>does not</b> collect or store <b>any</b> of your data, or track your usage
 					in any way. We also <b>do not</b> use any cookies.

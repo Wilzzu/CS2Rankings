@@ -34,7 +34,7 @@ const Stats = (props) => {
 	return (
 		<div
 			className={cn(
-				"flex items-center justify-center gap-4 h-40 text-darktext text-lg font-poppins",
+				"flex items-center justify-center gap-4 h-56 md:h-40 text-darktext text-lg font-poppins",
 				props.index % 2 ? "bg-[#ECECEC]" : "bg-cswhitesemi"
 			)}>
 			{props.isRefetching && showLoading ? (
@@ -45,7 +45,7 @@ const Stats = (props) => {
 			) : props.isRefetchError ? (
 				<p>Error while loading data.</p>
 			) : props.data ? (
-				<div className="flex items-center justify-center w-full h-full p-2 gap-4">
+				<div className="flex flex-col md:flex-row items-center justify-center w-full h-full p-2 md:gap-4">
 					<RankChart data={props.data.history} />
 					<RatingChart data={props.data.history} />
 				</div>

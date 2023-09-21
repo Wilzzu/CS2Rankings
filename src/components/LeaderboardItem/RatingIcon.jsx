@@ -40,15 +40,15 @@ const RatingIcon = (props) => {
 			{/* Rating text */}
 			<p
 				className={cn(
-					"text-center font-score text-2xl ml-3 z-[1] leading-none drop-shadow-rating",
+					"text-center font-score text-[1.07rem] md:text-2xl ml-2 md:ml-3 z-[1] mb-[0.1rem] md:mb-0 leading-none drop-shadow-rating",
 					tierColor[props.tier],
-					props.missing && "text-lg tracking-tighter opacity-80 text-[#C2BDC2]"
+					props.missing && "text-sm md:text-lg tracking-tighter opacity-80 text-[#C2BDC2]"
 				)}>
 				{props.missing ? props.score : props.score.big}
 				{!props.missing && (
 					<>
-						<span className="font-sans font-bold ml-[-1px] text-xl leading-none">,</span>
-						<span className="text-base leading-none">{props.score.small}</span>
+						<span className="font-sans font-bold ml-[-1px] md:text-xl leading-none">,</span>
+						<span className="text-[0.65rem] md:text-base leading-none">{props.score.small}</span>
 					</>
 				)}
 			</p>
