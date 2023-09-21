@@ -47,15 +47,15 @@ function App() {
 	return (
 		<div
 			ref={ref}
-			className="min-h-[100dvh] bg-[url('./assets/background.svg')] bg-repeat-x bg-cover bg-fixed duration-500 ease-out p-4 py-10">
+			className="min-h-[100dvh] bg-[url('./assets/background.svg')] bg-repeat-x bg-cover bg-fixed duration-500 ease-out md:px-4 py-10">
 			<Credits />
-			<div className="flex justify-center mb-4">
+			<div className="flex justify-center mb-4 px-1 md:px-0">
 				<Header />
 			</div>
 			<div className="flex justify-center mb-10">
 				<MainContent />
 			</div>
-			<div className="flex justify-center">
+			<div className="flex justify-center px-1 md:px-0">
 				<Footer />
 			</div>
 		</div>

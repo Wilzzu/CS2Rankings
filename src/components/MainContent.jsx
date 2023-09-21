@@ -36,20 +36,22 @@ const MainContent = () => {
 				setSelectedSeason={setSelectedSeason}
 			/>
 			{/* Leaderboard */}
-			<ul className="w-full max-w-[768px] bg-cswhitebright py-2 min-h-[90dvh] shadow-scoreboard none">
-				<LeaderboardColumnNames />
-				<LeaderboardContent
-					data={cachedData}
-					isLoading={isLoading}
-					isError={isError}
-					setFocusId={setFocusId}
-					focusId={focusId}
-					fakeRefetch={fakeRefetch}
-					isRefetching={isRefetching}
-					isRefetchError={isRefetchError}
-					selectedRegion={selectedRegion}
-				/>
-			</ul>
+			<div className="w-full px-2 md:px-0 flex justify-center">
+				<ul className="w-full max-w-[768px] bg-cswhitebright py-2 min-h-[90dvh] shadow-scoreboard">
+					<LeaderboardColumnNames />
+					<LeaderboardContent
+						data={cachedData}
+						isLoading={isLoading}
+						isError={isError}
+						setFocusId={setFocusId}
+						focusId={focusId}
+						fakeRefetch={fakeRefetch}
+						isRefetching={isRefetching}
+						isRefetchError={isRefetchError}
+						selectedRegion={selectedRegion}
+					/>
+				</ul>
+			</div>
 		</div>
 	);
 };

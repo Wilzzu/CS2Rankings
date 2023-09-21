@@ -15,12 +15,12 @@ const Dropdown = (props) => {
 	};
 
 	const handleUnfocus = () => {
-		if (listHover) return;
+		if (listHover || props.isMobile) return;
 		setToggle(false);
 	};
 
 	return (
-		<div className="relative h-14 w-[10.5rem] font-poppins group">
+		<div className="relative h-10 md:h-14 w-full text-sm md:text-base md:w-[10.5rem] font-poppins group z-20">
 			{/* Button text */}
 			<div
 				className={cn(
@@ -28,7 +28,7 @@ const Dropdown = (props) => {
 					props.isSticky ? "bg-cswhite" : "bg-cswhitebright",
 					props.disabled ? "opacity-50" : "group-hover:bg-hoverwhite"
 				)}>
-				<p className="text-darktext">{props.header}</p>
+				<p className="text-darktext truncate">{props.header}</p>
 				<img src={arrowIcon} alt="Dropdown arrow" className="w-4 rotate-180" />
 			</div>
 			{/* For opening the dropdown and checking when user clicks away */}
