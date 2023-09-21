@@ -23,7 +23,7 @@ const LeaderboardItem = (props) => {
 			{/* Content */}
 			<div
 				className={cn(
-					`relative grid grid-cols-[100px_auto_100px_40px] gap-3 text-lg items-center h-11 px-1 font-poppins text-darktext`,
+					`relative grid grid-cols-[50px_auto_70px_20px] md:grid-cols-[100px_auto_100px_40px] gap-3 text-sm md:text-lg items-center h-9 md:h-11 px-1 font-poppins text-darktext`,
 					props.index % 2 ? "bg-[#ECECEC]" : "bg-cswhitesemi",
 					props.data.missing && "text-csgray"
 				)}>
@@ -41,7 +41,7 @@ const LeaderboardItem = (props) => {
 				{props.selectedRegion === "World" && !props?.data?.missing && (
 					<button
 						onClick={() => handleClick()}
-						className="w-full p-[0.6rem] duration-300 hover:bg-cswhite">
+						className="w-full p-[0.1rem] md:p-[0.6rem] duration-300 hover:bg-cswhite">
 						<img src={statsIcon} alt="Statistics icon" />
 					</button>
 				)}

@@ -3,18 +3,20 @@ import positionArrowDown from "../../assets/positionArrowDown.svg";
 
 const Rank = (props) => {
 	return (
-		<div className="flex flex-row-reverse justify-between px-2">
+		<div className="flex flex-row-reverse justify-between items-center md:px-2">
 			<p className="w-12 text-center">{props.rank}.</p>
 			{props.position === "up" ? (
-				<img src={positionArrowUp} className="w-5 opacity-80" alt="Arrow up icon" />
+				<img src={positionArrowUp} className="w-3 md:w-5 opacity-80" alt="Arrow up icon" />
 			) : props.position === "down" ? (
 				<img
 					src={positionArrowDown}
-					className="rotate-180 w-5 opacity-80 text-[#1d6ce2]"
+					className="rotate-180 w-3 md:w-5 opacity-80"
 					alt="Arrow down icon"
 				/>
 			) : (
-				<p className="w-5 text-[2.25rem] text-center opacity-30 select-none">-</p>
+				<p className="w-3 md:w-5 text-xl md:text-[2.25rem] text-center opacity-30 select-none font-bold md:font-normal">
+					-
+				</p>
 			)}
 		</div>
 	);
