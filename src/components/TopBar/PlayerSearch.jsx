@@ -37,7 +37,7 @@ const PlayerSearch = (props) => {
 	}, [search, props.data]);
 
 	const handleUnfocus = (el) => {
-		if (listHover) return;
+		if (listHover || props.isMobile) return;
 		el.target.value = "";
 		setSearch("");
 	};
@@ -58,11 +58,7 @@ const PlayerSearch = (props) => {
 
 	return (
 		// Container
-		<div
-			className={cn(
-				"relative w-full h-14 font-poppins z-20",
-				props.isSticky ? "max-w-[338px]" : "max-w-[304px]"
-			)}>
+		<div className={cn("relative w-full h-10 md:h-14 font-poppins z-20 text-sm md:text-base")}>
 			{/* Search field */}
 			<input
 				ref={ref}
@@ -82,7 +78,7 @@ const PlayerSearch = (props) => {
 			{/* Search list */}
 			{search && (notFound || filtered.length >= 1) && (
 				// Padding for scrollbar
-				<div className="bg-csblue pr-1 py-2">
+				<div className="bg-csblue pr-1 py-2 absolute w-full">
 					<ul
 						onMouseEnter={() => setListHover(true)}
 						onMouseLeave={() => setListHover(false)}

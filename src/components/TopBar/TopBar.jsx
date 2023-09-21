@@ -4,9 +4,11 @@ import PlayerSearch from "./PlayerSearch";
 import RefreshButton from "./RefreshButton";
 import settings from "../../../lib/settings.json";
 import { cn } from "../../../lib/utils";
+import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
 
 const TopBar = (props) => {
 	const [isSticky, setIsSticky] = useState(false);
+	const isMobile = useCheckMobileScreen();
 
 	// Check if bar is sticky
 	useEffect(() => {
@@ -22,8 +24,8 @@ const TopBar = (props) => {
 	return (
 		<div
 			className={cn(
-				"sticky max-w-[768px] bg-transparent duration-200 top-0 flex w-full justify-between items-center gap-6 h-[6.5rem] z-10 drop-shadow -mb-2",
-				isSticky && "bg-cswhitebright outline-blue-500 max-w-[850px] px-6"
+				"sticky max-w-[768px] bg-transparent duration-200 top-0 flex flex-col-reverse md:flex-row w-full justify-center md:justify-between items-center gap-2 md:gap-6 h-28 md:h-[6.5rem] z-10 drop-shadow md:-mb-2 px-2 md:px-0",
+				isSticky && "bg-cswhitebright outline-blue-500 max-w-[850px] md:px-6"
 			)}>
 			<RefreshButton
 				isSticky={isSticky}
@@ -35,8 +37,13 @@ const TopBar = (props) => {
 				isRefetching={props.isRefetching}
 				isRefetchError={props.isRefetchError}
 			/>
-			<PlayerSearch data={props.data?.players} setFocusId={props.setFocusId} isSticky={isSticky} />
-			<div className="flex gap-6">
+			<PlayerSearch
+				data={props.data?.players}
+				setFocusId={props.setFocusId}
+				isSticky={isSticky}
+				isMobile={isMobile}
+			/>
+			<div className="flex w-full gap-2 md:gap-6">
 				<Dropdown
 					header={props.selectedSeason}
 					data={settings.seasons}
@@ -44,6 +51,7 @@ const TopBar = (props) => {
 					disabled={true}
 					isSticky={isSticky}
 					setFocusId={props.setFocusId}
+					isMobile={isMobile}
 				/>
 				<Dropdown
 					header={props.selectedRegion}
@@ -51,6 +59,7 @@ const TopBar = (props) => {
 					setSelected={props.setSelectedRegion}
 					isSticky={isSticky}
 					setFocusId={props.setFocusId}
+					isMobile={isMobile}
 				/>
 			</div>
 		</div>
