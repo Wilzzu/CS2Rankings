@@ -29,7 +29,7 @@ const Dropdown = (props) => {
 					props.disabled ? "opacity-50" : "group-hover:bg-hoverwhite"
 				)}>
 				<p className="text-darktext truncate">{props.header}</p>
-				<img src={arrowIcon} alt="Dropdown arrow" className="w-4 rotate-180" />
+				<img src={arrowIcon} alt="Dropdown arrow" className="w-4 rotate-180 h-auto aspect-square" />
 			</div>
 			{/* For opening the dropdown and checking when user clicks away */}
 			<input

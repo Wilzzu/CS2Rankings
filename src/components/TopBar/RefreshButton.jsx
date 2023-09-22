@@ -65,7 +65,7 @@ const RefreshButton = (props) => {
 					}
 					alt="Refresh icon"
 					className={cn(
-						"duration-700 select-none",
+						"duration-700 select-none w-full h-auto aspect-square",
 						state === "none" && "group-active:rotate-180 group-hover:-rotate-[22deg]"
 					)}
 				/>

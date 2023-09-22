@@ -6,11 +6,15 @@ const Rank = (props) => {
 		<div className="flex flex-row-reverse justify-between items-center md:px-2">
 			<p className="w-12 text-center">{props.rank}.</p>
 			{props.position === "up" ? (
-				<img src={positionArrowUp} className="w-3 md:w-5 opacity-80" alt="Arrow up icon" />
+				<img
+					src={positionArrowUp}
+					className="w-3 md:w-5 opacity-80 h-auto aspect-square"
+					alt="Arrow up icon"
+				/>
 			) : props.position === "down" ? (
 				<img
 					src={positionArrowDown}
-					className="rotate-180 w-3 md:w-5 opacity-80"
+					className="rotate-180 w-3 md:w-5 opacity-80 h-auto aspect-square"
 					alt="Arrow down icon"
 				/>
 			) : (

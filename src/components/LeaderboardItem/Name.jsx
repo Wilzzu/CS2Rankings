@@ -13,7 +13,11 @@ const Name = (props) => {
 					<div
 						onClick={() => setShowInfo((prev) => !prev)}
 						className="relative group h-full ml-2 md:ml-0 md:w-8 flex items-center justify-center group">
-						<img src={infoIcon} alt="Info icon" className="w-3 md:w-[0.85rem] opacity-50" />
+						<img
+							src={infoIcon}
+							alt="Info icon"
+							className="w-3 md:w-[0.85rem] opacity-50 h-auto aspect-square"
+						/>
 						<div className="bg-csblue bg-opacity-90 text-cswhitebright text-xs p-2 px-4 left-8 absolute hidden md:group-hover:block min-w-[240px] z-10">
 							<p>
 								{
