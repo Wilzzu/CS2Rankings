@@ -42,7 +42,7 @@ const LeaderboardItem = (props) => {
 					<button
 						onClick={() => handleClick()}
 						className="w-full p-[0.1rem] md:p-[0.6rem] duration-300 hover:bg-cswhite">
-						<img src={statsIcon} alt="Statistics icon" />
+						<img src={statsIcon} alt="Statistics icon" className="w-auto h-auto aspect-square" />
 					</button>
 				)}
 			</div>

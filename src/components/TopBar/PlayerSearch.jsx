@@ -73,7 +73,7 @@ const PlayerSearch = (props) => {
 				onBlur={(e) => handleUnfocus(e)}
 			/>
 			<div className="h-full aspect-square flex items-center justify-center absolute top-0 right-0">
-				<img src={searchIcon} alt="Search icon" className="w-6" />
+				<img src={searchIcon} alt="Search icon" className="w-6 h-auto aspect-square" />
 			</div>
 			{/* Search list */}
 			{search && (notFound || filtered.length >= 1) && (

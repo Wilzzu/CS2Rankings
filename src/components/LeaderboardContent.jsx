@@ -68,7 +68,7 @@ const LeaderboardContent = (props) => {
 	}
 
 	return (
-		<div className="px-2">
+		<ul className="px-2">
 			<ViewportList ref={listRef} items={props.data.players} initialIndex={0} initialOffset={-300}>
 				{/* List items */}
 				{(item, index) => (
@@ -87,7 +87,7 @@ const LeaderboardContent = (props) => {
 					/>
 				)}
 			</ViewportList>
-		</div>
+		</ul>
 	);
 };
 

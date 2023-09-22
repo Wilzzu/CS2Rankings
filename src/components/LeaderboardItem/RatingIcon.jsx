@@ -57,7 +57,7 @@ const RatingIcon = (props) => {
 			<img
 				src={props.missing ? "/assets/ranks/rankGold.png" : calcIcon(props.tier, props.score.small)}
 				alt="Rating icon"
-				className={cn("absolute filter", tierFilter[props.tier])}
+				className={cn("absolute filter h-10 w-auto", tierFilter[props.tier])}
 			/>
 		</div>
 	);

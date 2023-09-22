@@ -37,7 +37,7 @@ const MainContent = () => {
 			/>
 			{/* Leaderboard */}
 			<div className="w-full px-2 md:px-0 flex justify-center">
-				<ul className="w-full max-w-[768px] bg-cswhitebright py-2 min-h-[90dvh] shadow-scoreboard">
+				<div className="w-full max-w-[768px] bg-cswhitebright py-2 min-h-[90dvh] shadow-scoreboard">
 					<LeaderboardColumnNames />
 					<LeaderboardContent
 						data={cachedData}
@@ -50,7 +50,7 @@ const MainContent = () => {
 						isRefetchError={isRefetchError}
 						selectedRegion={selectedRegion}
 					/>
-				</ul>
+				</div>
 			</div>
 		</div>
 	);

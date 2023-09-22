@@ -8,7 +8,7 @@ const Header = () => {
 			<img
 				src={mainlogo}
 				alt="CS2Rankings logo"
-				className="absolute right-4 z-10 w-10 md:w-14 opacity-50"
+				className="absolute right-4 z-10 w-10 md:w-14 h-auto aspect-square opacity-50"
 			/>
 			<div className="w-full h-full -mr-2 -skew-x-12 bg-cswhitebright shadow-md"></div>
 			<div className="w-4"></div>

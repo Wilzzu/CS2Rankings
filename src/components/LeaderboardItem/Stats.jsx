@@ -53,7 +53,7 @@ const Stats = (props) => {
 				props.isSuccess &&
 				!props.data && (
 					<div className="relative flex flex-col items-center justify-center w-full h-full p-2 gap-2">
-						<img src={infoIcon} alt="Info icon" className="w-8" />
+						<img src={infoIcon} alt="Info icon" className="w-8 h-auto aspect-square" />
 						<p>No history data found for player</p>
 					</div>
 				)
