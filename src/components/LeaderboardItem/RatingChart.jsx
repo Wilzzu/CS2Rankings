@@ -34,7 +34,7 @@ const RatingChart = (props) => {
 		<div className="h-1/2 md:h-full w-full md:w-1/2 font-hanken text-[0.7rem] md:text-xs flex flex-col items-center">
 			<p className="text-xs md:text-lg font-medium">Rating</p>
 			<ResponsiveContainer width="100%" height="100%">
-				<AreaChart margin={{ top: 5, left: -20, right: 20, bottom: 5 }} data={props.data}>
+				<AreaChart margin={{ top: 5, left: -18, right: 20, bottom: 5 }} data={props.data}>
 					<Area dataKey={"score"} stroke="#447CE6" fill="#447CE6" />
 					<XAxis dataKey="date" axisLine={false} tickLine={false} tickFormatter={customDay} />
 					<YAxis
