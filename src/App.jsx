@@ -9,12 +9,18 @@ import Footer from "./components/Footer";
 let firstScroll = true;
 
 const preloadImgs = [
-	"/assets/ranks/rank.png",
-	"/assets/ranks/rankdown.png",
-	"/assets/ranks/rankup.png",
-	"/assets/ranks/rankGold.png",
-	"/assets/ranks/rankdownGold.png",
-	"/assets/ranks/rankupGold.png",
+	"/assets/ranks/blur/rank.png",
+	"/assets/ranks/blur/rankdown.png",
+	"/assets/ranks/blur/rankup.png",
+	"/assets/ranks/blur/rankGold.png",
+	"/assets/ranks/blur/rankdownGold.png",
+	"/assets/ranks/blur/rankupGold.png",
+	"/assets/ranks/rank.webp",
+	"/assets/ranks/rankdown.webp",
+	"/assets/ranks/rankup.webp",
+	"/assets/ranks/rankGold.webp",
+	"/assets/ranks/rankdownGold.webp",
+	"/assets/ranks/rankupGold.webp",
 ];
 
 function App() {
