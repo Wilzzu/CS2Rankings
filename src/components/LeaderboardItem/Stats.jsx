@@ -28,7 +28,7 @@ const Stats = (props) => {
 		if (props.isRefetching)
 			setTimeout(() => {
 				setShowLoading(true);
-			}, 2000);
+			}, 500);
 	}, [props.isRefetching]);
 
 	return (
@@ -39,7 +39,7 @@ const Stats = (props) => {
 			)}>
 			{props.isRefetching && showLoading ? (
 				<div className="relative flex flex-col items-center justify-center w-full h-full p-2 gap-2 animate-pulse">
-					<p>Loading statistics...</p>
+					<p>Loading player history...</p>
 					<Ring />
 				</div>
 			) : props.isRefetchError ? (
