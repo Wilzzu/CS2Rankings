@@ -41,8 +41,8 @@ const LeaderboardItem = (props) => {
 				{props.selectedRegion === "World" && !props?.data?.missing && (
 					<button
 						onClick={() => handleClick()}
-						className="w-full p-[0.1rem] md:p-[0.6rem] duration-300 hover:bg-cswhite">
-						<img src={statsIcon} alt="Statistics icon" className="w-auto h-auto aspect-square" />
+						className="w-full p-[0.1rem] md:p-[0.6rem] duration-300 hover:bg-cswhite flex items-center justify-center">
+						<img src={statsIcon} alt="Statistics icon" className="w-5 h-auto aspect-square" />
 					</button>
 				)}
 			</div>
