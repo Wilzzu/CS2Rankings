@@ -30,7 +30,6 @@ const LeaderboardContent = (props) => {
 
 			// Highlight player
 			setHighlightId(props.focusId);
-			// TODO: Clear highlight so it doesnt retrigger when it comes back to view
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [props.focusId, props?.data?.players]);
@@ -51,7 +50,7 @@ const LeaderboardContent = (props) => {
 		);
 	}
 
-	if (props.data && props.data.players.length <= 0) {
+	if (props.data && props.data?.players?.length <= 0) {
 		return (
 			<LeaderboardStatus
 				icon={infoIcon}

@@ -36,7 +36,6 @@ export default {
 				scoreboard: "4px 10px 10px rgba(0, 0, 0, 0.2)",
 				listitem: "0px 0px 2px rgba(0, 0, 0, 0.1)",
 			},
-			// TODO: Make this better
 			animation: {
 				highlightBorder: "highlightBorder 2.5s cubic-bezier(.05,.12,.64,.83)",
 				// 3.7s cubic-bezier(0,.13,.02,-0.1) fast start
