@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { cn } from "../../../lib/utils";
 
 const tierFilter = [
@@ -21,14 +22,22 @@ const tierColor = [
 ];
 
 const RatingIcon = (props) => {
+	const [loaded, setLoaded] = useState(false);
 	// Calculate rating icon
-	const calcIcon = (tier, small) => {
-		let path = "/assets/ranks/rank";
+	const calcIcon = (tier, small, blur = false) => {
+		let path = "/assets/ranks";
+		let format = ".webp";
+
+		if (blur) {
+			path = path + "/blur";
+			format = ".png";
+		}
+		path = path + "/rank";
 		if (small === "000") path = path + "down";
 		else if (small === "999") path = path + "up";
 
 		if (tier === 6) path = path + "Gold";
-		return path + ".png";
+		return path + format;
 	};
 
 	return (
@@ -40,7 +49,7 @@ const RatingIcon = (props) => {
 			{/* Rating text */}
 			<p
 				className={cn(
-					"text-center font-score text-[1.07rem] md:text-2xl ml-2 md:ml-3 z-[1] mb-[0.1rem] md:mb-0 leading-none drop-shadow-rating",
+					"text-center font-score text-[1.07rem] md:text-2xl ml-[0.35rem] md:ml-2 z-[1] mb-[0.1rem] md:mb-0 leading-none drop-shadow-rating",
 					tierColor[props.tier],
 					props.missing && "text-sm md:text-lg tracking-tighter opacity-80 text-[#C2BDC2]"
 				)}>
@@ -54,10 +63,26 @@ const RatingIcon = (props) => {
 			</p>
 
 			{/* Rating icon */}
+			{/* Small image */}
+			{!loaded && (
+				<img
+					src={
+						props.missing
+							? "/assets/ranks/blur/rankGold.png"
+							: calcIcon(props.tier, props.score.small, true)
+					}
+					alt="Rating icon"
+					className={cn("absolute filter h-7 md:h-9 w-auto", tierFilter[props.tier])}
+				/>
+			)}
+			{/* Animated image */}
 			<img
-				src={props.missing ? "/assets/ranks/rankGold.png" : calcIcon(props.tier, props.score.small)}
+				src={
+					props.missing ? "/assets/ranks/rankGold.webp" : calcIcon(props.tier, props.score.small)
+				}
+				onLoad={() => setLoaded(true)}
 				alt="Rating icon"
-				className={cn("absolute filter h-10 w-auto", tierFilter[props.tier])}
+				className={cn("absolute filter h-7 md:h-9 w-auto", tierFilter[props.tier])}
 			/>
 		</div>
 	);
