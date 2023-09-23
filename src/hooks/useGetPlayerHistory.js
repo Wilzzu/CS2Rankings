@@ -1,17 +1,25 @@
 import axios from "axios";
 import { useQuery, useQueryClient } from "react-query";
 let searchedPlayers = [];
+import CryptoJS from "crypto-js";
 
 const useGetPlayerHistory = (name) => {
 	const queryClient = useQueryClient();
-	const { isRefetching, isRefetchError, isSuccess, refetch } = useQuery(
+	const {
+		isFetching: isRefetching,
+		isRefetchError,
+		isSuccess,
+		refetch,
+	} = useQuery(
 		["playerHistory", name],
 		async () => {
 			return axios
 				.get(`${import.meta.env.VITE_APILOCATION}/history/${name}`)
 				.then((res) => {
 					searchedPlayers.push(name);
-					return res.data;
+					const bytes = CryptoJS.AES.decrypt(res.data, import.meta.env.VITE_CRYPTO);
+					const parsedRequest = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+					return parsedRequest;
 				})
 				.catch((err) => {
 					console.log(err);
