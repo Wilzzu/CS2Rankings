@@ -6,6 +6,7 @@ import { useScroll, useMotionValueEvent } from "framer-motion";
 import Header from "./components/Header";
 import Credits from "./components/Credits";
 import Footer from "./components/Footer";
+import GdprPopup from "./components/GdprPopup";
 let firstScroll = true;
 
 const preloadImgs = [
@@ -54,6 +55,7 @@ function App() {
 		<div
 			ref={ref}
 			className="min-h-[100dvh] bg-[url('./assets/background.svg')] bg-repeat-x bg-cover bg-fixed duration-500 ease-out md:px-4 py-10">
+			<GdprPopup />
 			<Credits />
 			<div className="flex justify-center mb-4 px-1 md:px-0">
 				<Header />
