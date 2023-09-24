@@ -1,6 +1,6 @@
 const Credits = () => {
 	return (
-		<div className="absolute flex items-center top-2 left-4 md:left-auto md:right-4 py-1 px-3 shadow-md">
+		<div className="absolute flex items-center top-2 left-4 md:left-auto md:right-4 py-1 px-3 shadow-md z-20">
 			<div className="absolute left-0 bg-cswhitebright w-full h-full -skew-x-12" />
 			<p className="font-header text-xs md:text-sm text-darktext z-10">
 				Made with 💙 by{" "}

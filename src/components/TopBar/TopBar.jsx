@@ -5,6 +5,7 @@ import RefreshButton from "./RefreshButton";
 import settings from "../../../lib/settings.json";
 import { cn } from "../../../lib/utils";
 import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
+import positionArrowUp from "../../assets/positionArrowUp.svg";
 
 const TopBar = (props) => {
 	const [isSticky, setIsSticky] = useState(false);
@@ -14,12 +15,16 @@ const TopBar = (props) => {
 	useEffect(() => {
 		const handleScroll = () => {
 			const currentScrollY = window.scrollY;
-			if (currentScrollY >= 122 && !isSticky) setIsSticky(true);
-			else if (currentScrollY < 122 && isSticky) setIsSticky(false);
+			if (currentScrollY >= 132 && !isSticky) setIsSticky(true);
+			else if (currentScrollY < 132 && isSticky) setIsSticky(false);
 		};
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [isSticky]);
+
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: "instant" });
+	};
 
 	return (
 		<div
@@ -62,6 +67,18 @@ const TopBar = (props) => {
 					isMobile={isMobile}
 				/>
 			</div>
+			<button
+				className={cn(
+					"absolute bg-cswhitesemi p-3 -right-[68px] rounded-lg h-11 shadow-md duration-200 group opacity-0",
+					isSticky && "lg:opacity-90 bg-cswhitebright lg:hover:opacity-100"
+				)}
+				onClick={() => scrollToTop()}>
+				<img
+					src={positionArrowUp}
+					alt="Scroll to top arrow"
+					className="w-5 h-auto aspect-square group-hover:animate-moveUp"
+				/>
+			</button>
 		</div>
 	);
 };
