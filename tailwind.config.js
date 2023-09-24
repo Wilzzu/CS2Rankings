@@ -38,12 +38,16 @@ export default {
 			},
 			animation: {
 				highlightBorder: "highlightBorder 2.5s cubic-bezier(.05,.12,.64,.83)",
-				// 3.7s cubic-bezier(0,.13,.02,-0.1) fast start
+				moveUp: "moveUp 1s ease-in-out infinite",
 			},
 			keyframes: {
 				highlightBorder: {
 					"0%": { backgroundPosition: "0 0" },
 					"100%": { backgroundPosition: "0 168%" },
+				},
+				moveUp: {
+					"0%, 100%": { transform: "translateY(0%)" },
+					"50%": { transform: "translateY(-15%)" },
 				},
 			},
 		},
