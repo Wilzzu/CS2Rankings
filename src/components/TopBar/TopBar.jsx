@@ -69,9 +69,10 @@ const TopBar = (props) => {
 			</div>
 			<button
 				className={cn(
-					"absolute bg-cswhitesemi p-3 -right-[68px] rounded-lg h-11 shadow-md duration-200 group opacity-0",
-					isSticky && "lg:opacity-90 bg-cswhitebright lg:hover:opacity-100"
+					"absolute bg-cswhitesemi p-3 -right-[68px] rounded-lg h-11 shadow-md duration-200 group opacity-0 hidden lg:block",
+					isSticky && "opacity-90 bg-cswhitebright hover:opacity-100"
 				)}
+				disabled={!isSticky}
 				onClick={() => scrollToTop()}>
 				<img
 					src={positionArrowUp}
