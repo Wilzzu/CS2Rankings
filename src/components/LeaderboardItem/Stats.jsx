@@ -30,7 +30,7 @@ const Stats = (props) => {
 				setShowLoading(true);
 			}, 500);
 	}, [props.isRefetching]);
-
+	// TODO: Make this taller so stats show better
 	return (
 		<div
 			className={cn(

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
 import PlayerSearch from "./PlayerSearch";
-import RefreshButton from "./RefreshButton";
 import settings from "../../../lib/settings.json";
 import { cn } from "../../../lib/utils";
 import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
 import positionArrowUp from "../../assets/positionArrowUp.svg";
+import Settings from "./Settings";
 
 const TopBar = (props) => {
 	const [isSticky, setIsSticky] = useState(false);
@@ -32,7 +32,7 @@ const TopBar = (props) => {
 				"sticky max-w-[768px] bg-transparent duration-200 top-0 flex flex-col-reverse md:flex-row w-full justify-center md:justify-between items-center gap-2 md:gap-6 h-28 md:h-[6.5rem] z-10 drop-shadow md:-mb-2 px-2 md:px-0",
 				isSticky && "bg-cswhitebright outline-blue-500 max-w-[850px] md:px-6"
 			)}>
-			<RefreshButton
+			<Settings
 				isSticky={isSticky}
 				data={props.data}
 				isLoading={props.isLoading}
@@ -42,6 +42,7 @@ const TopBar = (props) => {
 				isRefetching={props.isRefetching}
 				isRefetchError={props.isRefetchError}
 			/>
+
 			<PlayerSearch
 				data={props.data?.players}
 				setFocusId={props.setFocusId}
