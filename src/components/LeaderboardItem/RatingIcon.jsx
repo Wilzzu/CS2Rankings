@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { cn } from "../../../lib/utils";
+import { useSelector } from "react-redux";
 
 const tierFilter = [
 	"hue-rotate-[265deg] saturate-[6%] brightness-[160%]",
@@ -23,6 +24,7 @@ const tierColor = [
 
 const RatingIcon = (props) => {
 	const [loaded, setLoaded] = useState(false);
+	const lightweight = useSelector((state) => state.lightweight);
 	// Calculate rating icon
 	const calcIcon = (tier, small, blur = false) => {
 		let path = "/assets/ranks";
@@ -32,6 +34,11 @@ const RatingIcon = (props) => {
 			path = path + "/blur";
 			format = ".png";
 		}
+		if (lightweight) {
+			path = path + "/light";
+			format = ".png";
+		}
+
 		path = path + "/rank";
 		if (small === "000") path = path + "down";
 		else if (small === "999") path = path + "up";

@@ -26,3 +26,5 @@ dist-ssr
 .eslintrc.cjs
 start.cmd
 src/components/LeaderboardItem/HistoryChart.jsx
+src/components/TopBar/topbckup.jsx
+src/components/TopBar/settingsbckup.jsx

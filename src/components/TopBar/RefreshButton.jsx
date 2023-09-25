@@ -46,30 +46,33 @@ const RefreshButton = (props) => {
 		<button
 			disabled={state !== "none"}
 			className={cn(
-				"group duration-200 aspect-square h-10 w-10 md:h-14 md:w-14 p-[0.6rem] md:p-4 hidden md:flex items-center justify-center",
+				"group duration-200 aspect-square h-10 w-full md:h-14 md:w-32 p-[0.6rem] md:py-2 md:px-2 flex gap-2 items-center justify-center",
 				state === "none" && "hover:bg-hoverwhite",
 				props.isSticky ? "bg-cswhite" : "bg-cswhitebright"
 			)}
 			onClick={() => handleClick()}>
 			{/* Button image */}
-			{state === "loading" ? (
-				<Ring size={42} lineWeight={8} speed={2} color="#4A68FF" />
-			) : (
-				<img
-					src={
-						state === "done"
-							? checkIcon
-							: state === "error"
-							? errorIcon
-							: state === "none" && refreshIcon
-					}
-					alt="Refresh icon"
-					className={cn(
-						"duration-700 select-none w-full h-auto aspect-square",
-						state === "none" && "group-active:rotate-180 group-hover:-rotate-[22deg]"
-					)}
-				/>
-			)}
+			<div className="w-9 h-full flex items-center justify-center overflow-hidden">
+				{state === "loading" ? (
+					<Ring size={24} lineWeight={8} speed={2} color="#4A68FF" />
+				) : (
+					<img
+						src={
+							state === "done"
+								? checkIcon
+								: state === "error"
+								? errorIcon
+								: state === "none" && refreshIcon
+						}
+						alt="Refresh icon"
+						className={cn(
+							"duration-700 select-none w-6 h-6",
+							state === "none" && "group-active:rotate-180 group-hover:-rotate-[22deg]"
+						)}
+					/>
+				)}
+			</div>
+			<p>Refresh</p>
 		</button>
 	);
 };

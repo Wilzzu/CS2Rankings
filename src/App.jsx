@@ -1,12 +1,13 @@
 import { useEffect, useRef } from "react";
 import "./App.css";
-import usePrefetchLeaderboard from "./hooks/usePrefetchLeaderboard";
+// import usePrefetchLeaderboard from "./hooks/usePrefetchLeaderboard";
 import MainContent from "./components/MainContent";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import Header from "./components/Header";
 import Credits from "./components/Credits";
 import Footer from "./components/Footer";
 import GdprPopup from "./components/GdprPopup";
+import { useSelector } from "react-redux";
 let firstScroll = true;
 
 const preloadImgs = [
@@ -25,10 +26,12 @@ const preloadImgs = [
 ];
 
 function App() {
-	const { prefetchLeaderboard } = usePrefetchLeaderboard();
-	useEffect(() => {
-		prefetchLeaderboard();
-	}, [prefetchLeaderboard]);
+	// const { prefetchLeaderboard } = usePrefetchLeaderboard();
+	// useEffect(() => {
+	// 	prefetchLeaderboard();
+	// }, [prefetchLeaderboard]);
+
+	const lightweight = useSelector((state) => state.lightweight);
 
 	// Change background position on scroll
 	const ref = useRef(null);
@@ -36,6 +39,7 @@ function App() {
 		target: ref,
 	});
 	useMotionValueEvent(scrollYProgress, "change", (latest) => {
+		if (lightweight) return;
 		if (firstScroll) {
 			firstScroll = false;
 			return;

@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import defaultTheme from "tailwindcss/defaultTheme";
+
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
@@ -6,7 +8,7 @@ export default {
 			fontFamily: {
 				poppins: ["Poppins"],
 				hanken: ['"Hanken Grotesk"'],
-				score: ["Arimo"],
+				score: ["Arimo", ...defaultTheme.fontFamily.sans],
 				header: ["Archivo"],
 				mono: ['"Noto Sans Mono"'],
 			},
