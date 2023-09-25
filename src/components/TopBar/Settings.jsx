@@ -30,7 +30,7 @@ const Settings = (props) => {
 				<img
 					src={settingsIcon}
 					alt="Settings icon"
-					className="duration-700 w-7 md:w-9 h-auto aspect-square group-hover:rotate-[32deg] absolute z-0"
+					className="duration-700 w-6 md:w-8 h-auto aspect-square group-hover:rotate-[32deg] absolute z-0"
 				/>
 			</div>
 			{/* Settings container */}
