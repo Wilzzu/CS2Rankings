@@ -7,9 +7,12 @@ const Privacy = () => {
 				<h1 className="text-lg md:text-2xl">Privacy & Cookie Policy for CS2Rankings</h1>
 				<p>
 					CS2Rankings <b>does not</b> collect or store <b>any</b> of your data, or track your usage
-					in any way. We save only one cookie on your device, which is used to check if you have
-					accepted our GDPR Cookie Consent. This cookie will stay only on your device and is never
-					sent to our servers. The cookie will expire in 1 year.
+					in any way.
+					<br />
+					We save only one cookie on your device, which is necessary for the website to function
+					correctly. This cookie is used to check if you have accepted our GDPR Cookie Consent, and
+					if you have enabled lightweight or dark mode. This cookie will stay only on your device
+					and is never sent to our servers. The cookie will expire in 1 year.
 				</p>
 				<p>
 					<b>We do however</b> use <b>Cloudflare</b>, a third party service, to protect our website
