@@ -12,7 +12,7 @@ const Header = () => {
 			/>
 			<div className="w-full h-full -mr-2 -skew-x-12 bg-cswhitebright shadow-md"></div>
 			<div className="w-4"></div>
-			<p className="text-darktext leading-7 text-[1.75rem] md:text-[2.8rem] mb-[-1px] font-header font-bold tracking-wider absolute left-[3.2rem] md:left-16 drop-shadow-header z-10">
+			<p className="text-darktext leading-7 text-[1.75rem] md:text-[2.8rem] mb-[-1px] font-header font-bold italic tracking-wider absolute left-[3.2rem] md:left-16 drop-shadow-header z-10">
 				CS2 RANKINGS
 			</p>
 		</div>

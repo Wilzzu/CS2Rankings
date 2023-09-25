@@ -8,6 +8,7 @@ import Credits from "./components/Credits";
 import Footer from "./components/Footer";
 import GdprPopup from "./components/GdprPopup";
 import { useSelector } from "react-redux";
+import { cn } from "../lib/utils";
 let firstScroll = true;
 
 const preloadImgs = [
@@ -58,14 +59,17 @@ function App() {
 	return (
 		<div
 			ref={ref}
-			className="min-h-[100dvh] bg-[url('./assets/background.svg')] bg-repeat-x bg-cover bg-fixed duration-500 ease-out md:px-4 py-10">
+			className={cn(
+				"min-h-[100dvh] bg-[url('./assets/background.svg')] bg-repeat-x bg-cover bg-fixed duration-500 ease-out md:px-4",
+				lightweight ? "py-2" : "py-10"
+			)}>
 			<GdprPopup />
 			<Credits />
 			<div className="flex justify-center my-5 px-1 md:px-0">
 				<Header />
 			</div>
-			<div className="flex justify-center mb-10">
-				<MainContent />
+			<div className={cn("flex justify-center", lightweight ? "mb-2" : "mb-10")}>
+				<MainContent lightweight={lightweight} />
 			</div>
 			<div className="flex justify-center px-1 md:px-0">
 				<Footer />

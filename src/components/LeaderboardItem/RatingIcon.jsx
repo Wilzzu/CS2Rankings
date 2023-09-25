@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { cn } from "../../../lib/utils";
-import { useSelector } from "react-redux";
 
 const tierFilter = [
 	"hue-rotate-[265deg] saturate-[6%] brightness-[160%]",
@@ -24,7 +23,7 @@ const tierColor = [
 
 const RatingIcon = (props) => {
 	const [loaded, setLoaded] = useState(false);
-	const lightweight = useSelector((state) => state.lightweight);
+
 	// Calculate rating icon
 	const calcIcon = (tier, small, blur = false) => {
 		let path = "/assets/ranks";
@@ -33,8 +32,7 @@ const RatingIcon = (props) => {
 		if (blur) {
 			path = path + "/blur";
 			format = ".png";
-		}
-		if (lightweight) {
+		} else if (props.lightweight) {
 			path = path + "/light";
 			format = ".png";
 		}
@@ -56,14 +54,16 @@ const RatingIcon = (props) => {
 			{/* Rating text */}
 			<p
 				className={cn(
-					"text-center font-score text-[1.07rem] md:text-2xl ml-[0.35rem] md:ml-2 z-[1] mb-[0.1rem] md:mb-0 leading-none drop-shadow-rating",
+					"text-center font-score font-bold italic text-[1.07rem] md:text-2xl ml-[0.35rem] md:ml-2 z-[1] mb-[0.1rem] md:mb-0 leading-none drop-shadow-rating",
 					tierColor[props.tier],
 					props.missing && "text-sm md:text-lg tracking-tighter opacity-80 text-[#C2BDC2]"
 				)}>
 				{props.missing ? props.score : props.score.big}
 				{!props.missing && (
 					<>
-						<span className="font-sans font-bold ml-[-1px] md:text-xl leading-none">,</span>
+						<span className="font-sans font-bold ml-[-1px] md:text-xl leading-none not-italic">
+							,
+						</span>
 						<span className="text-[0.65rem] md:text-base leading-none">{props.score.small}</span>
 					</>
 				)}

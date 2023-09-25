@@ -46,15 +46,15 @@ const RefreshButton = (props) => {
 		<button
 			disabled={state !== "none"}
 			className={cn(
-				"group duration-200 aspect-square h-10 w-full md:h-14 md:w-32 p-[0.6rem] md:py-2 md:px-2 flex gap-2 items-center justify-center",
+				"group duration-200 aspect-square h-10 w-full md:h-14 md:w-32 p-[0.6rem] md:py-2 md:px-2 flex md:gap-2 items-center justify-center",
 				state === "none" && "hover:bg-hoverwhite",
-				props.isSticky ? "bg-cswhite" : "bg-cswhitebright"
+				props.isSticky ? "bg-cswhitesemi" : "bg-cswhitebright"
 			)}
 			onClick={() => handleClick()}>
 			{/* Button image */}
 			<div className="w-9 h-full flex items-center justify-center overflow-hidden">
 				{state === "loading" ? (
-					<Ring size={24} lineWeight={8} speed={2} color="#4A68FF" />
+					<Ring size={props.isMobile ? 16 : 24} lineWeight={8} speed={2} color="#4A68FF" />
 				) : (
 					<img
 						src={
@@ -66,7 +66,7 @@ const RefreshButton = (props) => {
 						}
 						alt="Refresh icon"
 						className={cn(
-							"duration-700 select-none w-6 h-6",
+							"duration-700 select-none w-4 h-4 md:w-6 md:h-6",
 							state === "none" && "group-active:rotate-180 group-hover:-rotate-[22deg]"
 						)}
 					/>
