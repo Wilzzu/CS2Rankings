@@ -3,8 +3,9 @@ import LeaderboardContent from "./LeaderboardContent";
 import LeaderboardColumnNames from "./LeaderboardColumnNames";
 import TopBar from "./TopBar/TopBar";
 import { useState } from "react";
+import { cn } from "../../lib/utils";
 
-const MainContent = () => {
+const MainContent = (props) => {
 	const [focusId, setFocusId] = useState(null);
 	const [selectedRegion, setSelectedRegion] = useState("World");
 	const [selectedSeason, setSelectedSeason] = useState("Beta Season");
@@ -37,8 +38,14 @@ const MainContent = () => {
 			/>
 			{/* Leaderboard */}
 			<div className="w-full px-2 md:px-0 flex justify-center">
-				<div className="w-full max-w-[768px] bg-cswhitebright py-2 min-h-[90dvh] shadow-scoreboard">
-					<LeaderboardColumnNames />
+				<div
+					className={cn(
+						"w-full max-w-[768px] bg-cswhitebright",
+						props.lightweight
+							? "h-[69dvh] overflow-y-scroll pt-0 pb-1"
+							: "shadow-scoreboard min-h-[90dvh] py-2"
+					)}>
+					<LeaderboardColumnNames lightweight={props.lightweight} />
 					<LeaderboardContent
 						data={cachedData}
 						isLoading={isLoading}
@@ -49,6 +56,7 @@ const MainContent = () => {
 						isRefetching={isRefetching}
 						isRefetchError={isRefetchError}
 						selectedRegion={selectedRegion}
+						lightweight={props.lightweight}
 					/>
 				</div>
 			</div>

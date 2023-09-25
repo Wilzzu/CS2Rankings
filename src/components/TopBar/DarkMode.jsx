@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import { actions } from "../../store";
+// import { useDispatch, useSelector } from "react-redux";
+// import { actions } from "../../store";
 import { cn } from "../../../lib/utils";
 const DarkMode = (props) => {
 	// const lightweight = useSelector((state) => state.lightweight);
@@ -13,7 +13,7 @@ const DarkMode = (props) => {
 		<div
 			className={cn(
 				"flex gap-2 items-center pl-4 h-14 hover:bg-hoverwhite hover:cursor-pointer",
-				props.isSticky ? "bg-cswhite" : "bg-cswhitebright"
+				props.isSticky ? "bg-cswhitesemi" : "bg-cswhitebright"
 			)}>
 			<input
 				type="checkbox"

@@ -32,17 +32,6 @@ const TopBar = (props) => {
 				"sticky max-w-[768px] bg-transparent duration-200 top-0 flex flex-col-reverse md:flex-row w-full justify-center md:justify-between items-center gap-2 md:gap-6 h-28 md:h-[6.5rem] z-10 drop-shadow md:-mb-2 px-2 md:px-0",
 				isSticky && "bg-cswhitebright outline-blue-500 max-w-[850px] md:px-6"
 			)}>
-			<Settings
-				isSticky={isSticky}
-				data={props.data}
-				isLoading={props.isLoading}
-				isError={props.isError}
-				refetch={props.refetch}
-				fakeRefetch={props.fakeRefetch}
-				isRefetching={props.isRefetching}
-				isRefetchError={props.isRefetchError}
-			/>
-
 			<PlayerSearch
 				data={props.data?.players}
 				setFocusId={props.setFocusId}
@@ -65,6 +54,17 @@ const TopBar = (props) => {
 					setSelected={props.setSelectedRegion}
 					isSticky={isSticky}
 					setFocusId={props.setFocusId}
+					isMobile={isMobile}
+				/>
+				<Settings
+					isSticky={isSticky}
+					data={props.data}
+					isLoading={props.isLoading}
+					isError={props.isError}
+					refetch={props.refetch}
+					fakeRefetch={props.fakeRefetch}
+					isRefetching={props.isRefetching}
+					isRefetchError={props.isRefetchError}
 					isMobile={isMobile}
 				/>
 			</div>

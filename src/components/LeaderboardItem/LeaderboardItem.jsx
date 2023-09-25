@@ -16,16 +16,19 @@ const LeaderboardItem = (props) => {
 		// Item container, used for making animated border
 		<li
 			className={cn(
-				"py-1 shadow-listitem list-none px-1",
+				"py-1 list-none px-1",
 				props.index % 2 ? "bg-[#ECECEC]" : "bg-cswhitesemi",
-				props.highlight && "borderColors animate-highlightBorder"
+				props.highlight && !props.lightweight && "borderColors animate-highlightBorder",
+				props.highlight && props.lightweight && "borderColors animate-highlightBorderLight",
+				!props.lightweight && "shadow-listitem"
 			)}>
 			{/* Content */}
 			<div
 				className={cn(
-					`relative grid grid-cols-[50px_auto_70px_20px] md:grid-cols-[100px_auto_100px_40px] gap-3 text-sm md:text-lg items-center h-9 md:h-11 px-1 font-poppins text-darktext`,
+					`relative grid grid-cols-[50px_auto_70px_20px] md:grid-cols-[100px_auto_100px_40px] gap-3 text-sm md:text-lg items-center px-1 font-poppins text-darktext`,
 					props.index % 2 ? "bg-[#ECECEC]" : "bg-cswhitesemi",
-					props.data.missing && "text-csgray"
+					props.data.missing && "text-csgray",
+					props.lightweight ? "h-7 md:h-9" : "h-9 md:h-11"
 				)}>
 				{/* Rank */}
 				<Rank position={props.data.position} rank={props.data.rank} missing={props.data?.missing} />
@@ -36,6 +39,7 @@ const LeaderboardItem = (props) => {
 					score={props.data?.missing ? "?????" : props.data.formattedScore}
 					tier={props.data.tier}
 					missing={props.data?.missing}
+					lightweight={props.lightweight}
 				/>
 				{/* Stats button */}
 				{props.selectedRegion === "World" && !props?.data?.missing && (

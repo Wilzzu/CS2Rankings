@@ -8,6 +8,7 @@ import useGetPlayerHistory from "../hooks/useGetPlayerHistory";
 
 const LeaderboardContent = (props) => {
 	const listRef = useRef(null);
+	const lightRef = useRef(null);
 	const [highlightId, setHighlightId] = useState(null);
 	const [historyName, setHistoryName] = useState(null);
 
@@ -22,10 +23,14 @@ const LeaderboardContent = (props) => {
 	// Scroll to selected player
 	useEffect(() => {
 		if (props.focusId && props?.data?.players) {
-			listRef.current.scrollToIndex({
-				index: props.data.players.findIndex((e) => e.id === props.focusId),
-				offset: -248, //144 1st
-			});
+			if (props.lightweight && lightRef.current)
+				lightRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+			else {
+				listRef.current.scrollToIndex({
+					index: props.data.players.findIndex((e) => e.id === props.focusId),
+					offset: -248, //144 1st
+				});
+			}
 			props.setFocusId("");
 
 			// Highlight player
@@ -68,24 +73,54 @@ const LeaderboardContent = (props) => {
 
 	return (
 		<ul className="px-2">
-			<ViewportList ref={listRef} items={props.data.players} initialIndex={0} initialOffset={-300}>
-				{/* List items */}
-				{(item, index) => (
-					<LeaderboardItem
-						key={item.id}
-						data={item}
-						index={index}
-						highlight={highlightId === item.id}
-						setHistoryName={setHistoryName}
-						stats={data}
-						isRefetching={isRefetching}
-						isRefetchError={isRefetchError}
-						isSuccess={isSuccess}
-						showStats={historyName === encodeURIComponent(item.name)}
-						selectedRegion={props.selectedRegion}
-					/>
-				)}
-			</ViewportList>
+			{props.lightweight ? (
+				props.data.players.map((item, index) => {
+					return (
+						<li
+							key={item.id}
+							ref={props.focusId === item.id ? lightRef : null}
+							className="scroll-m-32">
+							<LeaderboardItem
+								data={item}
+								index={index}
+								highlight={highlightId === item.id}
+								setHistoryName={setHistoryName}
+								stats={data}
+								isRefetching={isRefetching}
+								isRefetchError={isRefetchError}
+								isSuccess={isSuccess}
+								showStats={historyName === encodeURIComponent(item.name)}
+								selectedRegion={props.selectedRegion}
+								lightweight={props.lightweight}
+							/>
+						</li>
+					);
+				})
+			) : (
+				<ViewportList
+					ref={listRef}
+					items={props.data.players}
+					initialIndex={0}
+					initialOffset={-300}>
+					{/* List items */}
+					{(item, index) => (
+						<LeaderboardItem
+							key={item.id}
+							data={item}
+							index={index}
+							highlight={highlightId === item.id}
+							setHistoryName={setHistoryName}
+							stats={data}
+							isRefetching={isRefetching}
+							isRefetchError={isRefetchError}
+							isSuccess={isSuccess}
+							showStats={historyName === encodeURIComponent(item.name)}
+							selectedRegion={props.selectedRegion}
+							lightweight={props.lightweight}
+						/>
+					)}
+				</ViewportList>
+			)}
 		</ul>
 	);
 };
