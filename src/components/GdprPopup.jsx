@@ -1,27 +1,64 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const GdprPopup = () => {
-	const [agreed, setAgreed] = useState(getCookie());
+	const [cookie, setCookie] = useState(getCookie());
 
-	// Check if user has already agreed
 	function getCookie() {
-		let cookie = document.cookie.match(new RegExp("GDPR_CONSENT=([^;]+)"));
-		if (cookie) return true;
+		function escape(s) {
+			return s.replace(/([.*+?^$(){}|[\]/\\])/g, "\\$1");
+		}
+		var match = document.cookie.match(RegExp("(?:^|;\\s*)" + escape("CS2RANKINGS") + "=([^;]*)"));
+		return match ? match[1] : null;
+	}
+
+	function editCookie() {
+		try {
+			var newCookie = JSON.parse(cookie);
+		} catch (e) {
+			return false;
+		}
+
+		let date = new Date();
+		date.setFullYear(date.getFullYear() + 1);
+
+		newCookie.GDPR = true;
+
+		document.cookie = `CS2RANKINGS=${JSON.stringify({
+			GDPR: newCookie.GDPR,
+			lightweight: newCookie.lightweight,
+			darkmode: newCookie.darkmode,
+		})}; expires=${date.toGMTString()}; path=/;`;
+		setCookie(getCookie());
 	}
 
 	// Add new cookie
 	function addCookie() {
 		let date = new Date();
 		date.setFullYear(date.getFullYear() + 1);
-		document.cookie = `GDPR_CONSENT=true; expires=${date.toGMTString()}; path=/;`;
-		setAgreed(true);
+		document.cookie = `CS2RANKINGS=${JSON.stringify({
+			GDPR: false,
+			lightweight: false,
+			darkmode: false,
+		})}; expires=${date.toGMTString()}; path=/;`;
+		setCookie(getCookie());
 	}
+
+	useEffect(() => {
+		console.log(cookie);
+		if (!cookie) addCookie();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [cookie]);
 
 	// Determine if the GDPR bar should be shown or not
 	const showGdpr = () => {
-		if (!agreed) return true;
+		if (!cookie) return true;
+		try {
+			return !JSON.parse(cookie).GDPR;
+		} catch (e) {
+			return true;
+		}
 	};
 
 	return (
@@ -39,7 +76,7 @@ const GdprPopup = () => {
 						<Link to="/privacy" className="p-3 rounded-md hover:bg-[#4A4FFF]">
 							Learn more.
 						</Link>
-						<button onClick={() => addCookie()} className="p-3 rounded-md hover:bg-[#4A4FFF]">
+						<button onClick={() => editCookie()} className="p-3 rounded-md hover:bg-[#4A4FFF]">
 							Ok, got it!
 						</button>
 					</div>

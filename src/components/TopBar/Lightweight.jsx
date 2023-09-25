@@ -6,9 +6,39 @@ const Lightweight = (props) => {
 	const lightweight = useSelector((state) => state.lightweight);
 	const dispatch = useDispatch();
 
+	function getCookie() {
+		function escape(s) {
+			return s.replace(/([.*+?^$(){}|[\]/\\])/g, "\\$1");
+		}
+		var match = document.cookie.match(RegExp("(?:^|;\\s*)" + escape("CS2RANKINGS") + "=([^;]*)"));
+		return match ? match[1] : null;
+	}
+
+	function editCookie(checked) {
+		let cookie = getCookie();
+		try {
+			var newCookie = JSON.parse(cookie);
+		} catch (e) {
+			return false;
+		}
+
+		let date = new Date();
+		date.setFullYear(date.getFullYear() + 1);
+
+		newCookie.lightweight = checked;
+
+		document.cookie = `CS2RANKINGS=${JSON.stringify({
+			GDPR: newCookie.GDPR,
+			lightweight: newCookie.lightweight,
+			darkmode: newCookie.darkmode,
+		})}; expires=${date.toGMTString()}; path=/;`;
+	}
+
 	const handleCheck = (checked) => {
+		editCookie(checked);
 		dispatch(actions.toggle(checked));
 	};
+
 	return (
 		<li
 			className={cn(
