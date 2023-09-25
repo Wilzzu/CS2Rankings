@@ -40,7 +40,7 @@ export default {
 			},
 			animation: {
 				highlightBorder: "highlightBorder 2.5s cubic-bezier(.05,.12,.64,.83)",
-				highlightBorderLight: "highlightBorder 4s cubic-bezier(.05,.12,.64,.83) 1s",
+				highlightBorderLight: "highlightBorder 4s cubic-bezier(.05,.12,.64,.83) 500ms",
 				moveUp: "moveUp 1s ease-in-out infinite",
 			},
 			keyframes: {
