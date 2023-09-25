@@ -46,7 +46,6 @@ const GdprPopup = () => {
 	}
 
 	useEffect(() => {
-		console.log(cookie);
 		if (!cookie) addCookie();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [cookie]);
