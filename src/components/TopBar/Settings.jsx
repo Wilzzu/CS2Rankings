@@ -13,6 +13,7 @@ const Settings = (props) => {
 		if (listHover || props.isMobile) return;
 		setToggle(false);
 	};
+
 	return (
 		<div className="relative bg-red-300">
 			{/* Settings button */}
