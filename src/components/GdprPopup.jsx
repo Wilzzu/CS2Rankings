@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const GdprPopup = () => {
 	const [cookie, setCookie] = useState(getCookie());
 
+	// None of this is good, but it works :)
 	function getCookie() {
 		function escape(s) {
 			return s.replace(/([.*+?^$(){}|[\]/\\])/g, "\\$1");
@@ -13,6 +14,7 @@ const GdprPopup = () => {
 		return match ? match[1] : null;
 	}
 
+	// Edit cookie
 	function editCookie() {
 		try {
 			var newCookie = JSON.parse(cookie);
@@ -50,7 +52,7 @@ const GdprPopup = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [cookie]);
 
-	// Determine if the GDPR bar should be shown or not
+	// Determine if the GDPR bar should be shown
 	const showGdpr = () => {
 		if (!cookie) return true;
 		try {
@@ -68,9 +70,11 @@ const GdprPopup = () => {
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ type: "spring", stiffness: 60, delay: 0.5 }}
 					className="fixed md:left-16 bottom-8 md:bottom-16 mx-1 md:mx-0 z-[999] flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-2 rounded-xl bg-csbrightblue p-4 md:py-4 md:px-6 text-left font-hanken shadow-lg text-white text-sm">
+					{/* Content */}
 					<p className="shadow-red-500 drop-shadow-md px-[0.7rem] pt-3 md:pt-0 md:px-0">
 						This site uses cookies from Cloudflare to deliver its services and to analyze traffic.
 					</p>
+					{/* Buttons */}
 					<div className="flex">
 						<Link to="/privacy" className="p-3 rounded-md hover:bg-[#4A4FFF]">
 							Learn more.

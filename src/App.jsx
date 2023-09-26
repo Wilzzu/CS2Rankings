@@ -49,11 +49,13 @@ function App() {
 	});
 	// Preload images
 	useEffect(() => {
+		if (lightweight) return;
 		preloadImgs.forEach((image) => {
 			const newImage = new Image();
 			newImage.src = image;
 			window[image] = newImage;
 		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
