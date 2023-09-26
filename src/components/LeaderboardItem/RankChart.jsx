@@ -51,7 +51,13 @@ const RankChart = (props) => {
 					/>
 					<Tooltip content={<CustomTooltip />} />
 					<CartesianGrid strokeDasharray="2 1" opacity={0.25} />
-					<Line dataKey="rank" stroke="#447CE6" strokeWidth={2} dot={false} />
+					<Line
+						dataKey="rank"
+						stroke="#447CE6"
+						strokeWidth={2}
+						dot={false}
+						isAnimationActive={!props.lightweight}
+					/>
 				</LineChart>
 			</ResponsiveContainer>
 			<p className="text-[#666666] -mt-3 text-left">Date</p>
