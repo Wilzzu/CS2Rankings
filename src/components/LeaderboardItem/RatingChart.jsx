@@ -35,7 +35,12 @@ const RatingChart = (props) => {
 			<p className="text-xs md:text-lg font-medium">Rating</p>
 			<ResponsiveContainer width="100%" height="100%">
 				<AreaChart margin={{ top: 5, left: -18, right: 20, bottom: 5 }} data={props.data}>
-					<Area dataKey={"score"} stroke="#447CE6" fill="#447CE6" />
+					<Area
+						dataKey={"score"}
+						stroke="#447CE6"
+						fill="#447CE6"
+						isAnimationActive={!props.lightweight}
+					/>
 					<XAxis dataKey="date" axisLine={false} tickLine={false} tickFormatter={customDay} />
 					<YAxis
 						type="number"

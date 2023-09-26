@@ -33,8 +33,8 @@ const Stats = (props) => {
 			) : props.data ? (
 				// Content
 				<div className="flex flex-col md:flex-row items-center justify-center w-full h-full p-2 md:gap-4">
-					<RankChart data={props.data.history} />
-					<RatingChart data={props.data.history} />
+					<RankChart data={props.data.history} lightweight={props.lightweight} />
+					<RatingChart data={props.data.history} lightweight={props.lightweight} />
 				</div>
 			) : (
 				// No data

@@ -63,6 +63,7 @@ const LeaderboardItem = (props) => {
 					isRefetchError={props.isRefetchError}
 					index={props.index}
 					isSuccess={props.isSuccess}
+					lightweight={props.lightweight}
 				/>
 			)}
 		</li>
