@@ -2,6 +2,7 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
+	darkMode: "class",
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		extend: {
@@ -14,19 +15,22 @@ export default {
 			},
 			colors: {
 				cswhitebright: "#efefef",
+				darkcswhitebright: "#3A3A3A",
 				cswhitesemi: "#e6e6e6",
+				darkcswhitesemi: "#333333",
 				cswhite: "#DADADA",
 				csgray: "#BFBFBF",
 				csgraydark: "#AAAAAA",
 				csgraydarkest: "#575757",
-				csorange: "#e38618",
-				csorangedark: "#d36512",
+				csorange: "#FFA51A",
+				csorangedark: "#E38618",
 				csblue: "#3c4468",
 				csdarkblue: "#1f2130",
 				cslightblue: "#4e546e",
 				csbrightblue: "#4A68FF",
 				darktext: "#323a47",
 				hoverwhite: "rgb(232, 232, 232)",
+				darkhoverwhite: "rgb(65, 65, 65)",
 			},
 			dropShadow: {
 				header: "3px 2px 1px rgba(0, 0, 0, 0.15)",

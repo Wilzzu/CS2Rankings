@@ -5,6 +5,7 @@ import settings from "../../../lib/settings.json";
 import { cn } from "../../../lib/utils";
 import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
 import positionArrowUp from "../../assets/positionArrowUp.svg";
+import positionArrowDown from "../../assets/positionArrowDown.svg";
 import Settings from "./Settings";
 
 const TopBar = (props) => {
@@ -30,7 +31,8 @@ const TopBar = (props) => {
 		<div
 			className={cn(
 				"sticky max-w-[768px] bg-transparent duration-200 top-0 flex flex-col-reverse md:flex-row w-full justify-center md:justify-between items-center gap-2 md:gap-6 h-28 md:h-[6.5rem] z-10 drop-shadow md:-mb-2 px-2 md:px-0",
-				isSticky && "bg-cswhitebright outline-blue-500 max-w-[850px] md:px-6"
+				isSticky &&
+					"bg-cswhitebright dark:bg-darkcswhitebright outline-blue-500 max-w-[850px] md:px-6"
 			)}>
 			<PlayerSearch
 				data={props.data?.players}
@@ -70,15 +72,20 @@ const TopBar = (props) => {
 			</div>
 			<button
 				className={cn(
-					"absolute bg-cswhitesemi p-3 -right-[68px] rounded-lg h-11 shadow-md duration-200 group opacity-0 hidden lg:block",
-					isSticky && "opacity-90 bg-cswhitebright hover:opacity-100"
+					"absolute bg-cswhitesemi dark:bg-darkcswhitebright p-3 -right-[68px] rounded-lg h-11 shadow-md duration-200 group opacity-0 hidden lg:block",
+					isSticky && "opacity-90 bg-cswhitebright dark:bg-darkcswhitebright hover:opacity-100"
 				)}
 				disabled={!isSticky}
 				onClick={() => scrollToTop()}>
 				<img
 					src={positionArrowUp}
 					alt="Scroll to top arrow"
-					className="w-5 h-auto aspect-square group-hover:animate-moveUp"
+					className="w-5 h-auto aspect-square group-hover:animate-moveUp dark:hidden"
+				/>
+				<img
+					src={positionArrowDown}
+					alt="Scroll to top arrow"
+					className="w-5 h-auto aspect-square group-hover:animate-moveUp hidden dark:block"
 				/>
 			</button>
 		</div>

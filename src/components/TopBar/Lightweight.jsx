@@ -36,14 +36,16 @@ const Lightweight = (props) => {
 
 	const handleCheck = (checked) => {
 		editCookie(checked);
-		dispatch(actions.toggle(checked));
+		dispatch(actions.toggleLightweight(checked));
 	};
 
 	return (
 		<li
 			className={cn(
-				"flex gap-2 items-center pl-4 h-10 md:h-14 hover:bg-hoverwhite hover:cursor-pointer",
-				props.isSticky ? " bg-cswhitesemi" : "bg-cswhitebright"
+				"flex gap-2 items-center pl-4 h-10 md:h-14 hover:bg-hoverwhite dark:hover:bg-darkhoverwhite hover:cursor-pointer",
+				props.isSticky
+					? "bg-cswhitesemi dark:bg-darkcswhitesemi"
+					: "bg-cswhitebright dark:bg-darkcswhitebright"
 			)}>
 			<input
 				type="checkbox"
@@ -52,7 +54,7 @@ const Lightweight = (props) => {
 				checked={lightweight}
 				onChange={(e) => handleCheck(e.target.checked)}
 				className={cn(
-					"w-4 h-4 text-blue-600 bg-cswhite appearance-none checked:bg-csbrightblue hover:cursor-pointer"
+					"w-4 h-4 text-blue-600 bg-cswhite appearance-none checked:bg-csbrightblue dark:checked:bg-csorange  hover:cursor-pointer"
 				)}
 			/>
 

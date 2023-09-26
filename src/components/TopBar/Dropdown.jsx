@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { cn } from "../../../lib/utils";
 import arrowIcon from "../../assets/positionArrowUp.svg";
+import arrowIconDark from "../../assets/positionArrowDown.svg";
 
 const Dropdown = (props) => {
 	const [toggle, setToggle] = useState(false);
@@ -25,11 +26,24 @@ const Dropdown = (props) => {
 			<div
 				className={cn(
 					"flex justify-between items-center px-3 w-full h-full duration-200",
-					props.isSticky ? "bg-cswhite" : "bg-cswhitebright",
-					props.disabled ? "opacity-50" : "group-hover:bg-hoverwhite"
+					props.isSticky
+						? "bg-cswhite dark:bg-darkcswhitesemi"
+						: "bg-cswhitebright dark:bg-darkcswhitebright",
+					props.disabled
+						? "opacity-50"
+						: "group-hover:bg-hoverwhite dark:group-hover:bg-darkhoverwhite"
 				)}>
-				<p className="text-darktext truncate">{props.header}</p>
-				<img src={arrowIcon} alt="Dropdown arrow" className="w-4 rotate-180 h-auto aspect-square" />
+				<p className="text-darktext dark:text-cswhitebright truncate">{props.header}</p>
+				<img
+					src={arrowIcon}
+					alt="Dropdown arrow"
+					className="w-4 rotate-180 h-auto aspect-square dark:hidden"
+				/>
+				<img
+					src={arrowIconDark}
+					alt="Dropdown arrow"
+					className="w-4 rotate-180 h-auto aspect-square hidden dark:block"
+				/>
 			</div>
 			{/* For opening the dropdown and checking when user clicks away */}
 			<input
@@ -47,13 +61,13 @@ const Dropdown = (props) => {
 				<ul
 					onMouseEnter={() => setListHover(true)}
 					onMouseLeave={() => setListHover(false)}
-					className="bg-csblue">
+					className="bg-csblue dark:bg-csorangedark">
 					{props.data.map((e) => {
 						return (
 							<li
 								key={e}
 								onClick={() => handleClick(e)}
-								className="text-cswhitebright py-[0.4rem] pl-3 select-none hover:bg-csbrightblue hover:cursor-pointer">
+								className="text-cswhitebright py-[0.4rem] pl-3 select-none hover:bg-csbrightblue dark:hover:bg-csorange hover:cursor-pointer dark:drop-shadow-sm">
 								{e}
 							</li>
 						);
