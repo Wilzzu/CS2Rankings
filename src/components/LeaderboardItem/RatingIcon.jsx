@@ -79,6 +79,7 @@ const RatingIcon = (props) => {
 							: calcIcon(props.tier, props.score.small, true)
 					}
 					alt="Rating icon"
+					loading="lazy"
 					className={cn("absolute filter h-7 md:h-9 w-auto", tierFilter[props.tier])}
 				/>
 			)}
@@ -89,6 +90,7 @@ const RatingIcon = (props) => {
 				}
 				onLoad={() => setLoaded(true)}
 				alt="Rating icon"
+				loading="lazy"
 				className={cn("absolute filter h-7 md:h-9 w-auto", tierFilter[props.tier])}
 			/>
 		</div>

@@ -5,38 +5,24 @@ import { useEffect, useState } from "react";
 import infoIcon from "../../assets/infoIcon.svg";
 import RatingChart from "./RatingChart";
 
-// {
-//     "_id": "65032cab81e6fbbf1c39925c",
-//     "name": "Kurosaki",
-//     "createdAt": "2023-09-14T15:53:36.609Z",
-//     "history": [
-//         {
-//             "date": "2023-09-14T15:53:36.607Z",
-//             "rank": 2,
-//             "score": 35548,
-//             "_id": "65032c8017a1df4472ded4f4"
-//         },
-//         ...
-//     ],
-//     "updatedAt": "2023-09-14T16:20:00.014Z"
-// }
-
 const Stats = (props) => {
 	const [showLoading, setShowLoading] = useState(false);
 
+	// Show loading after 500ms
 	useEffect(() => {
 		if (props.isRefetching)
 			setTimeout(() => {
 				setShowLoading(true);
 			}, 500);
 	}, [props.isRefetching]);
-	// TODO: Make this taller so stats show better
+
 	return (
 		<div
 			className={cn(
 				"flex items-center justify-center gap-4 h-64 md:h-40 text-darktext text-lg font-poppins",
 				props.index % 2 ? "bg-[#ECECEC]" : "bg-cswhitesemi"
 			)}>
+			{/* Loading states */}
 			{props.isRefetching && showLoading ? (
 				<div className="relative flex flex-col items-center justify-center w-full h-full p-2 gap-2 animate-pulse">
 					<p>Loading player history...</p>
@@ -45,11 +31,13 @@ const Stats = (props) => {
 			) : props.isRefetchError ? (
 				<p>Error while loading data.</p>
 			) : props.data ? (
+				// Content
 				<div className="flex flex-col md:flex-row items-center justify-center w-full h-full p-2 md:gap-4">
 					<RankChart data={props.data.history} />
 					<RatingChart data={props.data.history} />
 				</div>
 			) : (
+				// No data
 				props.isSuccess &&
 				!props.data && (
 					<div className="relative flex flex-col items-center justify-center w-full h-full p-2 gap-2">

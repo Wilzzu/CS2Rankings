@@ -74,6 +74,7 @@ const LeaderboardContent = (props) => {
 				items={props.data.players}
 				initialIndex={0}
 				initialOffset={-300}
+				itemSize={52}
 				key={props.lightweight ? "light" : "normal"}>
 				{/* List items */}
 				{(item, index) => (
