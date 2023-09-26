@@ -1,4 +1,5 @@
 import mainlogo from "../assets/mainlogo.svg";
+import mainlogoDark from "../assets/mainlogoDark.svg";
 
 const Header = () => {
 	return (
@@ -8,7 +9,12 @@ const Header = () => {
 			<img
 				src={mainlogo}
 				alt="CS2Rankings logo"
-				className="absolute right-6 z-10 w-10 md:w-32 h-auto aspect-square drop-shadow-md opacity-20 md:opacity-90"
+				className="absolute right-6 z-10 w-10 md:w-32 h-auto aspect-square drop-shadow-md opacity-20 md:opacity-90 dark:hidden"
+			/>
+			<img
+				src={mainlogoDark}
+				alt="CS2Rankings logo"
+				className="absolute right-6 z-10 w-10 md:w-32 h-auto aspect-square drop-shadow-md opacity-20 md:opacity-90 hidden dark:block"
 			/>
 			<div className="w-full h-full -mr-2 -skew-x-12 bg-cswhitebright dark:bg-darkcswhitebright shadow-md"></div>
 			<div className="w-4"></div>
