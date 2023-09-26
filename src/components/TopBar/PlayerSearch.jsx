@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import SearchItem from "./SearchItem";
 import { cn } from "../../../lib/utils";
 import searchIcon from "../../assets/searchIcon.svg";
+import searchIconDark from "../../assets/searchIconDark.svg";
 
 const PlayerSearch = (props) => {
 	const [search, setSearch] = useState("");
@@ -64,8 +65,10 @@ const PlayerSearch = (props) => {
 				ref={ref}
 				onKeyDown={(e) => handleEnter(e)}
 				className={cn(
-					"w-full h-full px-4 pr-14 duration-200 text-darktext outline-none hover:bg-hoverwhite",
-					props.isSticky ? "bg-cswhite" : "bg-cswhitebright"
+					"w-full h-full px-4 pr-14 duration-200 text-darktext dark:text-cswhitebright outline-none hover:bg-hoverwhite dark:hover:bg-darkhoverwhite",
+					props.isSticky
+						? "bg-cswhite dark:bg-darkcswhitesemi"
+						: "bg-cswhitebright dark:bg-darkcswhitebright"
 				)}
 				type="text"
 				placeholder="Search..."
@@ -73,12 +76,17 @@ const PlayerSearch = (props) => {
 				onBlur={(e) => handleUnfocus(e)}
 			/>
 			<div className="h-full aspect-square flex items-center justify-center absolute top-0 right-0">
-				<img src={searchIcon} alt="Search icon" className="w-6 h-auto aspect-square" />
+				<img src={searchIcon} alt="Search icon" className="w-6 h-auto aspect-square dark:hidden" />
+				<img
+					src={searchIconDark}
+					alt="Search icon"
+					className="w-6 h-auto aspect-square hidden dark:block"
+				/>
 			</div>
 			{/* Search list */}
 			{search && (notFound || filtered.length >= 1) && (
 				// Padding for scrollbar
-				<div className="bg-csblue pr-1 py-2 absolute w-full">
+				<div className="bg-csblue dark:bg-csorangedark pr-1 py-2 absolute w-full">
 					<ul
 						onMouseEnter={() => setListHover(true)}
 						onMouseLeave={() => setListHover(false)}

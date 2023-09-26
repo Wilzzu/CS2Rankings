@@ -1,9 +1,10 @@
 import { cn } from "../../../lib/utils";
 import settingsIcon from "../../assets/settingsIcon.svg";
+import settingsIconDark from "../../assets/settingsIconDark.svg";
 import { useState } from "react";
 import Lightweight from "./Lightweight";
 import RefreshButton from "./RefreshButton";
-// import DarkMode from "./DarkMode";
+import DarkMode from "./DarkMode";
 
 const Settings = (props) => {
 	const [toggle, setToggle] = useState(false);
@@ -19,8 +20,10 @@ const Settings = (props) => {
 			{/* Settings button */}
 			<div
 				className={cn(
-					"group flex items-center justify-center h-10 w-10 md:h-14 md:w-14 hover:bg-hoverwhite",
-					props.isSticky ? "bg-cswhite" : "bg-cswhitebright"
+					"group flex items-center justify-center h-10 w-10 md:h-14 md:w-14 hover:bg-hoverwhite dark:hover:bg-darkhoverwhite",
+					props.isSticky
+						? "bg-cswhite dark:bg-darkcswhitesemi"
+						: "bg-cswhitebright dark:bg-darkcswhitebright"
 				)}>
 				<input
 					type="checkbox"
@@ -31,7 +34,12 @@ const Settings = (props) => {
 				<img
 					src={settingsIcon}
 					alt="Settings icon"
-					className="duration-700 w-6 md:w-8 h-auto aspect-square group-hover:rotate-[32deg] absolute z-0"
+					className="duration-700 w-6 md:w-8 h-auto aspect-square group-hover:rotate-[32deg] absolute z-0 dark:hidden"
+				/>
+				<img
+					src={settingsIconDark}
+					alt="Settings icon"
+					className="duration-700 w-6 md:w-8 h-auto aspect-square group-hover:rotate-[32deg] absolute z-0 hidden dark:block"
 				/>
 			</div>
 			{/* Settings container */}
@@ -39,8 +47,9 @@ const Settings = (props) => {
 				<ul
 					onMouseEnter={() => setListHover(true)}
 					onMouseLeave={() => setListHover(false)}
-					className="absolute right-0 top-10 md:top-14 mt-2 flex flex-col-reverse md:flex-row items-center gap-2 md:gap-4 w-42 px-2 py-2 md:py-0 font-hanken font-medium text-darktext h-fit md:h-20 bg-cswhitebright md:bg-cswhitebright z-20 text-xs md:text-base shadow-md md:shadow-none">
+					className="absolute right-0 top-10 md:top-14 mt-2 flex flex-col-reverse md:flex-row items-center gap-2 md:gap-4 w-42 px-2 py-2 md:py-0 font-hanken font-medium text-darktext dark:text-cswhitebright h-fit md:h-20 bg-cswhitebright dark:bg-darkcswhitebright z-20 text-xs md:text-base shadow-md md:shadow-none">
 					<Lightweight isSticky={props.isSticky} />
+					<DarkMode isSticky={props.isSticky} />
 					<RefreshButton
 						isSticky={props.isSticky}
 						data={props.data}
@@ -52,7 +61,6 @@ const Settings = (props) => {
 						isRefetchError={props.isRefetchError}
 						isMobile={props.isMobile}
 					/>
-					{/* <DarkMode isSticky={props.isSticky} /> */}
 				</ul>
 			)}
 		</div>

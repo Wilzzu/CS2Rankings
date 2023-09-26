@@ -19,8 +19,10 @@ const Stats = (props) => {
 	return (
 		<div
 			className={cn(
-				"flex items-center justify-center gap-4 h-64 md:h-40 text-darktext text-lg font-poppins",
-				props.index % 2 ? "bg-[#ECECEC]" : "bg-cswhitesemi"
+				"flex items-center justify-center gap-4 h-64 md:h-40 text-darktext dark:text-cswhitebright text-lg font-poppins",
+				props.index % 2
+					? "bg-[#ECECEC] dark:bg-[#363636]"
+					: "bg-cswhitesemi dark:bg-darkcswhitesemi"
 			)}>
 			{/* Loading states */}
 			{props.isRefetching && showLoading ? (

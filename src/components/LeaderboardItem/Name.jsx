@@ -18,7 +18,7 @@ const Name = (props) => {
 							alt="Info icon"
 							className="w-3 md:w-[0.85rem] opacity-50 h-auto aspect-square"
 						/>
-						<div className="bg-csblue bg-opacity-90 text-cswhitebright text-xs p-2 px-4 left-8 absolute hidden md:group-hover:block min-w-[240px] z-10">
+						<div className="bg-csblue dark:bg-csorangedark dark:drop-shadow-md bg-opacity-90 text-cswhitebright text-xs p-2 px-4 left-8 absolute hidden md:group-hover:block min-w-[240px] z-10">
 							<p>
 								{
 									"Unknown players either haven't submitted a leaderboard name or are awaiting approval from Valve."
@@ -26,7 +26,7 @@ const Name = (props) => {
 							</p>
 						</div>
 						{showInfo && (
-							<div className="bg-csblue text-cswhitebright text-xs p-2 px-4 -left-50 top-5 absolute min-w-[240px] z-10 md:hidden">
+							<div className="bg-csblue dark:bg-csorangedark dark:drop-shadow-md  text-cswhitebright text-xs p-2 px-4 -left-50 top-5 absolute min-w-[240px] z-10 md:hidden">
 								<p>
 									{
 										"Unknown players either haven't submitted a leaderboard name or are awaiting approval from Valve."

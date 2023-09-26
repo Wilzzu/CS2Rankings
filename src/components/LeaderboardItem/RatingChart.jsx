@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import {
 	AreaChart,
 	CartesianGrid,
@@ -11,8 +12,8 @@ import {
 const CustomTooltip = ({ active, payload }) => {
 	if (active && payload && payload.length) {
 		return (
-			<div className="relative flex items-center justify-center bg-csblue text-cswhitebright px-2 md:py-1">
-				<p className="desc z-10">{"Rating: " + payload[0].value}</p>
+			<div className="relative flex items-center justify-center bg-csblue dark:bg-csorangedark text-cswhitebright px-2 md:py-1">
+				<p className="desc z-10 dark:drop-shadow-md">{"Rating: " + payload[0].value}</p>
 			</div>
 		);
 	}
@@ -30,6 +31,8 @@ const customRating = (rating) => {
 };
 
 const RatingChart = (props) => {
+	const darkmode = useSelector((state) => state.darkmode);
+
 	return (
 		<div className="h-1/2 md:h-full w-full md:w-1/2 font-hanken text-[0.7rem] md:text-xs flex flex-col items-center">
 			<p className="text-xs md:text-lg font-medium">Rating</p>
@@ -37,11 +40,17 @@ const RatingChart = (props) => {
 				<AreaChart margin={{ top: 5, left: -18, right: 20, bottom: 5 }} data={props.data}>
 					<Area
 						dataKey={"score"}
-						stroke="#447CE6"
-						fill="#447CE6"
+						stroke={darkmode ? "#FFA51A" : "#447CE6"}
+						fill={darkmode ? "#FFA51A" : "#447CE6"}
 						isAnimationActive={!props.lightweight}
 					/>
-					<XAxis dataKey="date" axisLine={false} tickLine={false} tickFormatter={customDay} />
+					<XAxis
+						dataKey="date"
+						axisLine={false}
+						tickLine={false}
+						tickFormatter={customDay}
+						tick={{ fill: darkmode ? "#D8D8D8" : "#666666" }}
+					/>
 					<YAxis
 						type="number"
 						domain={["dataMin - 1000", "dataMax + 1000"]}
@@ -52,12 +61,13 @@ const RatingChart = (props) => {
 						tickLine={false}
 						padding={{ bottom: 5 }}
 						tickFormatter={customRating}
+						tick={{ fill: darkmode ? "#D8D8D8" : "#666666" }}
 					/>
 					<Tooltip content={<CustomTooltip />} />
-					<CartesianGrid strokeDasharray="2 1" opacity={0.25} />
+					<CartesianGrid strokeDasharray="2 1" opacity={darkmode ? 0.1 : 0.25} />
 				</AreaChart>
 			</ResponsiveContainer>
-			<p className="text-[#666666] -mt-3 text-left">Date</p>
+			<p className="text-[#666666] dark:text-[#D8D8D8] -mt-3 text-left">Date</p>
 		</div>
 	);
 };

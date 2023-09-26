@@ -10,6 +10,8 @@ import GdprPopup from "./components/GdprPopup";
 import { useSelector } from "react-redux";
 import { cn } from "../lib/utils";
 let firstScroll = true;
+import { renderToStaticMarkup } from "react-dom/server";
+import Background from "./assets/Background.jsx";
 
 const preloadImgs = [
 	"/assets/ranks/blur/rank.png",
@@ -33,6 +35,7 @@ function App() {
 	// }, [prefetchLeaderboard]);
 
 	const lightweight = useSelector((state) => state.lightweight);
+	const darkmode = useSelector((state) => state.darkmode);
 
 	// Change background position on scroll
 	const ref = useRef(null);
@@ -58,11 +61,23 @@ function App() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	useEffect(() => {
+		const root = window.document.documentElement;
+
+		if (darkmode) root.classList.add("dark");
+		else root.classList.remove("dark");
+	}, [darkmode]);
+
 	return (
 		<div
 			ref={ref}
+			style={{
+				backgroundImage: `url("data:image/svg+xml,${encodeURIComponent(
+					renderToStaticMarkup(<Background dark={darkmode} />)
+				)}")`,
+			}}
 			className={cn(
-				"min-h-[100dvh] bg-[url('./assets/background.svg')] bg-repeat-x bg-cover bg-fixed duration-500 ease-out md:px-4",
+				"min-h-[100dvh] bg-repeat-x bg-cover bg-fixed duration-500 ease-out md:px-4",
 				lightweight ? "py-2" : "py-10"
 			)}>
 			<GdprPopup />
