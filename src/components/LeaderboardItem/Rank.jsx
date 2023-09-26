@@ -8,14 +8,14 @@ const Rank = (props) => {
 			{props.position === "up" ? (
 				<img
 					src={positionArrowUp}
-					className="w-3 md:w-5 opacity-80 h-auto aspect-square"
+					className="w-3 md:w-5 opacity-80 dark:opacity-100 h-auto aspect-square"
 					alt="Arrow up icon"
 					loading="lazy"
 				/>
 			) : props.position === "down" ? (
 				<img
 					src={positionArrowDown}
-					className="rotate-180 w-3 md:w-5 opacity-80 h-auto aspect-square"
+					className="rotate-180 w-3 md:w-5 opacity-80 dark:opacity-100 h-auto aspect-square"
 					alt="Arrow down icon"
 					loading="lazy"
 				/>
