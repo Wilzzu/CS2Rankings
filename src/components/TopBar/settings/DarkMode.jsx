@@ -18,7 +18,7 @@ const DarkMode = (props) => {
 			<label
 				htmlFor="darkmode"
 				className={cn(
-					"select-none cursor-pointer w-full h-full flex items-center justify-center gap-2 hover:bg-hoverwhite dark:hover:bg-darkhoverwhite",
+					"select-none cursor-pointer w-full h-12 md:h-full whitespace-nowrap px-3 flex items-center md:justify-center gap-3 md:gap-2 hover:bg-hoverwhite dark:hover:bg-darkhoverwhite",
 					props.isSticky
 						? "bg-cswhitesemi dark:bg-darkcswhitesemi"
 						: "bg-cswhitebright dark:bg-darkcswhitebright"

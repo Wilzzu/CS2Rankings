@@ -19,7 +19,7 @@ const Lightweight = (props) => {
 			<label
 				htmlFor="lightweight"
 				className={cn(
-					"select-none cursor-pointer w-44 h-full flex items-center justify-center gap-2 hover:bg-hoverwhite dark:hover:bg-darkhoverwhite",
+					"select-none cursor-pointer w-full whitespace-nowrap px-3 h-12 md:h-full flex items-center justify-center gap-3 md:gap-2 hover:bg-hoverwhite dark:hover:bg-darkhoverwhite",
 					props.isSticky
 						? "bg-cswhitesemi dark:bg-darkcswhitesemi"
 						: "bg-cswhitebright dark:bg-darkcswhitebright"

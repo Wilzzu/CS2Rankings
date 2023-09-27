@@ -47,7 +47,7 @@ const Settings = (props) => {
 				<ul
 					onMouseEnter={() => setListHover(true)}
 					onMouseLeave={() => setListHover(false)}
-					className="absolute right-0 top-10 md:top-14 mt-2 flex flex-col-reverse md:flex-row items-center gap-2 md:gap-4 px-2 py-2 md:py-3 font-hanken font-medium text-darktext dark:text-cswhitebright h-fit md:h-20 bg-cswhitebright dark:bg-darkcswhitebright z-20 text-xs md:text-base shadow-md md:shadow-none">
+					className="absolute right-0 top-10 md:top-14 mt-2 flex flex-col-reverse md:flex-row items-center gap-2 md:gap-3 px-2 py-2 md:py-3 font-hanken font-medium text-darktext dark:text-cswhitebright h-fit md:h-20 bg-cswhitebright dark:bg-darkcswhitebright z-20 text-xs md:text-base shadow-md md:shadow-none">
 					<Lightweight isSticky={props.isSticky} />
 					<DarkMode isSticky={props.isSticky} />
 					<RefreshButton

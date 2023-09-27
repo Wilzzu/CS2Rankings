@@ -50,7 +50,7 @@ const RefreshButton = (props) => {
 		<button
 			disabled={state !== "none"}
 			className={cn(
-				"group aspect-square h-10 w-full md:h-14 md:w-32 p-[0.6rem] md:py-2 md:px-2 flex md:gap-2 items-center justify-center",
+				"group h-12 md:h-full w-full py-2 pr-3 pl-2 flex gap-1 md:gap-2 items-center md:justify-center",
 				state === "none" && "hover:bg-hoverwhite dark:hover:bg-darkhoverwhite",
 				props.isSticky
 					? "bg-cswhitesemi dark:bg-darkcswhitesemi"
@@ -58,7 +58,7 @@ const RefreshButton = (props) => {
 			)}
 			onClick={() => handleClick()}>
 			{/* Button image */}
-			<div className="w-9 h-full flex items-center justify-center overflow-hidden">
+			<div className="w-8 h-full flex items-center justify-center overflow-hidden">
 				{state === "loading" ? (
 					<Ring
 						size={props.isMobile ? 16 : 24}
