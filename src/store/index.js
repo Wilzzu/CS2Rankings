@@ -1,14 +1,13 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-function getCookie(type) {
+function getCookie(name) {
 	function escape(s) {
 		return s.replace(/([.*+?^$(){}|[\]/\\])/g, "\\$1");
 	}
 	var match = document.cookie.match(RegExp("(?:^|;\\s*)" + escape("CS2RANKINGS") + "=([^;]*)"));
 	if (match) {
 		try {
-			if (type === "lightweight") return JSON.parse(match[1]).lightweight;
-			if (type === "darkmode") return JSON.parse(match[1]).darkmode;
+			return JSON.parse(match[1])[name];
 		} catch (e) {
 			return false;
 		}
@@ -17,13 +16,16 @@ function getCookie(type) {
 
 const storeSlice = createSlice({
 	name: "store",
-	initialState: { lightweight: getCookie("lightweight"), darkmode: getCookie("darkmode") },
+	initialState: {
+		lightweight: getCookie("lightweight"),
+		darkmode: getCookie("darkmode"),
+	},
 	reducers: {
-		toggleLightweight(state, action) {
-			state.lightweight = action.payload;
+		toggleLightweight(state) {
+			state.lightweight = !state.lightweight;
 		},
-		toggleDarkmode(state, action) {
-			state.darkmode = action.payload;
+		toggleDarkmode(state) {
+			state.darkmode = !state.darkmode;
 		},
 	},
 });

@@ -1,14 +1,16 @@
 import { Ring } from "@uiball/loaders";
-import { cn } from "../../../lib/utils";
-import refreshIcon from "../../assets/refreshIcon.svg";
-import refreshIconDark from "../../assets/refreshIconDark.svg";
-import checkIcon from "../../assets/checkIcon.svg";
-import checkIconDark from "../../assets/checkIconDark.svg";
-import errorIcon from "../../assets/errorIcon.svg";
+import { cn } from "../../../../lib/utils";
+import refreshIcon from "../../../assets/refreshIcon.svg";
+import refreshIconDark from "../../../assets/refreshIconDark.svg";
+import checkIcon from "../../../assets/checkIcon.svg";
+import checkIconDark from "../../../assets/checkIconDark.svg";
+import errorIcon from "../../../assets/errorIcon.svg";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const RefreshButton = (props) => {
 	const [state, setState] = useState("none");
+	const darkmode = useSelector((state) => state.darkmode);
 
 	const handleClick = () => {
 		setState("loading");
@@ -58,15 +60,14 @@ const RefreshButton = (props) => {
 			{/* Button image */}
 			<div className="w-9 h-full flex items-center justify-center overflow-hidden">
 				{state === "loading" ? (
-					<>
-						<div className="dark:hidden">
-							<Ring size={props.isMobile ? 16 : 24} lineWeight={8} speed={2} color="#4A68FF" />
-						</div>
-						<div className="hidden dark:block">
-							<Ring size={props.isMobile ? 16 : 24} lineWeight={8} speed={2} color="#e38618" />
-						</div>
-					</>
+					<Ring
+						size={props.isMobile ? 16 : 24}
+						lineWeight={8}
+						speed={2}
+						color={darkmode ? "#e38618" : "#4A68FF"}
+					/>
 				) : (
+					// TODO: Make these jsx icons
 					<>
 						<img
 							src={

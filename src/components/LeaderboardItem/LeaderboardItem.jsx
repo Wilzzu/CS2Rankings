@@ -2,7 +2,7 @@ import { cn } from "../../../lib/utils";
 import Name from "./Name";
 import Rank from "./Rank";
 import RatingIcon from "./RatingIcon";
-import Stats from "./Stats";
+import Stats from "./stats/Stats";
 import statsIcon from "../../assets/statsIcon.svg";
 import statsIconDark from "../../assets/statsIconDark.svg";
 
