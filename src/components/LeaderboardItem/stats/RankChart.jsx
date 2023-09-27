@@ -9,6 +9,7 @@ import {
 	Line,
 	LineChart,
 } from "recharts";
+import { cn } from "../../../../lib/utils";
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -18,32 +19,36 @@ const customDay = (date) => {
 	return `${day} ${months[month]}`;
 };
 
-const CustomTooltip = ({ active, payload }) => {
-	if (active && payload && payload.length) {
-		return (
-			<div className="relative flex flex-col items-start justify-center text-csdarkblue dark:text-cswhitebright px-2 md:py-1 drop-shadow-sm dark:drop-shadow-md font-medium">
-				<p className="desc z-10 drop-shadow-sm dark:drop-shadow-md">
-					{customDay(payload[0].payload.date)}
-				</p>
-				<p className="desc z-10 bg-cswhitesemi dark:bg-darkhoverwhite p-1 shadow dark:drop-shadow-md">
-					Rank:{" "}
-					<span className="text-csbrightblue dark:text-csorange font-bold text-[0.83rem]">
-						{payload[0].value}
-					</span>
-				</p>
-			</div>
-		);
-	}
-
-	return null;
-};
-
 const customRank = (rating) => {
 	return Math.floor(rating);
 };
 
 const RankChart = (props) => {
 	const darkmode = useSelector((state) => state.darkmode);
+
+	const CustomTooltip = ({ active, payload }) => {
+		if (active && payload && payload.length) {
+			return (
+				<div className="relative flex flex-col items-start justify-center text-csdarkblue dark:text-cswhitebright px-2 md:py-1 drop-shadow-sm dark:drop-shadow-md font-medium font-poppins">
+					<p
+						className={cn(
+							"desc z-10 dark:drop-shadow-md px-1 pt-1 dark:pl-0 dark:bg-transparent text-[0.6rem] md:text-[0.67rem] leading-3 md:leading-none",
+							props.index % 2 ? "bg-[#ECECEC]" : "bg-cswhitesemi"
+						)}>
+						{customDay(payload[0].payload.date)}
+					</p>
+					<p className="desc z-10 dark:bg-[rgb(37,37,37)] px-1 md:p-1 bg-[#FFF] text-[0.67rem] md:text-xs shadow dark:drop-shadow-md leading-5 md:leading-normal bg-opacity-70 dark:bg-opacity-70">
+						Rank:{" "}
+						<span className="text-csbrightblue dark:text-csorange font-bold text-xs md:text-[0.8rem]">
+							{payload[0].value}
+						</span>
+					</p>
+				</div>
+			);
+		}
+
+		return null;
+	};
 
 	return (
 		<div className="h-1/2 md:h-full w-full md:w-1/2 font-hanken text-[0.7rem] md:text-xs flex flex-col items-center">
