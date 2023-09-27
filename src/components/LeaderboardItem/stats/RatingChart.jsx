@@ -9,21 +9,32 @@ import {
 	ResponsiveContainer,
 } from "recharts";
 
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+const customDay = (date) => {
+	const day = new Date(date).getUTCDate();
+	const month = new Date(date).getUTCMonth();
+	return `${day} ${months[month]}`;
+};
+
 const CustomTooltip = ({ active, payload }) => {
 	if (active && payload && payload.length) {
 		return (
-			<div className="relative flex items-center justify-center bg-csblue dark:bg-csorangedark text-cswhitebright px-2 md:py-1">
-				<p className="desc z-10 dark:drop-shadow-md">{"Rating: " + payload[0].value}</p>
+			<div className="relative flex flex-col items-start justify-center text-csdarkblue dark:text-cswhitebright px-2 md:py-1 drop-shadow-sm dark:drop-shadow-md font-medium">
+				<p className="desc z-10 drop-shadow-sm dark:drop-shadow-md">
+					{customDay(payload[0].payload.date)}
+				</p>
+				<p className="desc z-10 bg-cswhitesemi dark:bg-darkhoverwhite p-1 shadow dark:drop-shadow-md">
+					Rating:{" "}
+					<span className="text-csbrightblue dark:text-csorange font-bold text-[0.83rem]">
+						{payload[0].value}
+					</span>
+				</p>
 			</div>
 		);
 	}
 
 	return null;
-};
-
-const customDay = (date) => {
-	const day = new Date(date).getUTCDate();
-	return `${day}.`;
 };
 
 const customRating = (rating) => {
