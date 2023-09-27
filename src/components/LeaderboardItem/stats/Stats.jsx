@@ -19,7 +19,7 @@ const Stats = (props) => {
 	return (
 		<div
 			className={cn(
-				"flex items-center justify-center gap-4 h-64 md:h-40 text-darktext dark:text-cswhitebright text-lg font-poppins",
+				"flex items-center justify-center gap-4 h-72 md:h-44 text-darktext dark:text-cswhitebright text-lg font-poppins",
 				props.index % 2
 					? "bg-[#ECECEC] dark:bg-[#363636]"
 					: "bg-cswhitesemi dark:bg-darkcswhitesemi"
@@ -35,8 +35,16 @@ const Stats = (props) => {
 			) : props.data ? (
 				// Content
 				<div className="flex flex-col md:flex-row items-center justify-center w-full h-full p-2 md:gap-4">
-					<RankChart data={props.data.history} lightweight={props.lightweight} />
-					<RatingChart data={props.data.history} lightweight={props.lightweight} />
+					<RankChart
+						data={props.data.history}
+						lightweight={props.lightweight}
+						index={props.index}
+					/>
+					<RatingChart
+						data={props.data.history}
+						lightweight={props.lightweight}
+						index={props.index}
+					/>
 				</div>
 			) : (
 				// No data
