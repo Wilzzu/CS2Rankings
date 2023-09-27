@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const GdprPopup = () => {
 	const [cookie, setCookie] = useState(getCookie());
 
-	// None of this is good, but it works :)
 	function getCookie() {
 		function escape(s) {
 			return s.replace(/([.*+?^$(){}|[\]/\\])/g, "\\$1");
@@ -14,28 +13,27 @@ const GdprPopup = () => {
 		return match ? match[1] : null;
 	}
 
-	// Edit cookie
 	function editCookie() {
+		// Check if current cookie is valid
 		try {
 			var newCookie = JSON.parse(cookie);
 		} catch (e) {
 			return false;
 		}
 
+		// New expiry date
 		let date = new Date();
 		date.setFullYear(date.getFullYear() + 1);
 
-		newCookie.GDPR = true;
-
+		// Set new cookie
 		document.cookie = `CS2RANKINGS=${JSON.stringify({
-			GDPR: newCookie.GDPR,
+			GDPR: true,
 			lightweight: newCookie.lightweight,
 			darkmode: newCookie.darkmode,
 		})}; expires=${date.toGMTString()}; path=/;`;
 		setCookie(getCookie());
 	}
 
-	// Add new cookie
 	function addCookie() {
 		let date = new Date();
 		date.setFullYear(date.getFullYear() + 1);

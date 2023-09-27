@@ -1,8 +1,8 @@
 import { Ring } from "@uiball/loaders";
-import { cn } from "../../../lib/utils";
+import { cn } from "../../../../lib/utils";
 import RankChart from "./RankChart";
 import { useEffect, useState } from "react";
-import infoIcon from "../../assets/infoIcon.svg";
+import infoIcon from "../../../assets/infoIcon.svg";
 import RatingChart from "./RatingChart";
 
 const Stats = (props) => {
@@ -28,7 +28,7 @@ const Stats = (props) => {
 			{props.isRefetching && showLoading ? (
 				<div className="relative flex flex-col items-center justify-center w-full h-full p-2 gap-2 animate-pulse">
 					<p>Loading player history...</p>
-					<Ring />
+					<Ring color="#777777" />
 				</div>
 			) : props.isRefetchError ? (
 				<p>Error while loading data.</p>

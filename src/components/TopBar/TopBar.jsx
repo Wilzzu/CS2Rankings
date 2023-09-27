@@ -6,7 +6,7 @@ import { cn } from "../../../lib/utils";
 import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
 import positionArrowUp from "../../assets/positionArrowUp.svg";
 import positionArrowDown from "../../assets/positionArrowDown.svg";
-import Settings from "./Settings";
+import Settings from "./settings/Settings";
 
 const TopBar = (props) => {
 	const [isSticky, setIsSticky] = useState(false);

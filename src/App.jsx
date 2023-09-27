@@ -12,6 +12,7 @@ import { cn } from "../lib/utils";
 let firstScroll = true;
 import { renderToStaticMarkup } from "react-dom/server";
 import Background from "./assets/Background.jsx";
+import useCookieHandler from "./hooks/useCookieHandler";
 
 const preloadImgs = [
 	"/assets/ranks/blur/rank.png",
@@ -36,6 +37,7 @@ function App() {
 
 	const lightweight = useSelector((state) => state.lightweight);
 	const darkmode = useSelector((state) => state.darkmode);
+	useCookieHandler();
 
 	// Change background position on scroll
 	const ref = useRef(null);
