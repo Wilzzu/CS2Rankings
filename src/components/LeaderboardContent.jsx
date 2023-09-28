@@ -5,6 +5,7 @@ import LeaderboardStatus from "./LeaderboardStatus";
 import { useEffect, useRef, useState } from "react";
 import { ViewportList } from "react-viewport-list";
 import useGetPlayerHistory from "../hooks/useGetPlayerHistory";
+import settings from "../../lib/settings.json";
 
 const LeaderboardContent = (props) => {
 	const listRef = useRef(null);
@@ -59,6 +60,10 @@ const LeaderboardContent = (props) => {
 				icon={infoIcon}
 				name={"Info"}
 				text={"No data found for this leaderboard"}
+				newSeasonWarning={
+					props.selectedSeason.replace(/\s/g, "").toLowerCase() === settings.currentSeason &&
+					settings.newSeasonWarning
+				}
 			/>
 		);
 	}

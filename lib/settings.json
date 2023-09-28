@@ -10,5 +10,6 @@
 		"South America"
 	],
 	"seasons": ["Season 1", "Beta Season"],
-	"currentSeason": "season1"
+	"currentSeason": "season1",
+	"newSeasonWarning": true
 }
