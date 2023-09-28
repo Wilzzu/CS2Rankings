@@ -11,8 +11,10 @@ const LeaderboardContent = (props) => {
 	const [highlightId, setHighlightId] = useState(null);
 	const [historyName, setHistoryName] = useState(null);
 
-	const { data, isRefetching, isRefetchError, refetchHistory, isSuccess } =
-		useGetPlayerHistory(historyName);
+	const { data, isRefetching, isRefetchError, refetchHistory, isSuccess } = useGetPlayerHistory(
+		historyName,
+		props.selectedSeason
+	);
 
 	useEffect(() => {
 		if (historyName) refetchHistory();

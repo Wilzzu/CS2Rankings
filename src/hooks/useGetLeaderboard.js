@@ -7,8 +7,8 @@ const useGetLeaderboard = (season, region) => {
 	const [fakeRefetch, setFakeRefetch] = useState(false);
 	const queryClient = useQueryClient();
 	const parseRegion = region.toLowerCase().replace(/\s/g, "");
-	let parseSeason;
-	if (season === "Beta Season") parseSeason = "season1";
+	let parseSeason = season.replace(/\s/g, "").toLowerCase();
+
 	const { isLoading, isError, refetch, isRefetching, isRefetchError, isStale } = useQuery(
 		[parseSeason, parseRegion],
 		async () => {

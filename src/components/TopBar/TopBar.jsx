@@ -45,7 +45,6 @@ const TopBar = (props) => {
 					header={props.selectedSeason}
 					data={settings.seasons}
 					setSelected={props.setSelectedSeason}
-					disabled={true}
 					isSticky={isSticky}
 					setFocusId={props.setFocusId}
 					isMobile={isMobile}

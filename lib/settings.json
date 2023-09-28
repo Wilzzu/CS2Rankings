@@ -9,6 +9,6 @@
 		"North America",
 		"South America"
 	],
-	"seasons": ["Beta Season"],
+	"seasons": ["Season 1", "Beta Season"],
 	"currentSeason": "season1"
 }
