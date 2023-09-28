@@ -3,7 +3,9 @@ import { useQuery, useQueryClient } from "react-query";
 let searchedPlayers = [];
 import CryptoJS from "crypto-js";
 
-const useGetPlayerHistory = (name) => {
+const useGetPlayerHistory = (name, season) => {
+	let parseSeason = season.replace(/\s/g, "").toLowerCase();
+
 	const queryClient = useQueryClient();
 	const {
 		isFetching: isRefetching,
@@ -14,7 +16,7 @@ const useGetPlayerHistory = (name) => {
 		["playerHistory", name],
 		async () => {
 			return axios
-				.get(`${import.meta.env.VITE_APILOCATION}/history/${name}`)
+				.get(`${import.meta.env.VITE_APILOCATION}/history/${parseSeason}/${name}`)
 				.then((res) => {
 					searchedPlayers.push(name);
 					const bytes = CryptoJS.AES.decrypt(res.data, import.meta.env.VITE_CRYPTO);

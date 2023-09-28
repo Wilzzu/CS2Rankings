@@ -8,7 +8,7 @@ import { cn } from "../../lib/utils";
 const MainContent = (props) => {
 	const [focusId, setFocusId] = useState(null);
 	const [selectedRegion, setSelectedRegion] = useState("World");
-	const [selectedSeason, setSelectedSeason] = useState("Beta Season");
+	const [selectedSeason, setSelectedSeason] = useState("Season 1");
 
 	const {
 		cachedData,
@@ -56,6 +56,7 @@ const MainContent = (props) => {
 						isRefetching={isRefetching}
 						isRefetchError={isRefetchError}
 						selectedRegion={selectedRegion}
+						selectedSeason={selectedSeason}
 						lightweight={props.lightweight}
 					/>
 				</div>
