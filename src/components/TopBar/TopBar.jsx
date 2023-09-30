@@ -48,6 +48,7 @@ const TopBar = (props) => {
 					isSticky={isSticky}
 					setFocusId={props.setFocusId}
 					isMobile={isMobile}
+					name={"season"}
 				/>
 				<Dropdown
 					header={props.selectedRegion}
@@ -56,6 +57,7 @@ const TopBar = (props) => {
 					isSticky={isSticky}
 					setFocusId={props.setFocusId}
 					isMobile={isMobile}
+					name={"region"}
 				/>
 				<Settings
 					isSticky={isSticky}

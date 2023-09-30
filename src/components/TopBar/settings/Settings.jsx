@@ -26,6 +26,7 @@ const Settings = (props) => {
 						: "bg-cswhitebright dark:bg-darkcswhitebright"
 				)}>
 				<input
+					name="settings"
 					type="checkbox"
 					onBlur={() => handleUnfocus()}
 					onChange={() => setToggle((prev) => !prev)}
