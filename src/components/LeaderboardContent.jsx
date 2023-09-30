@@ -97,6 +97,7 @@ const LeaderboardContent = (props) => {
 						isSuccess={isSuccess}
 						showStats={historyName === encodeURIComponent(item.name)}
 						selectedRegion={props.selectedRegion}
+						selectedSeason={props.selectedSeason}
 						lightweight={props.lightweight}
 					/>
 				)}
