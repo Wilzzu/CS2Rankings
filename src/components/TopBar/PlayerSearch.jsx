@@ -62,6 +62,7 @@ const PlayerSearch = (props) => {
 		<div className={cn("relative w-full h-10 md:h-14 font-poppins z-20 text-sm md:text-base")}>
 			{/* Search field */}
 			<input
+				name="playersearch"
 				ref={ref}
 				onKeyDown={(e) => handleEnter(e)}
 				className={cn(

@@ -27,6 +27,8 @@ const preloadImgs = [
 	"/assets/ranks/rankGold.webp",
 	"/assets/ranks/rankdownGold.webp",
 	"/assets/ranks/rankupGold.webp",
+	"/assets/mainlogo.svg",
+	"/assets/mainlogoDark.svg",
 ];
 
 function App() {
