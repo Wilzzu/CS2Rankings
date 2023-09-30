@@ -45,7 +45,7 @@ const MainContent = (props) => {
 							? "h-[69dvh] overflow-y-scroll pt-0 pb-1 scrollbar-thin scrollbar-thumb-csbrightblue scrollbar-track-cswhite dark:scrollbar-thumb-csorange dark:scrollbar-track-csgraydarkest"
 							: "shadow-scoreboard min-h-[90dvh] py-2"
 					)}>
-					<LeaderboardColumnNames lightweight={props.lightweight} />
+					<LeaderboardColumnNames lightweight={props.lightweight} selectedSeason={selectedSeason} />
 					<LeaderboardContent
 						data={cachedData}
 						isLoading={isLoading}

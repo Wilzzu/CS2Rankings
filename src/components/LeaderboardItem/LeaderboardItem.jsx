@@ -5,6 +5,8 @@ import RatingIcon from "./RatingIcon";
 import Stats from "./stats/Stats";
 import statsIcon from "../../assets/statsIcon.svg";
 import statsIconDark from "../../assets/statsIconDark.svg";
+import Wins from "./Wins";
+import WinPercentage from "./WinPercentage";
 
 const LeaderboardItem = (props) => {
 	// Encode players name to URI compatible format
@@ -28,7 +30,7 @@ const LeaderboardItem = (props) => {
 			{/* Content */}
 			<div
 				className={cn(
-					`relative grid grid-cols-[50px_auto_70px_20px] md:grid-cols-[100px_auto_100px_40px] gap-3 text-sm md:text-lg items-center px-1 font-poppins text-darktext dark:text-cswhitesemi`,
+					`relative grid grid-cols-[50px_auto_70px_20px] md:grid-cols-[100px_auto_40px_54px_100px_40px] gap-3 text-sm md:text-lg items-center px-1 font-poppins text-darktext dark:text-cswhitesemi`,
 					props.index % 2
 						? "bg-[#ECECEC] dark:bg-[#363636]"
 						: "bg-cswhitesemi dark:bg-darkcswhitesemi",
@@ -36,9 +38,21 @@ const LeaderboardItem = (props) => {
 					props.lightweight ? "h-7 md:h-9" : "h-9 md:h-11"
 				)}>
 				{/* Rank */}
-				<Rank position={props.data.position} rank={props.data.rank} missing={props.data?.missing} />
+				<Rank
+					position={props.data.position}
+					rank={props.data.rank}
+					missing={props.data?.missing}
+					selectedSeason={props.selectedSeason}
+				/>
 				{/* Name */}
 				<Name missing={props.data?.missing} name={props.data.name} />
+				{/* Wins */}
+				<Wins missing={props.data?.missing} wins={props.data?.detailData?.wins} />
+				{/* Wins */}
+				<WinPercentage
+					missing={props.data?.missing}
+					winPercentage={props.data?.detailData?.winpercentage}
+				/>
 				{/* Rating */}
 				<RatingIcon
 					score={props.data?.missing ? "?????" : props.data.formattedScore}
