@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { cn } from "../../../lib/utils";
-import arrowIcon from "../../assets/positionArrowUp.svg";
-import arrowIconDark from "../../assets/positionArrowDown.svg";
+import ArrowIcon from "../../assets/ArrowIcon";
+import { useSelector } from "react-redux";
 
 const Dropdown = (props) => {
 	const [toggle, setToggle] = useState(false);
 	const [listHover, setListHover] = useState(false);
+
+	const darkmode = useSelector((state) => state.darkmode);
 
 	const handleClick = (clicked) => {
 		if (props.header !== clicked) props.setSelected(clicked);
@@ -34,16 +36,10 @@ const Dropdown = (props) => {
 						: "group-hover:bg-hoverwhite dark:group-hover:bg-darkhoverwhite"
 				)}>
 				<p className="text-darktext dark:text-cswhitebright truncate">{props.header}</p>
-				<img
-					src={arrowIcon}
-					alt="Dropdown arrow"
-					className="w-4 rotate-180 h-auto aspect-square dark:hidden"
-				/>
-				<img
-					src={arrowIconDark}
-					alt="Dropdown arrow"
-					className="w-4 rotate-180 h-auto aspect-square hidden dark:block"
-				/>
+				{/* Dropdown arrow */}
+				<div className="w-4 rotate-180 h-auto aspect-square">
+					<ArrowIcon color={darkmode ? "#e38618" : "#1c62e6"} />
+				</div>
 			</div>
 			{/* For opening the dropdown and checking when user clicks away */}
 			<input

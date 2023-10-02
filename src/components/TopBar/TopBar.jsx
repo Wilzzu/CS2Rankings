@@ -4,13 +4,15 @@ import PlayerSearch from "./PlayerSearch";
 import settings from "../../../lib/settings.json";
 import { cn } from "../../../lib/utils";
 import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
-import positionArrowUp from "../../assets/positionArrowUp.svg";
-import positionArrowDown from "../../assets/positionArrowDown.svg";
 import Settings from "./settings/Settings";
+import { useSelector } from "react-redux";
+import ArrowIcon from "../../assets/ArrowIcon";
 
 const TopBar = (props) => {
 	const [isSticky, setIsSticky] = useState(false);
 	const isMobile = useCheckMobileScreen();
+
+	const darkmode = useSelector((state) => state.darkmode);
 
 	// Check if bar is sticky
 	useEffect(() => {
@@ -71,6 +73,7 @@ const TopBar = (props) => {
 					isMobile={isMobile}
 				/>
 			</div>
+			{/* Scroll to top button */}
 			<button
 				className={cn(
 					"absolute bg-cswhitesemi dark:bg-darkcswhitebright p-3 -right-[68px] rounded-lg h-11 shadow-md duration-200 group opacity-0 hidden lg:block",
@@ -78,16 +81,9 @@ const TopBar = (props) => {
 				)}
 				disabled={!isSticky}
 				onClick={() => scrollToTop()}>
-				<img
-					src={positionArrowUp}
-					alt="Scroll to top arrow"
-					className="w-5 h-auto aspect-square group-hover:animate-moveUp dark:hidden"
-				/>
-				<img
-					src={positionArrowDown}
-					alt="Scroll to top arrow"
-					className="w-5 h-auto aspect-square group-hover:animate-moveUp hidden dark:block"
-				/>
+				<div className="w-5 h-auto aspect-square group-hover:animate-moveUp">
+					<ArrowIcon color={darkmode ? "#e38618" : "#1c62e6"} />
+				</div>
 			</button>
 		</div>
 	);

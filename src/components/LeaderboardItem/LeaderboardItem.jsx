@@ -3,10 +3,10 @@ import Name from "./Name";
 import Rank from "./Rank";
 import RatingIcon from "./RatingIcon";
 import Stats from "./stats/Stats";
-import statsIcon from "../../assets/statsIcon.svg";
-import statsIconDark from "../../assets/statsIconDark.svg";
 import Wins from "./Wins";
 import WinPercentage from "./WinPercentage";
+import StatsIcon from "../../assets/StatsIcon";
+import { useSelector } from "react-redux";
 
 const LeaderboardItem = (props) => {
 	// Encode players name to URI compatible format
@@ -14,6 +14,8 @@ const LeaderboardItem = (props) => {
 		const uriName = encodeURIComponent(props.data.name);
 		props.setHistoryName((prev) => (prev === uriName ? null : uriName));
 	};
+
+	const darkmode = useSelector((state) => state.darkmode);
 
 	return (
 		// Item container, used for making animated border
@@ -65,18 +67,9 @@ const LeaderboardItem = (props) => {
 					<button
 						onClick={() => handleClick()}
 						className="w-full p-[0.1rem] md:p-[0.6rem] duration-300 hover:bg-cswhite dark:hover:bg-darkhoverwhite flex items-center justify-center">
-						<img
-							src={statsIcon}
-							alt="Statistics icon"
-							loading="lazy"
-							className="w-5 h-auto aspect-square dark:hidden"
-						/>
-						<img
-							src={statsIconDark}
-							alt="Statistics icon"
-							loading="lazy"
-							className="w-5 h-auto aspect-square hidden dark:block"
-						/>
+						<div className="w-5 h-auto aspect-square">
+							<StatsIcon color={darkmode ? "#e38618" : "#447ce6"} />
+						</div>
 					</button>
 				)}
 			</div>

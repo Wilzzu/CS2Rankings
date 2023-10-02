@@ -1,14 +1,16 @@
 import { cn } from "../../../../lib/utils";
-import settingsIcon from "../../../assets/settingsIcon.svg";
-import settingsIconDark from "../../../assets/settingsIconDark.svg";
 import { useState } from "react";
 import Lightweight from "./Lightweight";
 import DarkMode from "./DarkMode";
 import RefreshButton from "./RefreshButton";
+import SettingsIcon from "../../../assets/SettingsIcon";
+import { useSelector } from "react-redux";
 
 const Settings = (props) => {
 	const [toggle, setToggle] = useState(false);
 	const [listHover, setListHover] = useState(false);
+
+	const darkmode = useSelector((state) => state.darkmode);
 
 	const handleUnfocus = () => {
 		if (listHover || props.isMobile) return;
@@ -32,16 +34,10 @@ const Settings = (props) => {
 					onChange={() => setToggle((prev) => !prev)}
 					className={cn("appearance-none w-full h-full z-10 hover:cursor-pointer")}
 				/>
-				<img
-					src={settingsIcon}
-					alt="Settings icon"
-					className="duration-700 w-6 md:w-8 h-auto aspect-square group-hover:rotate-[32deg] absolute z-0 dark:hidden"
-				/>
-				<img
-					src={settingsIconDark}
-					alt="Settings icon"
-					className="duration-700 w-6 md:w-8 h-auto aspect-square group-hover:rotate-[32deg] absolute z-0 hidden dark:block"
-				/>
+				{/* Icon */}
+				<div className="duration-700 w-6 md:w-8 h-auto aspect-square group-hover:rotate-[32deg] absolute z-0">
+					<SettingsIcon color={darkmode ? "#e38618" : "#1c62e6"} />
+				</div>
 			</div>
 			{/* Settings container */}
 			{toggle && (
