@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import SearchItem from "./SearchItem";
 import { cn } from "../../../lib/utils";
-import searchIcon from "../../assets/searchIcon.svg";
-import searchIconDark from "../../assets/searchIconDark.svg";
+import SearchIcon from "../../assets/SearchIcon";
+import { useSelector } from "react-redux";
 
 const PlayerSearch = (props) => {
 	const [search, setSearch] = useState("");
@@ -10,6 +10,7 @@ const PlayerSearch = (props) => {
 	const [notFound, setNotFound] = useState(false);
 	const [listHover, setListHover] = useState(false);
 	const ref = useRef(null);
+	const darkmode = useSelector((state) => state.darkmode);
 
 	// Search player
 	useEffect(() => {
@@ -76,13 +77,8 @@ const PlayerSearch = (props) => {
 				onChange={(e) => setSearch(e.target.value)}
 				onBlur={(e) => handleUnfocus(e)}
 			/>
-			<div className="h-full aspect-square flex items-center justify-center absolute top-0 right-0">
-				<img src={searchIcon} alt="Search icon" className="w-6 h-auto aspect-square dark:hidden" />
-				<img
-					src={searchIconDark}
-					alt="Search icon"
-					className="w-6 h-auto aspect-square hidden dark:block"
-				/>
+			<div className="w-6 mr-4 h-full aspect-square flex items-center justify-center absolute top-0 right-0">
+				<SearchIcon color={darkmode ? "#e38618" : "#1c62e6"} />
 			</div>
 			{/* Search list */}
 			{search && (notFound || filtered.length >= 1) && (

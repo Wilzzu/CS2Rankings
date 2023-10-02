@@ -1,12 +1,10 @@
 import { Ring } from "@uiball/loaders";
 import { cn } from "../../../../lib/utils";
-import refreshIcon from "../../../assets/refreshIcon.svg";
-import refreshIconDark from "../../../assets/refreshIconDark.svg";
-import checkIcon from "../../../assets/checkIcon.svg";
-import checkIconDark from "../../../assets/checkIconDark.svg";
 import errorIcon from "../../../assets/errorIcon.svg";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import CheckIcon from "../../../assets/CheckIcon";
+import RefreshIcon from "../../../assets/RefreshIcon";
 
 const RefreshButton = (props) => {
 	const [state, setState] = useState("none");
@@ -67,37 +65,19 @@ const RefreshButton = (props) => {
 						color={darkmode ? "#e38618" : "#4A68FF"}
 					/>
 				) : (
-					// TODO: Make these jsx icons
-					<>
-						<img
-							src={
-								state === "done"
-									? checkIcon
-									: state === "error"
-									? errorIcon
-									: state === "none" && refreshIcon
-							}
-							alt="Refresh icon"
-							className={cn(
-								"duration-700 select-none w-4 h-4 md:w-6 md:h-6 dark:hidden",
-								state === "none" && "group-active:rotate-180 group-hover:-rotate-[22deg]"
-							)}
-						/>
-						<img
-							src={
-								state === "done"
-									? checkIconDark
-									: state === "error"
-									? errorIcon
-									: state === "none" && refreshIconDark
-							}
-							alt="Refresh icon"
-							className={cn(
-								"duration-700 select-none w-4 h-4 md:w-6 md:h-6 hidden dark:block",
-								state === "none" && "group-active:rotate-180 group-hover:-rotate-[22deg]"
-							)}
-						/>
-					</>
+					<div
+						className={cn(
+							"duration-700 select-none w-4 h-4 md:w-6 md:h-6",
+							state === "none" && "group-active:rotate-180 group-hover:-rotate-[22deg]"
+						)}>
+						{state === "done" ? (
+							<CheckIcon color={darkmode ? "#e38618" : "#1c62e6"} id={"refreshCheck"} />
+						) : state === "error" ? (
+							<img src={errorIcon} alt="Error icon" className="w-4 h-4 md:w-6 md:h-6" />
+						) : (
+							state === "none" && <RefreshIcon color={darkmode ? "#e38618" : "#1c62e6"} />
+						)}
+					</div>
 				)}
 			</div>
 			<p>Refresh</p>

@@ -29,7 +29,7 @@ const Lightweight = (props) => {
 						"w-5 h-5 p-[0.2rem] flex justify-center items-center bg-cswhite dark:bg-csgraydarkest",
 						lightweight && "bg-csbrightblue dark:bg-csorange"
 					)}>
-					{lightweight && <CheckIcon color={darkmode ? "#333333" : "#EFEFEF"} />}
+					{lightweight && <CheckIcon color={darkmode ? "#333333" : "#EFEFEF"} id={"lightweight"} />}
 				</div>
 				<p>Lightweight mode</p>
 			</label>

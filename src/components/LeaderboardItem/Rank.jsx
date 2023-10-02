@@ -1,6 +1,5 @@
-import positionArrowUp from "../../assets/positionArrowUp.svg";
-import positionArrowDown from "../../assets/positionArrowDown.svg";
 import settings from "../../../lib/settings.json";
+import ArrowIcon from "../../assets/ArrowIcon";
 
 const Rank = (props) => {
 	return (
@@ -11,19 +10,13 @@ const Rank = (props) => {
 					-
 				</p>
 			) : props.position === "up" ? (
-				<img
-					src={positionArrowUp}
-					className="w-3 md:w-5 opacity-80 dark:opacity-100 h-auto aspect-square"
-					alt="Arrow up icon"
-					loading="lazy"
-				/>
+				<div className="w-3 md:w-5 opacity-80 dark:opacity-100 h-auto aspect-square">
+					<ArrowIcon color={"#1c62e6"} />
+				</div>
 			) : props.position === "down" ? (
-				<img
-					src={positionArrowDown}
-					className="rotate-180 w-3 md:w-5 opacity-80 dark:opacity-100 h-auto aspect-square"
-					alt="Arrow down icon"
-					loading="lazy"
-				/>
+				<div className="rotate-180 w-3 md:w-5 opacity-80 dark:opacity-100 h-auto aspect-square">
+					<ArrowIcon color={"#e38618"} />
+				</div>
 			) : (
 				<p className="w-3 md:w-5 text-xl md:text-[2.25rem] text-center opacity-30 select-none font-bold md:font-normal">
 					-

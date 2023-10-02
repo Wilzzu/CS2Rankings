@@ -24,7 +24,7 @@ const DarkMode = (props) => {
 						: "bg-cswhitebright dark:bg-darkcswhitebright"
 				)}>
 				<div className="w-5 h-5 p-[0.2rem] flex justify-center items-center bg-cswhite dark:bg-csorange">
-					{darkmode && <CheckIcon color={"#333333"} />}
+					{darkmode && <CheckIcon color={"#333333"} id={"darkmode"} />}
 				</div>
 				<p>Dark mode</p>
 			</label>

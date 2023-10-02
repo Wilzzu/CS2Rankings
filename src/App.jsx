@@ -27,8 +27,6 @@ const preloadImgs = [
 	"/assets/ranks/rankGold.webp",
 	"/assets/ranks/rankdownGold.webp",
 	"/assets/ranks/rankupGold.webp",
-	"/assets/mainlogo.svg",
-	"/assets/mainlogoDark.svg",
 ];
 
 function App() {
@@ -87,7 +85,7 @@ function App() {
 			<GdprPopup />
 			<Credits />
 			<div className="flex justify-center my-5 px-1 md:px-0">
-				<Header />
+				<Header darkmode={darkmode} />
 			</div>
 			<div className={cn("flex justify-center", lightweight ? "mb-2" : "mb-10")}>
 				<MainContent lightweight={lightweight} />
