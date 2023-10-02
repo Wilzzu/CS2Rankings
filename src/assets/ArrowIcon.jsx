@@ -5,7 +5,8 @@ const ArrowIcon = (props) => (
 		width="100%"
 		height="100%"
 		fill={props.color}
-		viewBox="0 0 487 487">
+		viewBox="0 0 487 487"
+		transform={props.rotate && "rotate(180)"}>
 		<g>
 			<title>Arrow icon</title>
 			<path d="M397.7 376.1c20.4 20.4 53.6 20.4 74 0s20.4-53.6 0-74L280.5 110.9c-20.4-20.4-53.6-20.4-74 0L15.3 302.1c-20.4 20.4-20.4 53.6 0 74s53.6 20.4 74 0l154.2-154.2 154.2 154.2z" />
