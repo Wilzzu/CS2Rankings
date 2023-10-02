@@ -37,8 +37,8 @@ const Dropdown = (props) => {
 				)}>
 				<p className="text-darktext dark:text-cswhitebright truncate">{props.header}</p>
 				{/* Dropdown arrow */}
-				<div className="w-4 rotate-180 h-auto aspect-square">
-					<ArrowIcon color={darkmode ? "#e38618" : "#1c62e6"} />
+				<div className="w-4 h-auto aspect-square">
+					<ArrowIcon color={darkmode ? "#e38618" : "#1c62e6"} rotate={true} />
 				</div>
 			</div>
 			{/* For opening the dropdown and checking when user clicks away */}
