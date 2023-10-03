@@ -4,9 +4,11 @@ import Rank from "./Rank";
 import RatingIcon from "./RatingIcon";
 import Stats from "./stats/Stats";
 import Wins from "./Wins";
+// import WinPercentageWithColors from "./WinPercentageWithColors";
 import WinPercentage from "./WinPercentage";
 import StatsIcon from "../../assets/StatsIcon";
 import { useSelector } from "react-redux";
+import Region from "./Region";
 
 const LeaderboardItem = (props) => {
 	// Encode players name to URI compatible format
@@ -32,7 +34,7 @@ const LeaderboardItem = (props) => {
 			{/* Content */}
 			<div
 				className={cn(
-					`relative grid grid-cols-[50px_auto_70px_20px] md:grid-cols-[100px_auto_40px_54px_100px_40px] gap-3 text-sm md:text-lg items-center px-1 font-poppins text-darktext dark:text-cswhitesemi`,
+					`relative grid grid-cols-[50px_auto_70px_20px] md:grid-cols-[100px_auto_40px_54px_100px_30px_40px] gap-1 text-sm md:text-lg items-center px-1 font-poppins text-darktext dark:text-cswhitesemi`,
 					props.index % 2
 						? "bg-[#ECECEC] dark:bg-[#363636]"
 						: "bg-cswhitesemi dark:bg-darkcswhitesemi",
@@ -62,6 +64,7 @@ const LeaderboardItem = (props) => {
 					missing={props.data?.missing}
 					lightweight={props.lightweight}
 				/>
+				<Region region={props.data?.detailData?.region} />
 				{/* Stats button */}
 				{props.selectedRegion === "World" && !props?.data?.missing && (
 					<button
@@ -84,6 +87,11 @@ const LeaderboardItem = (props) => {
 					lightweight={props.lightweight}
 					currentScore={props.data.score}
 					currentRank={props.data.rank}
+					currentMatches={
+						props.data.detailData?.wins +
+						props.data.detailData?.ties +
+						props.data.detailData?.losses
+					}
 				/>
 			)}
 		</li>

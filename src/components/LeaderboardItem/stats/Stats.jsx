@@ -4,6 +4,7 @@ import RankChart from "./RankChart";
 import { useEffect, useState } from "react";
 import infoIcon from "../../../assets/infoIcon.svg";
 import RatingChart from "./RatingChart";
+import MatchesChart from "./MatchesChart";
 
 const Stats = (props) => {
 	const [showLoading, setShowLoading] = useState(false);
@@ -19,7 +20,7 @@ const Stats = (props) => {
 	return (
 		<div
 			className={cn(
-				"flex items-center justify-center gap-4 h-72 md:h-44 text-darktext dark:text-cswhitebright text-lg font-poppins",
+				"flex items-center justify-center gap-4 h-96 text-darktext dark:text-cswhitebright text-lg font-poppins",
 				props.index % 2
 					? "bg-[#ECECEC] dark:bg-[#363636]"
 					: "bg-cswhitesemi dark:bg-darkcswhitesemi"
@@ -34,19 +35,35 @@ const Stats = (props) => {
 				<p>Error while loading data.</p>
 			) : props.data ? (
 				// Content
-				<div className="flex flex-col md:flex-row items-center justify-center w-full h-full p-2 md:gap-4">
-					<RankChart
-						data={props.data.history}
-						lightweight={props.lightweight}
-						index={props.index}
-						currentRank={props.currentRank}
-					/>
-					<RatingChart
-						data={props.data.history}
-						lightweight={props.lightweight}
-						index={props.index}
-						currentScore={props.currentScore}
-					/>
+				<div className="flex flex-col w-full h-full items-center md:gap-2">
+					<div className="flex flex-col md:flex-row items-center justify-center w-full h-[45%] p-2 md:gap-4">
+						<RankChart
+							data={props.data.history}
+							lightweight={props.lightweight}
+							index={props.index}
+							currentRank={props.currentRank}
+						/>
+						<RatingChart
+							data={props.data.history}
+							lightweight={props.lightweight}
+							index={props.index}
+							currentScore={props.currentScore}
+						/>
+					</div>
+					<div className="flex flex-col md:flex-row items-center justify-center w-full h-[45%] p-2 md:gap-4">
+						<MatchesChart
+							data={props.data.history}
+							lightweight={props.lightweight}
+							index={props.index}
+							currentMatches={props.currentMatches}
+						/>
+						{/* <MatchesChart
+							data={props.data.matches}
+							lightweight={props.lightweight}
+							index={props.index}
+							currentScore={props.currentScore}
+						/> */}
+					</div>
 				</div>
 			) : (
 				// No data
