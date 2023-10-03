@@ -10,6 +10,7 @@ import {
 	LineChart,
 } from "recharts";
 import { cn } from "../../../../lib/utils";
+import { useState } from "react";
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -23,7 +24,14 @@ const customRank = (rating) => {
 	return Math.floor(rating);
 };
 
+// Add current stats to the data
+const prepareData = (data, rank) => {
+	const newDate = new Date().toISOString();
+	return [...data, { date: newDate, rank }];
+};
+
 const RankChart = (props) => {
+	const [data] = useState(prepareData(props.data, props.currentRank));
 	const darkmode = useSelector((state) => state.darkmode);
 
 	const CustomTooltip = ({ active, payload }) => {
@@ -54,7 +62,7 @@ const RankChart = (props) => {
 		<div className="h-1/2 md:h-full w-full md:w-1/2 font-hanken text-[0.7rem] md:text-xs flex flex-col items-center">
 			<p className="text-xs md:text-lg font-medium">Rank</p>
 			<ResponsiveContainer width="100%" height="100%">
-				<LineChart margin={{ top: 5, left: -20, right: 20, bottom: 5 }} data={props.data}>
+				<LineChart margin={{ top: 5, left: -20, right: 20, bottom: 5 }} data={data}>
 					<Area
 						dataKey={"rank"}
 						stroke={darkmode ? "#FFA51A" : "#447CE6"}
