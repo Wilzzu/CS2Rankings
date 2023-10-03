@@ -39,11 +39,13 @@ const Stats = (props) => {
 						data={props.data.history}
 						lightweight={props.lightweight}
 						index={props.index}
+						currentRank={props.currentRank}
 					/>
 					<RatingChart
 						data={props.data.history}
 						lightweight={props.lightweight}
 						index={props.index}
+						currentScore={props.currentScore}
 					/>
 				</div>
 			) : (

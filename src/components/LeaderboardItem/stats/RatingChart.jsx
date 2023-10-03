@@ -9,6 +9,7 @@ import {
 	ResponsiveContainer,
 } from "recharts";
 import { cn } from "../../../../lib/utils";
+import { useState } from "react";
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -22,8 +23,15 @@ const customRating = (rating) => {
 	return Math.ceil(rating / 100) * 100;
 };
 
+// Add current stats to the data
+const prepareData = (data, score) => {
+	const newDate = new Date().toISOString();
+	return [...data, { date: newDate, score }];
+};
+
 const RatingChart = (props) => {
 	const darkmode = useSelector((state) => state.darkmode);
+	const [data] = useState(prepareData(props.data, props.currentScore));
 
 	const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
@@ -53,7 +61,7 @@ const RatingChart = (props) => {
 		<div className="h-1/2 md:h-full w-full md:w-1/2 font-hanken text-[0.7rem] md:text-xs flex flex-col items-center">
 			<p className="text-xs md:text-lg font-medium">Rating</p>
 			<ResponsiveContainer width="100%" height="100%">
-				<AreaChart margin={{ top: 5, left: -18, right: 20, bottom: 5 }} data={props.data}>
+				<AreaChart margin={{ top: 5, left: -18, right: 20, bottom: 5 }} data={data}>
 					<Area
 						dataKey={"score"}
 						stroke={darkmode ? "#FFA51A" : "#447CE6"}

@@ -82,6 +82,8 @@ const LeaderboardItem = (props) => {
 					index={props.index}
 					isSuccess={props.isSuccess}
 					lightweight={props.lightweight}
+					currentScore={props.data.score}
+					currentRank={props.data.rank}
 				/>
 			)}
 		</li>
