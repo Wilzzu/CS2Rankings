@@ -35,7 +35,7 @@ export default {
 			dropShadow: {
 				header: "3px 2px 1px rgba(0, 0, 0, 0.15)",
 				signature: "1px 2px 1px rgba(0,0,0, 0.2)",
-				region: "1px 1px 0px rgba(0,0,0, 0.30)",
+				region: "1px 1px 0px rgba(0,0,0, 0.40)",
 				glow: "0px 0px 4px rgba(255,255,255, 0.5)",
 				rating: "1px 1px 1px rgba(0, 0, 0, 0.8)",
 			},
