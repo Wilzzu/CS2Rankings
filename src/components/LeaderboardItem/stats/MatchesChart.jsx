@@ -11,7 +11,7 @@ import {
 } from "recharts";
 import { cn } from "../../../../lib/utils";
 import { useState } from "react";
-import infoIcon from "../../../assets/infoIcon.svg";
+// import infoIcon from "../../../assets/infoIcon.svg";
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -28,7 +28,11 @@ const customRank = (rating) => {
 // Add current stats to the data
 const prepareData = (data, matches) => {
 	const newDate = new Date().toISOString();
-	return [...data, { date: newDate, rank: matches }];
+	const newData = [];
+	data.forEach((e) => {
+		if (e?.matches) newData.push(e);
+	});
+	return [...newData, { date: newDate, matches }];
 };
 
 const MatchesChart = (props) => {
@@ -60,14 +64,14 @@ const MatchesChart = (props) => {
 		return null;
 	};
 
-	// If no data
-	if (!props.data.matches)
-		return (
-			<div className="relative flex flex-col items-center justify-center w-full h-full p-2 gap-2">
-				<img src={infoIcon} alt="Info icon" className="w-8 h-auto aspect-square" />
-				<p>No match history data</p>
-			</div>
-		);
+	// // If no data
+	// if (!props.data.matches)
+	// 	return (
+	// 		<div className="relative flex flex-col items-center justify-center w-full h-full p-2 gap-2">
+	// 			<img src={infoIcon} alt="Info icon" className="w-8 h-auto aspect-square" />
+	// 			<p>No match history data</p>
+	// 		</div>
+	// 	);
 
 	return (
 		<div className="h-1/2 md:h-full w-full md:w-1/2 font-hanken text-[0.7rem] md:text-xs flex flex-col items-center">
@@ -75,7 +79,7 @@ const MatchesChart = (props) => {
 			<ResponsiveContainer width="100%" height="100%">
 				<LineChart margin={{ top: 5, left: -20, right: 20, bottom: 5 }} data={data}>
 					<Area
-						dataKey={"rank"}
+						dataKey={"matches"}
 						stroke={darkmode ? "#FFA51A" : "#447CE6"}
 						fill={darkmode ? "#FFA51A" : "#447CE6"}
 					/>
@@ -87,7 +91,8 @@ const MatchesChart = (props) => {
 						tick={{ fill: darkmode ? "#D8D8D8" : "#666666" }}
 					/>
 					<YAxis
-						dataKey={"rank"}
+						domain={["auto", "auto"]}
+						dataKey={"matches"}
 						minTickGap={0}
 						tickCount={4}
 						axisLine={false}
@@ -99,7 +104,7 @@ const MatchesChart = (props) => {
 					<Tooltip content={<CustomTooltip />} />
 					<CartesianGrid strokeDasharray="2 1" opacity={darkmode ? 0.1 : 0.25} />
 					<Line
-						dataKey="rank"
+						dataKey="matches"
 						stroke={darkmode ? "#FFA51A" : "#447CE6"}
 						strokeWidth={2}
 						dot={false}

@@ -21,10 +21,10 @@ const getColor = (region) => {
 
 const Region = (props) => {
 	return (
-		<div className="w-full h-full hidden md:flex items-center justify-center">
+		<div className="w-full h-full hidden md:flex items-center justify-start">
 			<p
 				className={cn(
-					"font-bold drop-shadow-region text-base tracking-wider",
+					"font-bold drop-shadow-region text-base tracking-wider mt-1",
 					getColor(props.region)
 				)}>
 				{props.region}
