@@ -18,7 +18,7 @@ const LeaderboardItem = (props) => {
 	};
 
 	const darkmode = useSelector((state) => state.darkmode);
-
+	// TODO: Change region colors to be more fit with the whole website colors
 	return (
 		// Item container, used for making animated border
 		<li
@@ -48,12 +48,12 @@ const LeaderboardItem = (props) => {
 					missing={props.data?.missing}
 					selectedSeason={props.selectedSeason}
 				/>
-				<div className="bg-cswhite w-[2px] h-2/3" />
+				<div className="bg-cswhite w-[2px] h-2/3 dark:bg-csgraydarkest dark:opacity-50" />
 				{/* Name */}
 				<Name missing={props.data?.missing} name={props.data.name} />
 				{/* Wins */}
 				<Wins missing={props.data?.missing} wins={props.data?.detailData?.wins} />
-				<div className="bg-cswhite w-[2px] h-2/3 ml-1" />
+				<div className="bg-cswhite w-[2px] h-2/3 ml-1 dark:bg-csgraydarkest opacity-60 dark:opacity-20" />
 				{/* Wins */}
 				<WinPercentage
 					missing={props.data?.missing}
@@ -66,7 +66,7 @@ const LeaderboardItem = (props) => {
 					missing={props.data?.missing}
 					lightweight={props.lightweight}
 				/>
-				<Region region={props.data?.detailData?.region} />
+				<Region region={props.data?.detailData?.region} missing={props.data?.missing} />
 				{/* Stats button */}
 				{props.selectedRegion === "World" && !props?.data?.missing && (
 					<button
