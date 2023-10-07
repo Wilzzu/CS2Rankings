@@ -6,7 +6,7 @@ const Rank = (props) => {
 		<div className="flex flex-col justify-between items-center w-full leading-[1.4rem]">
 			{props.selectedSeason.replace(/\s/g, "").toLowerCase() !== settings.currentSeason ? (
 				// If not current season don't show arrows
-				<></>
+				<p>{props.rank}</p>
 			) : props.position === "up" ? (
 				<>
 					<div className="w-3 h-[0.65rem] opacity-80 dark:opacity-100 aspect-square">

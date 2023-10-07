@@ -22,7 +22,8 @@ const customDay = (date) => {
 };
 
 const customRank = (rating) => {
-	return Math.floor(rating);
+	if (rating <= 100) return rating;
+	return Math.ceil(rating / 10) * 10;
 };
 
 // Add current stats to the data

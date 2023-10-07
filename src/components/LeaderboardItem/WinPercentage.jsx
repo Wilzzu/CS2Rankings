@@ -1,4 +1,5 @@
 const WinPercentage = (props) => {
+	// TODO: Remove these from beta season
 	if (props.missing || !props.winPercentage)
 		return <p className="font-score text-center text-[0.92rem] hidden md:block">??%</p>;
 	return (
