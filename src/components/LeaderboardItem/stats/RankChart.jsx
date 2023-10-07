@@ -21,7 +21,9 @@ const customDay = (date) => {
 };
 
 const customRank = (rating) => {
-	return Math.floor(rating);
+	if (rating % 1) return "";
+	if (rating <= 30) return rating;
+	return Math.floor(rating / 10) * 10;
 };
 
 // Add current stats to the data
@@ -62,7 +64,7 @@ const RankChart = (props) => {
 		<div className="h-1/2 md:h-full w-full md:w-1/2 font-hanken text-[0.7rem] md:text-xs flex flex-col items-center">
 			<p className="text-xs md:text-lg font-medium">Rank</p>
 			<ResponsiveContainer width="100%" height="100%">
-				<LineChart margin={{ top: 5, left: -20, right: 20, bottom: 5 }} data={data}>
+				<LineChart margin={{ top: 10, left: -20, right: 20, bottom: 5 }} data={data}>
 					<Area
 						dataKey={"rank"}
 						stroke={darkmode ? "#FFA51A" : "#447CE6"}
@@ -76,10 +78,11 @@ const RankChart = (props) => {
 						tick={{ fill: darkmode ? "#D8D8D8" : "#666666" }}
 					/>
 					<YAxis
-						domain={[1, "auto"]}
-						dataKey={"rank"}
+						type="number"
+						domain={["dataMin"]}
+						dataKey={(e) => parseInt(e.rank)}
 						minTickGap={0}
-						tickCount={4}
+						tickCount={5}
 						axisLine={false}
 						tickLine={false}
 						padding={{ bottom: 5 }}

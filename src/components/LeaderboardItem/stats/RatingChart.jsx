@@ -77,10 +77,10 @@ const RatingChart = (props) => {
 					/>
 					<YAxis
 						type="number"
-						domain={["dataMin - 1000", "dataMax + 1000"]}
+						domain={["dataMin - 1000", "dataMax"]}
 						dataKey={"score"}
 						minTickGap={0}
-						tickCount={10}
+						tickCount={9}
 						axisLine={false}
 						tickLine={false}
 						padding={{ bottom: 5 }}
