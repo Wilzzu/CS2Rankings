@@ -31,13 +31,13 @@ const useGetPlayerHistory = (name, season) => {
 		{ enabled: false }
 	);
 
-	// Serve cached data is player's history has been already requested by user
-	const refetchHistory = () => {
-		if (searchedPlayers.includes(name)) return;
-		refetch();
-	};
+	let data = queryClient.getQueryData(["playerHistory", name]);
 
-	const data = queryClient.getQueryData(["playerHistory", name]);
+	// Serve cached data is player's history has been already requested by user
+	const refetchHistory = (name) => {
+		if (searchedPlayers.includes(name)) data = queryClient.getQueryData(["playerHistory", name]);
+		else refetch();
+	};
 
 	return { data, isRefetching, isRefetchError, refetchHistory, isSuccess };
 };

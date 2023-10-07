@@ -18,7 +18,7 @@ const LeaderboardContent = (props) => {
 	);
 
 	useEffect(() => {
-		if (historyName) refetchHistory();
+		if (historyName) refetchHistory(historyName);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [historyName]);
 
