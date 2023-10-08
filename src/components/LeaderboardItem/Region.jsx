@@ -3,19 +3,19 @@ import { cn } from "../../../lib/utils";
 const getColor = (region) => {
 	switch (region) {
 		case "NA":
-			return "text-[#D289FC]";
+			return "text-[#BA4BE4]";
 		case "SA":
-			return "text-[#11B7E2]";
+			return "text-[#40BBE4]";
 		case "EU":
-			return "text-[#E7CB3B]";
+			return "text-[#F5D022]";
 		case "AS":
-			return "text-[#E98421]";
+			return "text-[#E47C38]";
 		case "AU":
-			return "text-[#2F7FDA]";
+			return "text-[#386AE4]";
 		case "AF":
-			return "text-[#38AF20]";
+			return "text-[#37D133]";
 		case "CN":
-			return "text-[#F96165]";
+			return "text-[#E44E4E]";
 	}
 };
 
