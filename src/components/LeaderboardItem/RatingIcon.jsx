@@ -21,6 +21,16 @@ const tierColor = [
 	"text-[#FFD619]",
 ];
 
+// const tempColor = [
+// 	["bg-[#B3AFB1]", "bg-[#C7CFD3]"],
+// 	["bg-[#1D5068]", "bg-[#81B9CF]"],
+// 	["bg-[#213B6D]", "bg-[#5D8CF7]"],
+// 	["bg-[#4C2E70]", "bg-[#B86DF3]"],
+// 	["bg-[#58185A]", "bg-[#FD59FF]"],
+// 	["bg-[#681009]", "bg-[#FF5C4C]"],
+// 	["bg-[#715614]", "bg-[#FFD818]"],
+// ];
+
 const RatingIcon = (props) => {
 	const [loaded, setLoaded] = useState(false);
 
@@ -44,6 +54,15 @@ const RatingIcon = (props) => {
 		if (tier === 6) path = path + "Gold";
 		return path + format;
 	};
+
+	// <div
+	// 			className={cn(
+	// 				"absolute h-7 md:h-9 -skew-x-12 w-[84px] flex gap-[1px]",
+	// 				tempColor[props.tier][0]
+	// 			)}>
+	// 			<div className={"w-[5px] h-full " + tempColor[props.tier][1]} />
+	// 			<div className={"w-[5px] h-full " + tempColor[props.tier][1]} />
+	// 		</div>
 
 	return (
 		<div
@@ -71,6 +90,17 @@ const RatingIcon = (props) => {
 
 			{/* Rating icon */}
 			{/* Small image */}
+			{props.render && (
+				<img
+					src={
+						props.missing ? "/assets/ranks/rankGold.webp" : calcIcon(props.tier, props.score.small)
+					}
+					onLoad={() => setLoaded(true)}
+					alt="Rating icon"
+					loading="lazy"
+					className={cn("absolute filter h-7 md:h-9 w-auto", tierFilter[props.tier])}
+				/>
+			)}
 			{!loaded && (
 				<img
 					src={
@@ -83,16 +113,6 @@ const RatingIcon = (props) => {
 					className={cn("absolute filter h-7 md:h-9 w-auto", tierFilter[props.tier])}
 				/>
 			)}
-			{/* Animated image */}
-			<img
-				src={
-					props.missing ? "/assets/ranks/rankGold.webp" : calcIcon(props.tier, props.score.small)
-				}
-				onLoad={() => setLoaded(true)}
-				alt="Rating icon"
-				loading="lazy"
-				className={cn("absolute filter h-7 md:h-9 w-auto", tierFilter[props.tier])}
-			/>
 		</div>
 	);
 };

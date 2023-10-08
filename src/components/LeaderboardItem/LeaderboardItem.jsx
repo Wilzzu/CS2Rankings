@@ -9,16 +9,34 @@ import WinPercentage from "./WinPercentage";
 import StatsIcon from "../../assets/StatsIcon";
 import { useSelector } from "react-redux";
 import Region from "./Region";
+import { useEffect, useState } from "react";
 
 const LeaderboardItem = (props) => {
+	const [render, setRender] = useState(false);
 	// Encode players name to URI compatible format
 	const handleClick = () => {
 		const uriName = encodeURIComponent(props.data.name);
 		props.setHistoryName((prev) => (prev === uriName ? null : uriName));
 	};
 
+	useEffect(() => {
+		setTimeout(() => {
+			setRender(true);
+		}, 100);
+	}, []);
 	const darkmode = useSelector((state) => state.darkmode);
-	// TODO: Change region colors to be more fit with the whole website colors
+
+	// if (!render)
+	// 	return (
+	// 		<div
+	// 			className={cn(
+	// 				props.index % 2
+	// 					? "bg-[#ECECEC] dark:bg-[#363636]"
+	// 					: "bg-cswhitesemi dark:bg-darkcswhitesemi",
+	// 				props.lightweight ? "h-7 md:h-9" : "h-9 md:h-11"
+	// 			)}
+	// 		/>
+	// 	);
 	return (
 		// Item container, used for making animated border
 		<li
@@ -65,6 +83,7 @@ const LeaderboardItem = (props) => {
 					tier={props.data.tier}
 					missing={props.data?.missing}
 					lightweight={props.lightweight}
+					render={render}
 				/>
 				<Region region={props.data?.detailData?.region} missing={props.data?.missing} />
 				{/* Stats button */}
