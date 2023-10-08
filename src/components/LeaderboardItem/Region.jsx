@@ -7,7 +7,7 @@ const getColor = (region) => {
 		case "SA":
 			return "text-[#40BBE4]";
 		case "EU":
-			return "text-[#F5D022]";
+			return "text-[#F2C700]";
 		case "AS":
 			return "text-[#E47C38]";
 		case "AU":
