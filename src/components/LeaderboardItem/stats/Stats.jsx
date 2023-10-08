@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import infoIcon from "../../../assets/infoIcon.svg";
 import RatingChart from "./RatingChart";
 import MatchesChart from "./MatchesChart";
+import MapsChart from "./MapsChart";
 
 const Stats = (props) => {
 	const [showLoading, setShowLoading] = useState(false);
@@ -50,19 +51,18 @@ const Stats = (props) => {
 							currentScore={props.currentScore}
 						/>
 					</div>
-					<div className="flex flex-col md:flex-row items-center justify-center w-full h-[45%] p-2 md:gap-4">
+					<div className="flex flex-col md:flex-row items-center justify-center w-full h-[55%] p-2 md:gap-4">
 						<MatchesChart
 							data={props.data.history}
 							lightweight={props.lightweight}
 							index={props.index}
 							currentMatches={props.currentMatches}
 						/>
-						{/* <MatchesChart
-							data={props.data.matches}
+						<MapsChart
+							data={props.currentMaps}
 							lightweight={props.lightweight}
 							index={props.index}
-							currentScore={props.currentScore}
-						/> */}
+						/>
 					</div>
 				</div>
 			) : (

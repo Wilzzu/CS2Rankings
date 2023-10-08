@@ -113,6 +113,7 @@ const LeaderboardItem = (props) => {
 						props.data.detailData?.ties +
 						props.data.detailData?.losses
 					}
+					currentMaps={props.data.detailData?.maps}
 				/>
 			)}
 		</li>

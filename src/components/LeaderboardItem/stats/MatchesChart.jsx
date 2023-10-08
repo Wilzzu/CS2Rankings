@@ -75,7 +75,7 @@ const MatchesChart = (props) => {
 	// 	);
 
 	return (
-		<div className="h-1/2 md:h-full w-full md:w-1/2 font-hanken text-[0.7rem] md:text-xs flex flex-col items-center">
+		<div className="h-1/2 md:h-[80%] w-full md:w-1/2 font-hanken text-[0.7rem] md:text-xs flex flex-col items-center">
 			<p className="text-xs md:text-lg font-medium">Matches played</p>
 			<ResponsiveContainer width="100%" height="100%">
 				<LineChart margin={{ top: 5, left: -20, right: 20, bottom: 5 }} data={data}>
