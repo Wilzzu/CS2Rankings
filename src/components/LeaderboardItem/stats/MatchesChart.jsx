@@ -42,6 +42,7 @@ const MatchesChart = (props) => {
 
 	const darkmode = useSelector((state) => state.darkmode);
 
+	if (props.isBetaSeason) return;
 	const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
 			return (

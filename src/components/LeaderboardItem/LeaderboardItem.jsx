@@ -52,12 +52,15 @@ const LeaderboardItem = (props) => {
 			{/* Content */}
 			<div
 				className={cn(
-					`relative grid grid-cols-[28px_18px_auto_70px_20px] md:grid-cols-[74px_20px_auto_40px_10px_54px_120px_30px_40px] text-sm md:text-lg items-center px-1 font-poppins text-darktext dark:text-cswhitesemi`,
+					`relative grid grid-cols-[28px_18px_auto_90px_20px] md:grid-cols-[74px_20px_auto_40px_10px_54px_120px_30px_40px] text-sm md:text-lg items-center px-1 font-poppins text-darktext dark:text-cswhitesemi`,
 					props.index % 2
 						? "bg-[#ECECEC] dark:bg-[#363636]"
 						: "bg-cswhitesemi dark:bg-darkcswhitesemi",
 					props.data.missing && "text-csgray dark:text-[#707070]",
-					props.lightweight ? "h-7 md:h-9" : "h-9 md:h-11"
+					props.lightweight ? "h-7 md:h-9" : "h-9 md:h-11",
+					props.selectedSeason === "Beta Season"
+						? "md:grid-cols-[74px_20px_auto_120px_40px]"
+						: "md:grid-cols-[74px_20px_auto_40px_10px_54px_120px_30px_40px]"
 				)}>
 				{/* Rank */}
 				<Rank
@@ -70,12 +73,22 @@ const LeaderboardItem = (props) => {
 				{/* Name */}
 				<Name missing={props.data?.missing} name={props.data.name} />
 				{/* Wins */}
-				<Wins missing={props.data?.missing} wins={props.data?.detailData?.wins} />
-				<div className="bg-cswhite w-[2px] h-2/3 ml-1 dark:bg-csgraydarkest opacity-60 dark:opacity-20 hidden md:block" />
+				<Wins
+					missing={props.data?.missing}
+					wins={props.data?.detailData?.wins}
+					isBetaSeason={props.selectedSeason === "Beta Season"}
+				/>
+				<div
+					className={cn(
+						"bg-cswhite w-[2px] h-2/3 ml-1 dark:bg-csgraydarkest opacity-60 dark:opacity-20 hidden md:block",
+						props.selectedSeason === "Beta Season" && "md:hidden"
+					)}
+				/>
 				{/* Wins */}
 				<WinPercentage
 					missing={props.data?.missing}
 					winPercentage={props.data?.detailData?.winpercentage}
+					isBetaSeason={props.selectedSeason === "Beta Season"}
 				/>
 				{/* Rating */}
 				<RatingIcon
@@ -85,7 +98,11 @@ const LeaderboardItem = (props) => {
 					lightweight={props.lightweight}
 					render={render}
 				/>
-				<Region region={props.data?.detailData?.region} missing={props.data?.missing} />
+				<Region
+					region={props.data?.detailData?.region}
+					missing={props.data?.missing}
+					isBetaSeason={props.selectedSeason === "Beta Season"}
+				/>
 				{/* Stats button */}
 				{props.selectedRegion === "World" && !props?.data?.missing && (
 					<button
@@ -108,13 +125,16 @@ const LeaderboardItem = (props) => {
 					lightweight={props.lightweight}
 					currentScore={props.data.score}
 					currentRank={props.data.rank}
+					wins={props.data.detailData?.wins}
+					winPercentage={props.data?.detailData?.winpercentage}
 					currentMatches={
 						props.data.detailData?.wins +
 						props.data.detailData?.ties +
 						props.data.detailData?.losses
 					}
 					currentMaps={props.data.detailData?.maps}
-					selectedSeason={props.selectedSeason}
+					isBetaSeason={props.selectedSeason === "Beta Season"}
+					region={props.data?.detailData?.region}
 				/>
 			)}
 		</li>

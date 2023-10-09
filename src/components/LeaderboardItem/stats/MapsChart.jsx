@@ -54,6 +54,7 @@ const MapsChart = (props) => {
 	const darkmode = useSelector((state) => state.darkmode);
 
 	const isMobile = useCheckMobileScreen();
+	if (props.isBetaSeason) return;
 
 	const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
