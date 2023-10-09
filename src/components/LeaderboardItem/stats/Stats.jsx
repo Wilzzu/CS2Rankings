@@ -26,7 +26,7 @@ const Stats = (props) => {
 				props.index % 2
 					? "bg-[#ECECEC] dark:bg-[#363636]"
 					: "bg-cswhitesemi dark:bg-darkcswhitesemi",
-				props.isBetaSeason ? "h-72 md:h-44" : "h-[34rem] md:h-96"
+				props.isBetaSeason ? "h-72 md:h-44" : "h-[36rem] md:h-96"
 			)}>
 			{/* Loading states */}
 			{props.isRefetching && showLoading ? (
@@ -42,12 +42,12 @@ const Stats = (props) => {
 					<div
 						className={cn(
 							"flex flex-col md:flex-row items-center justify-center w-full p-2 md:gap-4",
-							props.isBetaSeason ? "h-full" : "h-[65%] md:h-[45%]"
+							props.isBetaSeason ? "h-full" : "h-[55%] md:h-[45%]"
 						)}>
 						{/* Mobile stats */}
 						<div
 							className={cn(
-								"flex items-center justify-between gap-4 w-full mb-2 md:hidden text-xs",
+								"flex items-center justify-center gap-5 w-full mb-2 md:hidden text-xs",
 								props.isBetaSeason && "hidden"
 							)}>
 							<p className="mt-1">
