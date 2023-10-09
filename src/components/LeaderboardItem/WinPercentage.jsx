@@ -1,7 +1,6 @@
 import { cn } from "../../../lib/utils";
 
 const WinPercentage = (props) => {
-	// TODO: Remove these from beta season
 	if (props.missing || !props.winPercentage)
 		return (
 			<p
