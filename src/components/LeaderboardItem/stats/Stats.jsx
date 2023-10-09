@@ -6,6 +6,7 @@ import infoIcon from "../../../assets/infoIcon.svg";
 import RatingChart from "./RatingChart";
 import MatchesChart from "./MatchesChart";
 import MapsChart from "./MapsChart";
+import Region from "../Region";
 
 const Stats = (props) => {
 	const [showLoading, setShowLoading] = useState(false);
@@ -25,7 +26,7 @@ const Stats = (props) => {
 				props.index % 2
 					? "bg-[#ECECEC] dark:bg-[#363636]"
 					: "bg-cswhitesemi dark:bg-darkcswhitesemi",
-				props.selectedSeason === "Beta Season" ? "h-44" : "h-[34rem] md:h-96"
+				props.isBetaSeason ? "h-72 md:h-44" : "h-[34rem] md:h-96"
 			)}>
 			{/* Loading states */}
 			{props.isRefetching && showLoading ? (
@@ -41,8 +42,26 @@ const Stats = (props) => {
 					<div
 						className={cn(
 							"flex flex-col md:flex-row items-center justify-center w-full p-2 md:gap-4",
-							props.selectedSeason === "Beta Season" ? "h-full" : "h-1/2 md:h-[45%]"
+							props.isBetaSeason ? "h-full" : "h-[65%] md:h-[45%]"
 						)}>
+						{/* Mobile stats */}
+						<div
+							className={cn(
+								"flex items-center justify-between gap-4 w-full mb-2 md:hidden text-xs",
+								props.isBetaSeason && "hidden"
+							)}>
+							<p className="mt-1">
+								Wins: <span className="font-score">{props.wins}</span>
+							</p>
+							<p className="mt-1">
+								Win%: <span className="font-score">{props.winPercentage}%</span>
+							</p>
+							<div className="flex items-center justify-center gap-1">
+								<p className="mt-1">Region: </p>
+								<Region region={props.region} isBetaSeason={props.isBetaSeason} isStat={true} />
+							</div>
+						</div>
+						{/* Normal stats */}
 						<RankChart
 							data={props.data.history}
 							lightweight={props.lightweight}
@@ -59,18 +78,20 @@ const Stats = (props) => {
 					<div
 						className={cn(
 							"flex flex-col md:flex-row items-center justify-center w-full h-1/2 md:h-[55%] px-2 md:pb-2 md:gap-4",
-							props.selectedSeason === "Beta Season" && "hidden"
+							props.isBetaSeason && "hidden"
 						)}>
 						<MatchesChart
 							data={props.data.history}
 							lightweight={props.lightweight}
 							index={props.index}
 							currentMatches={props.currentMatches}
+							isBetaSeason={props.isBetaSeason}
 						/>
 						<MapsChart
 							data={props.currentMaps}
 							lightweight={props.lightweight}
 							index={props.index}
+							isBetaSeason={props.isBetaSeason}
 						/>
 					</div>
 				</div>

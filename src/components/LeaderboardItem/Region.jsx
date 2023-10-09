@@ -5,7 +5,7 @@ const getColor = (region) => {
 		case "NA":
 			return "text-[#BA4BE4]";
 		case "SA":
-			return "text-[#40BBE4]";
+			return "text-[#32B4F8]";
 		case "EU":
 			return "text-[#F2C700]";
 		case "AS":
@@ -20,8 +20,13 @@ const getColor = (region) => {
 };
 
 const Region = (props) => {
+	if (props.isBetaSeason) return <div className="hidden" />;
 	return (
-		<div className="w-full h-full hidden md:flex items-center justify-center">
+		<div
+			className={cn(
+				"w-full h-full md:flex items-center justify-center",
+				props.isStat ? "flex" : "hidden"
+			)}>
 			<p
 				className={cn(
 					"font-bold drop-shadow-region text-base tracking-wider mt-1 mr-[0.4rem]",

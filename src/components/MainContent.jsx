@@ -47,7 +47,7 @@ const MainContent = (props) => {
 					)}>
 					<LeaderboardColumnNames
 						lightweight={props.lightweight}
-						selectedSeason={selectedSeason}
+						isBetaSeason={selectedSeason === "Beta Season"}
 						selectedRegion={selectedRegion}
 					/>
 					<LeaderboardContent
