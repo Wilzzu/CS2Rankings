@@ -10,15 +10,16 @@ import {
 } from "recharts";
 import { cn } from "../../../../lib/utils";
 import { useState } from "react";
+import useCheckMobileScreen from "../../../hooks/useCheckMobileScreen";
 
 const mapIcons = [
-	"/favicon.svg",
-	"/favicon.svg",
-	"/favicon.svg",
-	"/favicon.svg",
-	"/favicon.svg",
-	"/favicon.svg",
-	"/favicon.svg",
+	"/assets/maps/anubis.svg",
+	"/assets/maps/inferno.svg",
+	"/assets/maps/mirage.svg",
+	"/assets/maps/vertigo.svg",
+	"/assets/maps/overpass.svg",
+	"/assets/maps/nuke.svg",
+	"/assets/maps/ancient.svg",
 ];
 
 // Format data properly
@@ -33,15 +34,26 @@ const prepareData = (data) => {
 	return [...newData].reverse();
 };
 
-const MapIconFormatter = ({ x, y, payload }) => {
+const MapIconFormatter = ({ x, y, payload, isMobile }) => {
 	if (!payload && !payload?.length) return;
-	return <image x={x - 12} y={y - 12} xlinkHref={mapIcons[payload.index]} width={28} height={28} />;
+	return (
+		<image
+			x={isMobile ? x - 10 : x - 15}
+			y={isMobile ? y - 8 : y - 14}
+			xlinkHref={mapIcons[payload.index]}
+			width={isMobile ? 18 : 32}
+			height={isMobile ? 18 : 32}
+			opacity={0.95}
+		/>
+	);
 };
 
 const MapsChart = (props) => {
 	const [data] = useState(prepareData(props.data));
 
 	const darkmode = useSelector((state) => state.darkmode);
+
+	const isMobile = useCheckMobileScreen();
 
 	const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
@@ -73,23 +85,24 @@ const MapsChart = (props) => {
 	// 		</div>
 	// 	);
 	return (
-		<div className="relative h-1/2 md:h-full w-full md:w-1/2 font-hanken text-[0.7rem] md:text-xs flex flex-col items-center">
-			<p className=" absolute -top-4 text-xs md:text-lg font-medium">Recent wins</p>
+		<div className="relative h-1/2 md:h-full w-full md:w-1/2 font-hanken text-[0.7rem] md:text-xs flex flex-col items-center justify-center">
+			<p className="absolute left-2 -rotate-90 text-xs md:text-lg font-medium">Recent wins</p>
 			<ResponsiveContainer width="100%" height="100%">
 				<RadarChart
-					outerRadius="70%"
-					innerRadius="15%"
+					outerRadius="85%"
+					innerRadius="20%"
 					data={data}
-					strokeOpacity={darkmode ? 0.5 : 1}>
+					strokeOpacity={darkmode ? 0.25 : 1}>
 					<PolarGrid />
 					<PolarRadiusAxis domain={[0, 3]} fillOpacity={0} strokeOpacity={0} tickCount={4} />
-					<PolarAngleAxis dataKey="name" tick={<MapIconFormatter />} />
+					<PolarAngleAxis dataKey="name" tick={<MapIconFormatter isMobile={isMobile} />} />
 					<Radar
 						dataKey="val"
 						stroke={darkmode ? "#FFA51A" : "#447CE6"}
 						fill={darkmode ? "#FFA51A" : "#447CE6"}
-						strokeWidth={1.5}
+						strokeWidth={1.2}
 						fillOpacity={0.7}
+						isAnimationActive={!props.lightweight}
 					/>
 					<Tooltip content={<CustomTooltip />} />
 				</RadarChart>

@@ -21,10 +21,11 @@ const Stats = (props) => {
 	return (
 		<div
 			className={cn(
-				"flex items-center justify-center gap-4 h-96 text-darktext dark:text-cswhitebright text-lg font-poppins",
+				"flex items-center justify-center gap-4 text-darktext dark:text-cswhitebright text-lg font-poppins",
 				props.index % 2
 					? "bg-[#ECECEC] dark:bg-[#363636]"
-					: "bg-cswhitesemi dark:bg-darkcswhitesemi"
+					: "bg-cswhitesemi dark:bg-darkcswhitesemi",
+				props.selectedSeason === "Beta Season" ? "h-44" : "h-[34rem] md:h-96"
 			)}>
 			{/* Loading states */}
 			{props.isRefetching && showLoading ? (
@@ -37,7 +38,11 @@ const Stats = (props) => {
 			) : props.data ? (
 				// Content
 				<div className="flex flex-col w-full h-full items-center md:gap-2">
-					<div className="flex flex-col md:flex-row items-center justify-center w-full h-[45%] p-2 md:gap-4">
+					<div
+						className={cn(
+							"flex flex-col md:flex-row items-center justify-center w-full p-2 md:gap-4",
+							props.selectedSeason === "Beta Season" ? "h-full" : "h-1/2 md:h-[45%]"
+						)}>
 						<RankChart
 							data={props.data.history}
 							lightweight={props.lightweight}
@@ -51,7 +56,11 @@ const Stats = (props) => {
 							currentScore={props.currentScore}
 						/>
 					</div>
-					<div className="flex flex-col md:flex-row items-center justify-center w-full h-[55%] p-2 md:gap-4">
+					<div
+						className={cn(
+							"flex flex-col md:flex-row items-center justify-center w-full h-1/2 md:h-[55%] px-2 md:pb-2 md:gap-4",
+							props.selectedSeason === "Beta Season" && "hidden"
+						)}>
 						<MatchesChart
 							data={props.data.history}
 							lightweight={props.lightweight}

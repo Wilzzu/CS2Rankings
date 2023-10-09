@@ -22,6 +22,7 @@ const customDay = (date) => {
 };
 
 const customRank = (rating) => {
+	if (rating % 1) return Math.ceil(rating);
 	if (rating <= 100) return rating;
 	return Math.ceil(rating / 10) * 10;
 };

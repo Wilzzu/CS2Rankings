@@ -52,7 +52,7 @@ const LeaderboardItem = (props) => {
 			{/* Content */}
 			<div
 				className={cn(
-					`relative grid grid-cols-[50px_auto_70px_20px] md:grid-cols-[74px_20px_auto_40px_10px_54px_120px_30px_40px] text-sm md:text-lg items-center px-1 font-poppins text-darktext dark:text-cswhitesemi`,
+					`relative grid grid-cols-[28px_18px_auto_70px_20px] md:grid-cols-[74px_20px_auto_40px_10px_54px_120px_30px_40px] text-sm md:text-lg items-center px-1 font-poppins text-darktext dark:text-cswhitesemi`,
 					props.index % 2
 						? "bg-[#ECECEC] dark:bg-[#363636]"
 						: "bg-cswhitesemi dark:bg-darkcswhitesemi",
@@ -66,12 +66,12 @@ const LeaderboardItem = (props) => {
 					missing={props.data?.missing}
 					selectedSeason={props.selectedSeason}
 				/>
-				<div className="bg-cswhite w-[2px] h-2/3 dark:bg-csgraydarkest opacity-70 dark:opacity-50" />
+				<div className="bg-cswhite w-[2px] h-2/3 dark:bg-csgraydarkest opacity-70 dark:opacity-50 ml-2 md:ml-0" />
 				{/* Name */}
 				<Name missing={props.data?.missing} name={props.data.name} />
 				{/* Wins */}
 				<Wins missing={props.data?.missing} wins={props.data?.detailData?.wins} />
-				<div className="bg-cswhite w-[2px] h-2/3 ml-1 dark:bg-csgraydarkest opacity-60 dark:opacity-20" />
+				<div className="bg-cswhite w-[2px] h-2/3 ml-1 dark:bg-csgraydarkest opacity-60 dark:opacity-20 hidden md:block" />
 				{/* Wins */}
 				<WinPercentage
 					missing={props.data?.missing}
@@ -114,6 +114,7 @@ const LeaderboardItem = (props) => {
 						props.data.detailData?.losses
 					}
 					currentMaps={props.data.detailData?.maps}
+					selectedSeason={props.selectedSeason}
 				/>
 			)}
 		</li>
