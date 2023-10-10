@@ -27,16 +27,17 @@ const Settings = (props) => {
 						? "bg-cswhite dark:bg-darkcswhitesemi"
 						: "bg-cswhitebright dark:bg-darkcswhitebright"
 				)}>
+				<label htmlFor="settings" className="hidden">
+					Settings
+				</label>
 				<input
 					name="settings"
+					id="settings"
 					type="checkbox"
 					onBlur={() => handleUnfocus()}
 					onChange={() => setToggle((prev) => !prev)}
 					className={cn("appearance-none w-full h-full z-10 hover:cursor-pointer")}
 				/>
-				<label htmlFor="settings" className="hidden">
-					Settings
-				</label>
 				{/* Icon */}
 				<div className="duration-700 w-6 md:w-8 h-auto aspect-square group-hover:rotate-[32deg] absolute z-0">
 					<SettingsIcon color={darkmode ? "#e38618" : "#1c62e6"} />

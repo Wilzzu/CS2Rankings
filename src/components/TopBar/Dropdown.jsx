@@ -46,6 +46,7 @@ const Dropdown = (props) => {
 			{/* For opening the dropdown and checking when user clicks away */}
 			<input
 				name={props.name}
+				id={props.name}
 				type="checkbox"
 				onBlur={() => handleUnfocus()}
 				onChange={() => setToggle((prev) => !prev)}
