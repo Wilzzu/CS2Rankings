@@ -35,7 +35,9 @@ const Dropdown = (props) => {
 						? "opacity-50"
 						: "group-hover:bg-hoverwhite dark:group-hover:bg-darkhoverwhite"
 				)}>
-				<p className="text-darktext dark:text-cswhitebright truncate">{props.header}</p>
+				<label htmlFor={props.name} className="text-darktext dark:text-cswhitebright truncate">
+					{props.header}
+				</label>
 				{/* Dropdown arrow */}
 				<div className="w-4 h-auto aspect-square">
 					<ArrowIcon color={darkmode ? "#e38618" : "#1c62e6"} rotate={true} />
