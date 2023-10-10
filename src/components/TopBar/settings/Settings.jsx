@@ -22,12 +22,12 @@ const Settings = (props) => {
 			{/* Settings button */}
 			<div
 				className={cn(
-					"group flex items-center justify-center h-10 w-10 md:h-14 md:w-14 hover:bg-hoverwhite dark:hover:bg-darkhoverwhite",
+					"group flex items-center justify-center h-10 w-10 md:h-14 md:w-14 hover:bg-hoverwhite dark:hover:bg-darkhoverwhite overflow-hidden",
 					props.isSticky
 						? "bg-cswhite dark:bg-darkcswhitesemi"
 						: "bg-cswhitebright dark:bg-darkcswhitebright"
 				)}>
-				<label htmlFor="settings" className="hidden">
+				<label htmlFor="settings" className="opacity-0 absolute right-96">
 					Settings
 				</label>
 				<input
