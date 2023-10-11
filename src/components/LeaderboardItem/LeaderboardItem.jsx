@@ -93,6 +93,7 @@ const LeaderboardItem = (props) => {
 				{/* Rating */}
 				<RatingIcon
 					score={props.data?.missing ? "?????" : props.data.formattedScore}
+					scoreNormal={props.data?.missing ? null : props.data.score}
 					tier={props.data.tier}
 					missing={props.data?.missing}
 					lightweight={props.lightweight}

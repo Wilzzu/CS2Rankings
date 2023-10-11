@@ -35,7 +35,7 @@ const RatingIcon = (props) => {
 	const [loaded, setLoaded] = useState(false);
 
 	// Calculate rating icon
-	const calcIcon = (tier, small, blur = false) => {
+	const calcIcon = (tier, score, blur = false) => {
 		let path = "/assets/ranks";
 		let format = ".webp";
 
@@ -48,21 +48,29 @@ const RatingIcon = (props) => {
 		}
 
 		path = path + "/rank";
-		if (small === "000") path = path + "down";
-		else if (small === "999") path = path + "up";
+
+		if (
+			score === 5000 ||
+			score === 10000 ||
+			score === 15000 ||
+			score === 20000 ||
+			score === 25000 ||
+			score === 30000
+		)
+			path = path + "down";
+		else if (
+			score === 5000 - 1 ||
+			score === 10000 - 1 ||
+			score === 15000 - 1 ||
+			score === 20000 - 1 ||
+			score === 25000 - 1 ||
+			score === 30000 - 1
+		)
+			path = path + "up";
 
 		if (tier === 6) path = path + "Gold";
 		return path + format;
 	};
-
-	// <div
-	// 			className={cn(
-	// 				"absolute h-7 md:h-9 -skew-x-12 w-[84px] flex gap-[1px]",
-	// 				tempColor[props.tier][0]
-	// 			)}>
-	// 			<div className={"w-[5px] h-full " + tempColor[props.tier][1]} />
-	// 			<div className={"w-[5px] h-full " + tempColor[props.tier][1]} />
-	// 		</div>
 
 	return (
 		<div
@@ -93,7 +101,7 @@ const RatingIcon = (props) => {
 			{props.render && (
 				<img
 					src={
-						props.missing ? "/assets/ranks/rankGold.webp" : calcIcon(props.tier, props.score.small)
+						props.missing ? "/assets/ranks/rankGold.webp" : calcIcon(props.tier, props.scoreNormal)
 					}
 					onLoad={() => setLoaded(true)}
 					alt="Rating icon"
@@ -106,7 +114,7 @@ const RatingIcon = (props) => {
 					src={
 						props.missing
 							? "/assets/ranks/blur/rankGold.png"
-							: calcIcon(props.tier, props.score.small, true)
+							: calcIcon(props.tier, props.scoreNormal, true)
 					}
 					alt="Rating icon"
 					loading="lazy"
