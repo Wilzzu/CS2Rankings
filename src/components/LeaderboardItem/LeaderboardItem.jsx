@@ -45,8 +45,10 @@ const LeaderboardItem = (props) => {
 				props.index % 2
 					? "bg-[#ECECEC] dark:bg-[#363636]"
 					: "bg-cswhitesemi dark:bg-darkcswhitesemi",
-				props.highlight && !props.lightweight && "borderColors animate-highlightBorder",
-				props.highlight && props.lightweight && "borderColors animate-highlightBorderLight",
+				props.highlight && !darkmode && "borderColors",
+				props.highlight && darkmode && "darkBorderColors",
+				props.highlight && !props.lightweight && "animate-highlightBorder",
+				props.highlight && props.lightweight && "animate-highlightBorderLight",
 				!props.lightweight && "shadow-listitem"
 			)}>
 			{/* Content */}

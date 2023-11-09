@@ -15,18 +15,12 @@ import Background from "./assets/Background.jsx";
 import useCookieHandler from "./hooks/useCookieHandler";
 
 const preloadImgs = [
-	"/assets/ranks/blur/rank.png",
 	"/assets/ranks/blur/rankdown.png",
 	"/assets/ranks/blur/rankup.png",
-	"/assets/ranks/blur/rankGold.png",
 	"/assets/ranks/blur/rankdownGold.png",
 	"/assets/ranks/blur/rankupGold.png",
-	"/assets/ranks/rank.webp",
-	"/assets/ranks/rankdown.webp",
-	"/assets/ranks/rankup.webp",
-	"/assets/ranks/rankGold.webp",
-	"/assets/ranks/rankdownGold.webp",
-	"/assets/ranks/rankupGold.webp",
+	"/assets/ranks/rank.svg",
+	"/assets/ranks/rankGold.svg",
 ];
 
 function App() {

@@ -38,16 +38,7 @@ const RatingIcon = (props) => {
 	const calcIcon = (tier, score, blur = false) => {
 		let path = "/assets/ranks";
 		let format = ".webp";
-
-		if (blur) {
-			path = path + "/blur";
-			format = ".png";
-		} else if (props.lightweight) {
-			path = path + "/light";
-			format = ".png";
-		}
-
-		path = path + "/rank";
+		let type = "";
 
 		if (
 			score === 5000 ||
@@ -57,7 +48,7 @@ const RatingIcon = (props) => {
 			score === 25000 ||
 			score === 30000
 		)
-			path = path + "down";
+			type = "down";
 		else if (
 			score === 5000 - 1 ||
 			score === 10000 - 1 ||
@@ -66,7 +57,21 @@ const RatingIcon = (props) => {
 			score === 25000 - 1 ||
 			score === 30000 - 1
 		)
-			path = path + "up";
+			type = "up";
+		else {
+			if (tier === 6) return path + "/rankGold.svg";
+			return path + "/rank.svg";
+		}
+
+		if (blur) {
+			path = path + "/blur";
+			format = ".png";
+		} else if (props.lightweight) {
+			path = path + "/light";
+			format = ".png";
+		}
+
+		path = path + "/rank" + type;
 
 		if (tier === 6) path = path + "Gold";
 		return path + format;
@@ -101,7 +106,7 @@ const RatingIcon = (props) => {
 			{props.render && (
 				<img
 					src={
-						props.missing ? "/assets/ranks/rankGold.webp" : calcIcon(props.tier, props.scoreNormal)
+						props.missing ? "/assets/ranks/rankGold.svg" : calcIcon(props.tier, props.scoreNormal)
 					}
 					onLoad={() => setLoaded(true)}
 					alt="Rating icon"
@@ -113,7 +118,7 @@ const RatingIcon = (props) => {
 				<img
 					src={
 						props.missing
-							? "/assets/ranks/blur/rankGold.png"
+							? "/assets/ranks/rankGold.svg"
 							: calcIcon(props.tier, props.scoreNormal, true)
 					}
 					alt="Rating icon"

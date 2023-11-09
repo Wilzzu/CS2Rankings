@@ -3,6 +3,17 @@
 	background: linear-gradient(
 			3deg,
 			rgba(0, 0, 0, 0) 25%,
+			rgba(74, 104, 255, 0.178) 30%,
+			rgba(74, 104, 255, 1) 35%,
+			rgba(74, 104, 255, 0.4) 40%,
+			rgba(0, 0, 0, 0) 45%
+		)
+		0 0/100% 250%;
+}
+.darkBorderColors {
+	background: linear-gradient(
+			3deg,
+			rgba(0, 0, 0, 0) 25%,
 			rgba(255, 137, 10, 0.178) 30%,
 			rgba(255, 143, 7, 0.815) 35%,
 			rgba(255, 137, 11, 0.4) 40%,
