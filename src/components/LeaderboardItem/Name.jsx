@@ -1,5 +1,6 @@
 import { useState } from "react";
 import infoIcon from "../../assets/infoIcon.svg";
+import { cn } from "../../../lib/utils";
 
 const Name = (props) => {
 	const [showInfo, setShowInfo] = useState(false);
@@ -37,7 +38,13 @@ const Name = (props) => {
 					</div>
 				</div>
 			) : (
-				<p className="truncate group-hover/main:tracking-wider duration-150">{props.name}</p>
+				<p
+					className={cn(
+						"truncate duration-150",
+						!props.lightweight && "group-hover/main:tracking-wider"
+					)}>
+					{props.name}
+				</p>
 			)}
 		</>
 	);
