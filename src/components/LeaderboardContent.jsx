@@ -99,6 +99,8 @@ const LeaderboardContent = (props) => {
 						selectedRegion={props.selectedRegion}
 						selectedSeason={props.selectedSeason}
 						lightweight={props.lightweight}
+						showClickInfo={props.showClickInfo}
+						setShowClickInfo={props.setShowClickInfo}
 					/>
 				)}
 			</ViewportList>

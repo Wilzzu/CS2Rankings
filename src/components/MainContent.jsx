@@ -9,6 +9,7 @@ const MainContent = (props) => {
 	const [focusId, setFocusId] = useState(null);
 	const [selectedRegion, setSelectedRegion] = useState("World");
 	const [selectedSeason, setSelectedSeason] = useState("Season 1");
+	const [showClickInfo, setShowClickInfo] = useState(true);
 
 	const {
 		cachedData,
@@ -49,6 +50,7 @@ const MainContent = (props) => {
 						lightweight={props.lightweight}
 						isBetaSeason={selectedSeason === "Beta Season"}
 						selectedRegion={selectedRegion}
+						showClickInfo={showClickInfo}
 					/>
 					<LeaderboardContent
 						data={cachedData}
@@ -62,6 +64,8 @@ const MainContent = (props) => {
 						selectedRegion={selectedRegion}
 						selectedSeason={selectedSeason}
 						lightweight={props.lightweight}
+						showClickInfo={showClickInfo}
+						setShowClickInfo={setShowClickInfo}
 					/>
 				</div>
 			</div>

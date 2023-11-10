@@ -37,7 +37,7 @@ const Name = (props) => {
 					</div>
 				</div>
 			) : (
-				<p className="truncate">{props.name}</p>
+				<p className="truncate group-hover/main:tracking-wider duration-150">{props.name}</p>
 			)}
 		</>
 	);

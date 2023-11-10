@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import "./App.css";
-// import usePrefetchLeaderboard from "./hooks/usePrefetchLeaderboard";
 import MainContent from "./components/MainContent";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import Header from "./components/Header";
@@ -24,11 +23,6 @@ const preloadImgs = [
 ];
 
 function App() {
-	// const { prefetchLeaderboard } = usePrefetchLeaderboard();
-	// useEffect(() => {
-	// 	prefetchLeaderboard();
-	// }, [prefetchLeaderboard]);
-
 	const lightweight = useSelector((state) => state.lightweight);
 	const darkmode = useSelector((state) => state.darkmode);
 	useCookieHandler();
@@ -69,7 +63,7 @@ function App() {
 			ref={ref}
 			style={{
 				backgroundImage: `url("data:image/svg+xml,${encodeURIComponent(
-					renderToStaticMarkup(<Background dark={darkmode} />)
+					renderToStaticMarkup(<Background dark={darkmode ? 1 : 0} />)
 				)}")`,
 			}}
 			className={cn(
