@@ -23,7 +23,7 @@ const LeaderboardItem = (props) => {
 		}, 100);
 	}, []);
 	const darkmode = useSelector((state) => state.darkmode);
-
+	// TODO: Mobile
 	return (
 		// Item container, used for making animated border
 		<li
@@ -43,16 +43,18 @@ const LeaderboardItem = (props) => {
 			{/* Content */}
 			<div
 				className={cn(
-					`relative grid grid-cols-[28px_18px_auto_90px_20px] md:grid-cols-[74px_20px_auto_40px_10px_54px_120px_30px] text-sm md:text-lg items-center px-1 font-poppins text-darktext dark:text-cswhitesemi 
+					`relative grid grid-cols-[28px_18px_auto_90px_20px] md:grid-cols-[74px_20px_auto_74px_10px_90px_120px_30px] text-sm md:text-lg items-center px-1 font-poppins text-darktext dark:text-cswhitesemi 
 					group-hover/main:text-csbrightblue dark:group-hover/main:text-csorange`,
 					props.index % 2
 						? "bg-[#ECECEC] dark:bg-[#363636]"
 						: "bg-cswhitesemi dark:bg-darkcswhitesemi",
 					props.data.missing && "text-csgray dark:text-[#707070]",
 					props.lightweight ? "h-7 md:h-9" : "h-9 md:h-11",
-					props.selectedSeason === "Beta Season"
+					props.selectedSeason === "Beta Season" &&
+						"md:grid-cols-[74px_20px_auto_74px_10px_90px_120px_10px]",
+					props.showStats && props.selectedSeason === "Beta Season"
 						? "md:grid-cols-[74px_20px_auto_74px_10px_90px_120px_10px]"
-						: "md:grid-cols-[74px_20px_auto_74px_10px_90px_120px_30px]"
+						: props.showStats && "md:grid-cols-[74px_20px_auto_74px_64px_74px_2px_90px_120px_30px]"
 				)}>
 				{/* Rank */}
 				<Rank
@@ -63,9 +65,34 @@ const LeaderboardItem = (props) => {
 				/>
 				<div className="bg-cswhite w-[2px] h-2/3 dark:bg-csgraydarkest opacity-70 dark:opacity-50 ml-2 md:ml-0" />
 				{/* Name */}
-				<Name missing={props.data?.missing} name={props.data.name} />
+				<Name
+					missing={props.data?.missing}
+					name={props.data.name}
+					lightweight={props.lightweight}
+				/>
 				{/* Wins */}
-				<StatBubble title="Wins" value={props.data?.detailData?.wins} startEnd={true} />
+				<StatBubble
+					title="Wins"
+					value={props.data?.detailData?.wins}
+					justify={"justify-end"}
+					color={props.showStats && "dark:text-[#64a2ff]"}
+				/>
+				{props.showStats && (
+					<>
+						<StatBubble
+							title="Ties"
+							value={props.data?.detailData?.ties || "0"}
+							justify={"justify-center"}
+							color={"text-darktext dark:text-cswhitesemi"}
+						/>
+						<StatBubble
+							title="Losses"
+							value={props.data?.detailData?.losses}
+							justify={"justify-start"}
+							color={props.showStats && "text-csorangedark"}
+						/>
+					</>
+				)}
 				{/* Divider */}
 				<div />
 				{/* Win Percentage */}
