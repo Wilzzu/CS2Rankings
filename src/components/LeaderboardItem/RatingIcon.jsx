@@ -80,7 +80,7 @@ const RatingIcon = (props) => {
 	return (
 		<div
 			className={cn(
-				"relative w-full h-full flex items-center justify-center",
+				"relative w-full flex items-center justify-center",
 				props.missing && "opacity-50"
 			)}>
 			{/* Rating text */}
@@ -100,7 +100,7 @@ const RatingIcon = (props) => {
 					</>
 				)}
 			</p>
-
+			{/* TODO: Make img smaller on lightweight */}
 			{/* Rating icon */}
 			{/* Small image */}
 			{props.render && (
@@ -111,7 +111,7 @@ const RatingIcon = (props) => {
 					onLoad={() => setLoaded(true)}
 					alt="Rating icon"
 					loading="lazy"
-					className={cn("absolute filter h-7 md:h-9 w-auto", tierFilter[props.tier])}
+					className={cn("absolute filter w-auto h-7 md:h-9", tierFilter[props.tier])}
 				/>
 			)}
 			{!loaded && (
@@ -123,7 +123,7 @@ const RatingIcon = (props) => {
 					}
 					alt="Rating icon"
 					loading="lazy"
-					className={cn("absolute filter h-7 md:h-9 w-auto", tierFilter[props.tier])}
+					className={cn("absolute filter w-auto h-7 md:h-9", tierFilter[props.tier])}
 				/>
 			)}
 		</div>
