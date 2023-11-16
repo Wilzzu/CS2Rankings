@@ -18,9 +18,9 @@ const Privacy = () => {
 					in any way.
 					<br />
 					We save only one cookie on your device, which is necessary for the website to function
-					correctly. This cookie is used to check if you have accepted our GDPR Cookie Consent, and
-					if you have enabled lightweight or dark mode. This cookie will stay only on your device
-					and is never sent to our servers. The cookie will expire in 1 year.
+					correctly. This cookie is used to check your acceptance of the GDPR Cookie Consent and
+					enables us to remember and apply your preferred site settings. This cookie will stay only
+					on your device and is never sent to our servers. The cookie expires in 1 year.
 				</p>
 				<p>
 					<b>We do however</b> use <b>Cloudflare</b>, a third party service, to protect our website

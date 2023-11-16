@@ -4,7 +4,7 @@ const LeaderboardColumnNames = (props) => {
 	return (
 		<div
 			className={cn(
-				"grid grid-cols-[28px_18px_auto_90px_20px] md:grid-cols-[74px_20px_auto_174px_120px_30px] text-xs md:text-base bg-cswhitebright dark:bg-darkcswhitebright text-center font-poppins py-2 px-4 text-csgraydark sticky z-[2] list-none",
+				"grid grid-cols-[28px_18px_auto_90px] md:grid-cols-[74px_20px_auto_174px_120px_30px] text-xs md:text-base bg-cswhitebright dark:bg-darkcswhitebright text-center font-poppins py-2 px-4 text-csgraydark sticky z-[2] list-none",
 				props.lightweight ? "top-0" : "top-28 md:top-[6.5rem]",
 				props.isBetaSeason
 					? "md:grid-cols-[74px_20px_auto_174px_120px_10px]"

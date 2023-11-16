@@ -23,6 +23,9 @@ const LeaderboardItem = (props) => {
 		}, 100);
 	}, []);
 	const darkmode = useSelector((state) => state.darkmode);
+	const hideunknown = useSelector((state) => state.hideunknown);
+
+	if (props.data.missing && hideunknown) return;
 	// TODO: Mobile
 	return (
 		// Item container, used for making animated border
@@ -43,7 +46,7 @@ const LeaderboardItem = (props) => {
 			{/* Content */}
 			<div
 				className={cn(
-					`relative grid grid-cols-[28px_18px_auto_90px_20px] md:grid-cols-[74px_20px_auto_74px_10px_90px_120px_30px] text-sm md:text-lg items-center px-1 font-poppins text-darktext dark:text-cswhitesemi 
+					`relative grid grid-cols-[28px_18px_auto_0_0_0_90px_0] md:grid-cols-[74px_20px_auto_74px_10px_90px_120px_30px] text-sm md:text-lg items-center px-1 font-poppins text-darktext dark:text-cswhitesemi 
 					group-hover/main:text-csbrightblue dark:group-hover/main:text-csorange`,
 					props.index % 2
 						? "bg-[#ECECEC] dark:bg-[#363636]"
@@ -53,8 +56,9 @@ const LeaderboardItem = (props) => {
 					props.selectedSeason === "Beta Season" &&
 						"md:grid-cols-[74px_20px_auto_74px_10px_90px_120px_10px]",
 					props.showStats && props.selectedSeason === "Beta Season"
-						? "md:grid-cols-[74px_20px_auto_74px_10px_90px_120px_10px]"
-						: props.showStats && "md:grid-cols-[74px_20px_auto_74px_64px_74px_2px_90px_120px_30px]"
+						? "grid-cols-[28px_18px_auto_0_0_0_0_0_90px_0] md:grid-cols-[74px_20px_auto_0_0_0_0_0_120px_10px]"
+						: props.showStats &&
+								"grid-cols-[28px_18px_auto_0_0_0_0_0_90px_0] md:grid-cols-[74px_20px_auto_74px_64px_74px_2px_90px_120px_30px]"
 				)}>
 				{/* Rank */}
 				<Rank
@@ -76,6 +80,7 @@ const LeaderboardItem = (props) => {
 					value={props.data?.detailData?.wins}
 					justify={"justify-end"}
 					color={props.showStats && "dark:text-[#64a2ff]"}
+					selectedSeason={props.selectedSeason}
 				/>
 				{props.showStats && (
 					<>
@@ -84,12 +89,14 @@ const LeaderboardItem = (props) => {
 							value={props.data?.detailData?.ties || "0"}
 							justify={"justify-center"}
 							color={"text-darktext dark:text-cswhitesemi"}
+							selectedSeason={props.selectedSeason}
 						/>
 						<StatBubble
 							title="Losses"
-							value={props.data?.detailData?.losses}
+							value={props.data?.detailData?.losses || "0"}
 							justify={"justify-start"}
 							color={props.showStats && "text-csorangedark"}
+							selectedSeason={props.selectedSeason}
 						/>
 					</>
 				)}
@@ -124,6 +131,8 @@ const LeaderboardItem = (props) => {
 					currentScore={props.data.score}
 					currentRank={props.data.rank}
 					wins={props.data.detailData?.wins}
+					ties={props.data.detailData?.ties}
+					losses={props.data.detailData?.losses}
 					winPercentage={props.data?.detailData?.winpercentage}
 					currentMatches={
 						props.data.detailData?.wins +

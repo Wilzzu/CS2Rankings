@@ -1,17 +1,24 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+const defaultValues = {
+	lightweight: false,
+	darkmode: false,
+	hideunknown: true,
+};
+
 function getCookie(name) {
 	function escape(s) {
 		return s.replace(/([.*+?^$(){}|[\]/\\])/g, "\\$1");
 	}
-	var match = document.cookie.match(RegExp("(?:^|;\\s*)" + escape("CS2RANKINGS") + "=([^;]*)"));
+	let match = document.cookie.match(RegExp("(?:^|;\\s*)" + escape("CS2RANKINGS") + "=([^;]*)"));
 	if (match) {
 		try {
+			if (typeof JSON.parse(match[1])[name] === "undefined") return defaultValues[name]; // If value isn't found on cookie add it manually (aka if new cookies are added afterwards and user still has the old ones)
 			return JSON.parse(match[1])[name];
 		} catch (e) {
-			return false;
+			return defaultValues[name];
 		}
-	} else return false;
+	} else return defaultValues[name];
 }
 
 const storeSlice = createSlice({
@@ -19,6 +26,7 @@ const storeSlice = createSlice({
 	initialState: {
 		lightweight: getCookie("lightweight"),
 		darkmode: getCookie("darkmode"),
+		hideunknown: getCookie("hideunknown"),
 	},
 	reducers: {
 		toggleLightweight(state) {
@@ -26,6 +34,9 @@ const storeSlice = createSlice({
 		},
 		toggleDarkmode(state) {
 			state.darkmode = !state.darkmode;
+		},
+		toggleUnknown(state) {
+			state.hideunknown = !state.hideunknown;
 		},
 	},
 });
