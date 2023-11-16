@@ -2,16 +2,28 @@ import LeaderboardItem from "./LeaderboardItem/LeaderboardItem";
 import { Ring } from "@uiball/loaders";
 import infoIcon from "../assets/infoIcon.svg";
 import LeaderboardStatus from "./LeaderboardStatus";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ViewportList } from "react-viewport-list";
 import useGetPlayerHistory from "../hooks/useGetPlayerHistory";
 import settings from "../../lib/settings.json";
+import { useSelector } from "react-redux";
 
 const LeaderboardContent = (props) => {
 	const listRef = useRef(null);
 	const [highlightId, setHighlightId] = useState(null);
 	const [historyName, setHistoryName] = useState(null);
 
+	const hideunknown = useSelector((state) => state.hideunknown);
+	const darkmode = useSelector((state) => state.darkmode);
+
+	// Filter players if user has selected to hide unknown players
+	const players = useMemo(() => {
+		if (!props?.data?.players) return null;
+		if (hideunknown) return props.data.players.filter((e) => !e.missing);
+		return props.data.players;
+	}, [props?.data?.players, hideunknown]);
+
+	// Get player history
 	const { data, isRefetching, isRefetchError, refetchHistory, isSuccess } = useGetPlayerHistory(
 		historyName,
 		props.selectedSeason
@@ -24,9 +36,9 @@ const LeaderboardContent = (props) => {
 
 	// Scroll to selected player
 	useEffect(() => {
-		if (props.focusId && props?.data?.players) {
+		if (props.focusId && players) {
 			listRef.current.scrollToIndex({
-				index: props.data.players.findIndex((e) => e.id === props.focusId),
+				index: players.findIndex((e) => e.id === props.focusId),
 				offset: props.lightweight ? -124 : -248, //144 1st
 			});
 
@@ -36,7 +48,7 @@ const LeaderboardContent = (props) => {
 			setHighlightId(props.focusId);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [props.focusId, props?.data?.players, listRef]);
+	}, [props.focusId, players, listRef]);
 
 	// Handle loading and errors
 	if (props.isError || props.isRefetchError) {
@@ -54,7 +66,7 @@ const LeaderboardContent = (props) => {
 		);
 	}
 
-	if (props.data && props.data?.players?.length <= 0) {
+	if (props.data && players <= 0) {
 		return (
 			<LeaderboardStatus
 				icon={infoIcon}
@@ -78,7 +90,7 @@ const LeaderboardContent = (props) => {
 		<ul className="px-2">
 			<ViewportList
 				ref={listRef}
-				items={props.data.players}
+				items={players}
 				initialIndex={0}
 				initialOffset={-300}
 				itemSize={52}
@@ -101,6 +113,7 @@ const LeaderboardContent = (props) => {
 						lightweight={props.lightweight}
 						showClickInfo={props.showClickInfo}
 						setShowClickInfo={props.setShowClickInfo}
+						darkmode={darkmode}
 					/>
 				)}
 			</ViewportList>
