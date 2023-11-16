@@ -3,7 +3,6 @@ import Name from "./Name";
 import Rank from "./Rank";
 import RatingIcon from "./RatingIcon";
 import Stats from "./stats/Stats";
-import { useSelector } from "react-redux";
 import Region from "./Region";
 import { useEffect, useState } from "react";
 import StatBubble from "./stats/StatBubble";
@@ -22,11 +21,7 @@ const LeaderboardItem = (props) => {
 			setRender(true);
 		}, 100);
 	}, []);
-	const darkmode = useSelector((state) => state.darkmode);
-	const hideunknown = useSelector((state) => state.hideunknown);
 
-	if (props.data.missing && hideunknown) return;
-	// TODO: Mobile
 	return (
 		// Item container, used for making animated border
 		<li
@@ -36,8 +31,8 @@ const LeaderboardItem = (props) => {
 				props.index % 2
 					? "bg-[#ECECEC] dark:bg-[#363636]"
 					: "bg-cswhitesemi dark:bg-darkcswhitesemi",
-				props.highlight && !darkmode && "borderColors",
-				props.highlight && darkmode && "darkBorderColors",
+				props.highlight && !props.darkmode && "borderColors",
+				props.highlight && props.darkmode && "darkBorderColors",
 				props.highlight && !props.lightweight && "animate-highlightBorder",
 				props.highlight && props.lightweight && "animate-highlightBorderLight",
 				!props.lightweight && "shadow-listitem",
