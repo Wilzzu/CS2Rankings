@@ -1,9 +1,14 @@
 import { cn } from "../../../../lib/utils";
 
 const StatBubble = (props) => {
-	if (!props.value) return <span></span>;
+	if (!props.value || props.selectedSeason === "Beta Season") return <span></span>;
 	return (
-		<div className={cn("w-full flex justify-start", props.justify)}>
+		<div
+			className={cn(
+				"w-full flex justify-start invisible md:visible",
+				props.justify,
+				props.mobileStat && "visible"
+			)}>
 			<div className="flex px-[0.3rem] gap-[0.2rem] bg-slate-100 dark:bg-[#303030] items-center -skew-x-12 opacity-90">
 				<p className="text-xs font-semibold skew-x-12 text-darktext dark:text-cswhitesemi">
 					{props.title}:

@@ -4,12 +4,13 @@ import { useSelector } from "react-redux";
 const useCookieHandler = () => {
 	const lightweight = useSelector((state) => state.lightweight);
 	const darkmode = useSelector((state) => state.darkmode);
+	const hideunknown = useSelector((state) => state.hideunknown);
 
 	function getCookie() {
 		function escape(s) {
 			return s.replace(/([.*+?^$(){}|[\]/\\])/g, "\\$1");
 		}
-		var match = document.cookie.match(RegExp("(?:^|;\\s*)" + escape("CS2RANKINGS") + "=([^;]*)"));
+		let match = document.cookie.match(RegExp("(?:^|;\\s*)" + escape("CS2RANKINGS") + "=([^;]*)"));
 		if (match) {
 			try {
 				return JSON.parse(match[1]);
@@ -26,11 +27,11 @@ const useCookieHandler = () => {
 		// If already same value, don't edit the cookie
 		if (cookie && cookie[name] === value) return;
 
-		// // New expiry date
+		// New expiry date
 		let date = new Date();
 		date.setFullYear(date.getFullYear() + 1);
 
-		// // Set new value
+		// Set new value
 		cookie[name] = value;
 
 		// Save cookie
@@ -38,6 +39,7 @@ const useCookieHandler = () => {
 			GDPR: cookie.GDPR,
 			lightweight: cookie.lightweight,
 			darkmode: cookie.darkmode,
+			hideunknown: cookie.hideunknown,
 		})}; expires=${date.toGMTString()}; path=/;`;
 	}
 
@@ -50,6 +52,10 @@ const useCookieHandler = () => {
 		editCookie("darkmode", darkmode);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [darkmode]);
+	useEffect(() => {
+		editCookie("hideunknown", hideunknown);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [hideunknown]);
 };
 
 export default useCookieHandler;
