@@ -5,7 +5,7 @@ const StatBubble = (props) => {
 	return (
 		<div
 			className={cn(
-				"w-full flex justify-start invisible md:visible",
+				"w-full flex justify-start invisible md:visible select-none",
 				props.justify,
 				props.mobileStat && "visible"
 			)}>
