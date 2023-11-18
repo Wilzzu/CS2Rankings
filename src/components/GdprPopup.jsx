@@ -2,6 +2,13 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+const defaultCookies = {
+	GDPR: false,
+	lightweight: false,
+	darkmode: false,
+	hideunknown: true,
+};
+
 const GdprPopup = () => {
 	const [cookie, setCookie] = useState(getCookie());
 
@@ -9,7 +16,7 @@ const GdprPopup = () => {
 		function escape(s) {
 			return s.replace(/([.*+?^$(){}|[\]/\\])/g, "\\$1");
 		}
-		var match = document.cookie.match(RegExp("(?:^|;\\s*)" + escape("CS2RANKINGS") + "=([^;]*)"));
+		let match = document.cookie.match(RegExp("(?:^|;\\s*)" + escape("CS2RANKINGS") + "=([^;]*)"));
 		return match ? match[1] : null;
 	}
 
@@ -30,6 +37,7 @@ const GdprPopup = () => {
 			GDPR: true,
 			lightweight: newCookie.lightweight,
 			darkmode: newCookie.darkmode,
+			hideunknown: newCookie.hideunknown,
 		})}; expires=${date.toGMTString()}; path=/;`;
 		setCookie(getCookie());
 	}
@@ -37,11 +45,9 @@ const GdprPopup = () => {
 	function addCookie() {
 		let date = new Date();
 		date.setFullYear(date.getFullYear() + 1);
-		document.cookie = `CS2RANKINGS=${JSON.stringify({
-			GDPR: false,
-			lightweight: false,
-			darkmode: false,
-		})}; expires=${date.toGMTString()}; path=/;`;
+		document.cookie = `CS2RANKINGS=${JSON.stringify(
+			defaultCookies
+		)}; expires=${date.toGMTString()}; path=/;`;
 		setCookie(getCookie());
 	}
 

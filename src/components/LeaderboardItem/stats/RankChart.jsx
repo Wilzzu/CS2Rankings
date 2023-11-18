@@ -91,7 +91,7 @@ const RankChart = (props) => {
 						tick={{ fill: darkmode ? "#D8D8D8" : "#666666" }}
 					/>
 					<Tooltip content={<CustomTooltip />} />
-					<CartesianGrid strokeDasharray="2 1" opacity={darkmode ? 0.1 : 0.25} />
+					<CartesianGrid strokeDasharray="2 1" vertical={false} opacity={darkmode ? 0.1 : 0.25} />
 					<Line
 						dataKey="rank"
 						stroke={darkmode ? "#FFA51A" : "#447CE6"}

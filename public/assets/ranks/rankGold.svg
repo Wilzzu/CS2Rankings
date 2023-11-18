@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg enable-background="new 0 0 91.3 35.3" version="1.1" viewBox="0 0 91.3 35.3" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%">
+<polygon points="11.3 0 91.3 0 84.6 35.3 5.5 35.3" fill="#594900"/>
+<polygon points="38.4 0.5 56.4 0.5 50.7 34.8 32.4 34.8" fill="#635101"/>
+<polygon points="27.8 0.5 36.6 0.5 30.8 34.8 21.9 34.8" fill="#635101"/>
+<polygon points="21.8 0.5 26.7 0.5 21 34.8 15.9 34.8" fill="#635101"/>
+<polygon points="16 0.5 20.8 0.5 15.1 34.8 10.1 34.8" fill="#635101"/>
+
+	<defs>
+		<polygon id="a" points="13.6 0 91.5 0 84.9 35.3 7.6 35.3"/>
+	</defs>
+	<clipPath id="d">
+		<use overflow="visible" xlink:href="#a"/>
+	</clipPath>
+	
+		<radialGradient id="f" cx="8.2198" cy="20.817" r="12.696" gradientTransform="matrix(1.5751 0 0 1.3342 -1.4997 -9.5545)" gradientUnits="userSpaceOnUse">
+		<stop stop-color="#DCC102" offset="0"/>
+		<stop stop-color="#BFA601" stop-opacity=".759" offset=".241"/>
+		<stop stop-color="#A08A01" stop-opacity=".4476" offset=".5524"/>
+		<stop stop-color="#8D7800" stop-opacity=".1834" offset=".8166"/>
+		<stop stop-color="#867200" stop-opacity="0" offset="1"/>
+	</radialGradient>
+	
+		<ellipse cx="11.4" cy="18.2" rx="19.6" ry="17.3" clip-path="url(#d)" fill="url(#f)"/>
+
+
+	<defs>
+		<polygon id="b" points="13.6 0 91.5 0 84.9 35.3 7.5 35.3"/>
+	</defs>
+	<clipPath id="c">
+		<use overflow="visible" xlink:href="#b"/>
+	</clipPath>
+	
+		<radialGradient id="e" cx="9.3311" cy="14.496" r="12.696" gradientTransform="matrix(1.5751 0 0 1.3342 -1.4997 -9.5545)" gradientUnits="userSpaceOnUse">
+		<stop stop-color="#C3A800" offset="0"/>
+		<stop stop-color="#AB9200" stop-opacity=".6425" offset=".3575"/>
+		<stop stop-color="#988000" stop-opacity=".2637" offset=".7363"/>
+		<stop stop-color="#917A00" stop-opacity="0" offset="1"/>
+	</radialGradient>
+	
+		<ellipse cx="13.2" cy="9.8" rx="19.6" ry="17.3" clip-path="url(#c)" fill="url(#e)"/>
+
+<polygon points="5.5 35.3 0 35.3 6.1 0 11.3 0" fill="#F1D703"/>
+<polygon points="13 35.3 7.5 35.3 13.6 0 18.9 0" fill="#F1D703"/>
+</svg>
