@@ -12,9 +12,36 @@ const Footer = () => {
 				are property of their respective owners.{" "}
 				<Link
 					to={"/privacy"}
-					className="text-blue-600 dark:text-blue-400 hover:underline hover:underline-offset-1">
+					className="text-blue-600 dark:text-csorange underline underline-offset-2 hover:no-underline hover:text-blue-500 hover:dark:text-[#ffd13c]">
 					Privacy Policy
 				</Link>
+				<br />
+				<br />
+				Huge thanks to{" "}
+				<a
+					href="https://github.com/6413"
+					target="_blank"
+					rel="noreferrer"
+					className="text-blue-600 dark:text-csorange underline underline-offset-2 hover:no-underline hover:text-blue-500 hover:dark:text-[#ffd13c]">
+					6413
+				</a>{" "}
+				for helping with parsing the detailed data and{" "}
+				<a
+					href="https://github.com/zer0k-z"
+					target="_blank"
+					rel="noreferrer"
+					className="text-blue-600 dark:text-csorange underline underline-offset-2 hover:no-underline hover:text-blue-500 hover:dark:text-[#ffd13c]">
+					zer0.k
+				</a>{" "}
+				&{" "}
+				<a
+					href="https://github.com/BeepIsla"
+					target="_blank"
+					rel="noreferrer"
+					className="text-blue-600 dark:text-csorange underline underline-offset-2 hover:no-underline hover:text-blue-500 hover:dark:text-[#ffd13c]">
+					Isla
+				</a>{" "}
+				for providing valuable resources!
 			</p>
 		</div>
 	);
