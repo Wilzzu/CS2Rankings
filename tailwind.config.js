@@ -58,6 +58,9 @@ export default {
 					"50%": { transform: "translateY(-15%)" },
 				},
 			},
+			screens: {
+				"3xl": "2000px",
+			},
 		},
 	},
 	// eslint-disable-next-line no-undef
