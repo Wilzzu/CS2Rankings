@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import "./App.css";
-// import usePrefetchLeaderboard from "./hooks/usePrefetchLeaderboard";
 import MainContent from "./components/MainContent";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import Header from "./components/Header";
@@ -15,26 +14,15 @@ import Background from "./assets/Background.jsx";
 import useCookieHandler from "./hooks/useCookieHandler";
 
 const preloadImgs = [
-	"/assets/ranks/blur/rank.png",
 	"/assets/ranks/blur/rankdown.png",
 	"/assets/ranks/blur/rankup.png",
-	"/assets/ranks/blur/rankGold.png",
 	"/assets/ranks/blur/rankdownGold.png",
 	"/assets/ranks/blur/rankupGold.png",
-	"/assets/ranks/rank.webp",
-	"/assets/ranks/rankdown.webp",
-	"/assets/ranks/rankup.webp",
-	"/assets/ranks/rankGold.webp",
-	"/assets/ranks/rankdownGold.webp",
-	"/assets/ranks/rankupGold.webp",
+	"/assets/ranks/rank.svg",
+	"/assets/ranks/rankGold.svg",
 ];
 
 function App() {
-	// const { prefetchLeaderboard } = usePrefetchLeaderboard();
-	// useEffect(() => {
-	// 	prefetchLeaderboard();
-	// }, [prefetchLeaderboard]);
-
 	const lightweight = useSelector((state) => state.lightweight);
 	const darkmode = useSelector((state) => state.darkmode);
 	useCookieHandler();
@@ -75,7 +63,7 @@ function App() {
 			ref={ref}
 			style={{
 				backgroundImage: `url("data:image/svg+xml,${encodeURIComponent(
-					renderToStaticMarkup(<Background dark={darkmode} />)
+					renderToStaticMarkup(<Background dark={darkmode ? 1 : 0} />)
 				)}")`,
 			}}
 			className={cn(

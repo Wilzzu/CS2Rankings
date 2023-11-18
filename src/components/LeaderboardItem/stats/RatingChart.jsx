@@ -88,7 +88,7 @@ const RatingChart = (props) => {
 						tick={{ fill: darkmode ? "#D8D8D8" : "#666666" }}
 					/>
 					<Tooltip content={<CustomTooltip />} />
-					<CartesianGrid strokeDasharray="2 1" opacity={darkmode ? 0.1 : 0.25} />
+					<CartesianGrid strokeDasharray="2 1" vertical={false} opacity={darkmode ? 0.1 : 0.25} />
 				</AreaChart>
 			</ResponsiveContainer>
 			<p className="text-[#666666] dark:text-[#D8D8D8] -mt-3 text-left">Date</p>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { cn } from "../../../lib/utils";
 import ArrowIcon from "../../assets/ArrowIcon";
 import { useSelector } from "react-redux";
+import settings from "../../../lib/settings.json";
 
 const Dropdown = (props) => {
 	const [toggle, setToggle] = useState(false);
@@ -10,7 +11,10 @@ const Dropdown = (props) => {
 	const darkmode = useSelector((state) => state.darkmode);
 
 	const handleClick = (clicked) => {
-		if (props.header !== clicked) props.setSelected(clicked);
+		if (props.header !== clicked) {
+			if (clicked === "Current Season") clicked = settings.currentSeasonText;
+			props.setSelected(clicked);
+		}
 		props.setFocusId(null);
 		setListHover(false);
 		setToggle(false);
@@ -23,7 +27,7 @@ const Dropdown = (props) => {
 	};
 
 	return (
-		<div className="relative h-10 md:h-14 w-full text-sm md:text-base md:w-[10.5rem] font-poppins group z-20">
+		<div className="relative h-10 md:h-14 w-full text-sm md:text-base md:w-44 font-poppins group z-20">
 			{/* Button text */}
 			<div
 				className={cn(
@@ -40,7 +44,7 @@ const Dropdown = (props) => {
 				</label>
 				{/* Dropdown arrow */}
 				<div className="w-4 h-auto aspect-square">
-					<ArrowIcon color={darkmode ? "#e38618" : "#1c62e6"} rotate={true} />
+					<ArrowIcon color={darkmode ? "#e38618" : "#1c62e6"} rotate={"down"} />
 				</div>
 			</div>
 			{/* For opening the dropdown and checking when user clicks away */}

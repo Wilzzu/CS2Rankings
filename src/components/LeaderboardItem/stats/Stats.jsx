@@ -7,6 +7,7 @@ import RatingChart from "./RatingChart";
 import MatchesChart from "./MatchesChart";
 import MapsChart from "./MapsChart";
 import Region from "../Region";
+import StatBubble from "./StatBubble";
 
 const Stats = (props) => {
 	const [showLoading, setShowLoading] = useState(false);
@@ -47,17 +48,31 @@ const Stats = (props) => {
 						{/* Mobile stats */}
 						<div
 							className={cn(
-								"flex items-center justify-center gap-5 w-full mb-2 md:hidden text-xs",
+								"flex items-center justify-center gap-2 w-full mb-2 md:hidden text-xs",
 								props.isBetaSeason && "hidden"
 							)}>
-							<p className="mt-1">
-								Wins: <span className="font-score">{props.wins}</span>
-							</p>
-							<p className="mt-1">
-								Win%: <span className="font-score">{props.winPercentage}%</span>
-							</p>
-							<div className="flex items-center justify-center gap-1">
-								<p className="mt-1">Region: </p>
+							<StatBubble
+								title="Wins"
+								value={props.wins}
+								justify={"justify-end"}
+								color={"dark:text-[#64a2ff]"}
+								mobileStat={true}
+							/>
+							<StatBubble
+								title="Ties"
+								value={props.ties || "0"}
+								justify={"justify-center"}
+								color={"text-darktext dark:text-cswhitesemi"}
+								mobileStat={true}
+							/>
+							<StatBubble
+								title="Losses"
+								value={props.losses || "0"}
+								justify={"justify-start"}
+								color={"text-csorangedark"}
+								mobileStat={true}
+							/>
+							<div className="-mt-[0.25rem] w-52">
 								<Region region={props.region} isBetaSeason={props.isBetaSeason} isStat={true} />
 							</div>
 						</div>

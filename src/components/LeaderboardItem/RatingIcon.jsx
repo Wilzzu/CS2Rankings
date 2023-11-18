@@ -38,16 +38,7 @@ const RatingIcon = (props) => {
 	const calcIcon = (tier, score, blur = false) => {
 		let path = "/assets/ranks";
 		let format = ".webp";
-
-		if (blur) {
-			path = path + "/blur";
-			format = ".png";
-		} else if (props.lightweight) {
-			path = path + "/light";
-			format = ".png";
-		}
-
-		path = path + "/rank";
+		let type = "";
 
 		if (
 			score === 5000 ||
@@ -57,7 +48,7 @@ const RatingIcon = (props) => {
 			score === 25000 ||
 			score === 30000
 		)
-			path = path + "down";
+			type = "down";
 		else if (
 			score === 5000 - 1 ||
 			score === 10000 - 1 ||
@@ -66,7 +57,21 @@ const RatingIcon = (props) => {
 			score === 25000 - 1 ||
 			score === 30000 - 1
 		)
-			path = path + "up";
+			type = "up";
+		else {
+			if (tier === 6) return path + "/rankGold.svg";
+			return path + "/rank.svg";
+		}
+
+		if (blur) {
+			path = path + "/blur";
+			format = ".png";
+		} else if (props.lightweight) {
+			path = path + "/light";
+			format = ".png";
+		}
+
+		path = path + "/rank" + type;
 
 		if (tier === 6) path = path + "Gold";
 		return path + format;
@@ -75,7 +80,7 @@ const RatingIcon = (props) => {
 	return (
 		<div
 			className={cn(
-				"relative w-full h-full flex items-center justify-center",
+				"relative w-full flex items-center justify-center select-none",
 				props.missing && "opacity-50"
 			)}>
 			{/* Rating text */}
@@ -95,30 +100,29 @@ const RatingIcon = (props) => {
 					</>
 				)}
 			</p>
-
 			{/* Rating icon */}
 			{/* Small image */}
 			{props.render && (
 				<img
 					src={
-						props.missing ? "/assets/ranks/rankGold.webp" : calcIcon(props.tier, props.scoreNormal)
+						props.missing ? "/assets/ranks/rankGold.svg" : calcIcon(props.tier, props.scoreNormal)
 					}
 					onLoad={() => setLoaded(true)}
 					alt="Rating icon"
 					loading="lazy"
-					className={cn("absolute filter h-7 md:h-9 w-auto", tierFilter[props.tier])}
+					className={cn("absolute filter w-auto h-7 md:h-9", tierFilter[props.tier])}
 				/>
 			)}
 			{!loaded && (
 				<img
 					src={
 						props.missing
-							? "/assets/ranks/blur/rankGold.png"
+							? "/assets/ranks/rankGold.svg"
 							: calcIcon(props.tier, props.scoreNormal, true)
 					}
 					alt="Rating icon"
 					loading="lazy"
-					className={cn("absolute filter h-7 md:h-9 w-auto", tierFilter[props.tier])}
+					className={cn("absolute filter w-auto h-7 md:h-9", tierFilter[props.tier])}
 				/>
 			)}
 		</div>
