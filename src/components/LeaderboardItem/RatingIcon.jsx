@@ -80,7 +80,7 @@ const RatingIcon = (props) => {
 	return (
 		<div
 			className={cn(
-				"relative w-full flex items-center justify-center",
+				"relative w-full flex items-center justify-center select-none",
 				props.missing && "opacity-50"
 			)}>
 			{/* Rating text */}
@@ -100,7 +100,6 @@ const RatingIcon = (props) => {
 					</>
 				)}
 			</p>
-			{/* TODO: Make img smaller on lightweight */}
 			{/* Rating icon */}
 			{/* Small image */}
 			{props.render && (

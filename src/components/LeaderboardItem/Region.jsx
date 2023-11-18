@@ -24,7 +24,7 @@ const Region = (props) => {
 	return (
 		<div
 			className={cn(
-				"w-full h-full md:flex items-center justify-center",
+				"w-full h-full md:flex items-center justify-center select-none",
 				props.isStat ? "flex" : "hidden"
 			)}>
 			<p
