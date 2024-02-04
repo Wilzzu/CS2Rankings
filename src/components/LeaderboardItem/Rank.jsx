@@ -11,7 +11,7 @@ const Rank = (props) => {
 				<>
 					<div className="w-3 h-[0.65rem] opacity-80 dark:opacity-100 aspect-square">
 						<ArrowIcon
-							color={props.position === "up" ? "#1c62e6" : "#e38618"}
+							color={props.position === "up" ? (props.darkmode ? "#3271f8" : "#1c62e6") : "#e38618"}
 							rotate={props.position}
 						/>
 					</div>
