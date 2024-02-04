@@ -61,6 +61,7 @@ const LeaderboardItem = (props) => {
 					rank={props.data.rank}
 					missing={props.data?.missing}
 					selectedSeason={props.selectedSeason}
+					darkmode={props.darkmode}
 				/>
 				<div className="bg-cswhite w-[2px] h-2/3 dark:bg-csgraydarkest opacity-70 dark:opacity-50 ml-2 md:ml-0" />
 				{/* Name */}
@@ -135,6 +136,7 @@ const LeaderboardItem = (props) => {
 						props.data.detailData?.losses
 					}
 					currentMaps={props.data.detailData?.maps}
+					season={props.selectedSeason}
 					isBetaSeason={props.selectedSeason === "Beta Season"}
 					region={props.data?.detailData?.region}
 				/>

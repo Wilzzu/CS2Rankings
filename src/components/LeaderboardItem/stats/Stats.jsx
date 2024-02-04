@@ -8,6 +8,7 @@ import MatchesChart from "./MatchesChart";
 import MapsChart from "./MapsChart";
 import Region from "../Region";
 import StatBubble from "./StatBubble";
+// import NormalLineChart from "./NormalLineChart";
 
 const Stats = (props) => {
 	const [showLoading, setShowLoading] = useState(false);
@@ -83,6 +84,13 @@ const Stats = (props) => {
 							index={props.index}
 							currentRank={props.currentRank}
 						/>
+						{/* <NormalLineChart
+							data={props.data.history}
+							lightweight={props.lightweight}
+							index={props.index}
+							currentRank={props.currentRank}
+							season={props.season}
+						/> */}
 						<RatingChart
 							data={props.data.history}
 							lightweight={props.lightweight}
