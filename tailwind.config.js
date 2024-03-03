@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import defaultTheme from "tailwindcss/defaultTheme";
+import tailwindScrollbar from "tailwind-scrollbar";
 
 export default {
 	darkMode: "class",
@@ -64,5 +65,5 @@ export default {
 		},
 	},
 	// eslint-disable-next-line no-undef
-	plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
+	plugins: [tailwindScrollbar({ nocompatible: true, preferredStrategy: "pseudoelements" })],
 };
