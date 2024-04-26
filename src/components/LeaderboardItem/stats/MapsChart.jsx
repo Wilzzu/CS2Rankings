@@ -17,7 +17,7 @@ const mapIcons = [
 	"/assets/maps/inferno.svg",
 	"/assets/maps/mirage.svg",
 	"/assets/maps/vertigo.svg",
-	"/assets/maps/overpass.svg",
+	"/assets/maps/dust_2.svg",
 	"/assets/maps/nuke.svg",
 	"/assets/maps/ancient.svg",
 ];
@@ -27,7 +27,7 @@ const prepareData = (data) => {
 	const newData = [];
 	for (const map in data) {
 		newData.push({
-			name: map.charAt(0).toUpperCase() + map.slice(1),
+			name: (map.charAt(0).toUpperCase() + map.slice(1)).replace(/_/g, " "), // Capitalize and replace underscores with spaces
 			val: data[map],
 		});
 	}

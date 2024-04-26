@@ -29,3 +29,5 @@ src/components/LeaderboardItem/HistoryChart.jsx
 src/components/TopBar/topbckup.jsx
 src/components/TopBar/settingsbckup.jsx
 src/components/LeaderboardItem/WinPercentageWithColors.jsx
+
+todo.md
