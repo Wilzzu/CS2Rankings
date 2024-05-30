@@ -38,11 +38,11 @@ const MapIconFormatter = ({ x, y, payload, isMobile }) => {
 	if (!payload && !payload?.length) return;
 	return (
 		<image
-			x={isMobile ? x - 10 : x - 15}
-			y={isMobile ? y - 8 : y - 14}
+			x={isMobile ? x - 13 : x - 15}
+			y={isMobile ? y - 12 : y - 14}
 			xlinkHref={mapIcons[payload.index]}
-			width={isMobile ? 18 : 32}
-			height={isMobile ? 18 : 32}
+			width={isMobile ? 26 : 32}
+			height={isMobile ? 26 : 32}
 			opacity={0.95}
 		/>
 	);
@@ -77,20 +77,14 @@ const MapsChart = (props) => {
 		return null;
 	};
 
-	// // If no data
-	// if (!props.data.matches)
-	// 	return (
-	// 		<div className="relative flex flex-col items-center justify-center w-full h-full p-2 gap-2">
-	// 			<img src={infoIcon} alt="Info icon" className="w-8 h-auto aspect-square" />
-	// 			<p>No match history data</p>
-	// 		</div>
-	// 	);
 	return (
-		<div className="relative h-1/2 md:h-full w-full md:w-1/2 font-hanken text-[0.7rem] md:text-xs flex flex-col items-center justify-center">
-			<p className="absolute left-2 -rotate-90 text-xs md:text-lg font-medium">Recent wins</p>
+		<div className="relative h-1/2 md:h-full w-full md:w-[40%] font-hanken text-[0.7rem] md:text-xs flex flex-col items-center justify-center">
+			<p className="absolute left-4 md:-left-3 -rotate-90 text-xs md:text-lg font-medium">
+				Recent wins
+			</p>
 			<ResponsiveContainer width="100%" height="100%">
 				<RadarChart
-					outerRadius="85%"
+					outerRadius="80%"
 					innerRadius="20%"
 					data={data}
 					strokeOpacity={darkmode ? 0.25 : 1}>
