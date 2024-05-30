@@ -1,6 +1,5 @@
 import { Ring } from "@uiball/loaders";
 import { cn } from "../../../../lib/utils";
-import RankChart from "./RankChart";
 import { useEffect, useState } from "react";
 import infoIcon from "../../../assets/infoIcon.svg";
 import RatingChart from "./RatingChart";
@@ -44,7 +43,7 @@ const Stats = (props) => {
 					<div
 						className={cn(
 							"flex flex-col md:flex-row items-center justify-center w-full p-2 md:gap-4",
-							props.isBetaSeason ? "h-full" : "h-[55%] md:h-[45%]"
+							props.isBetaSeason ? "h-full" : "h-1/2"
 						)}>
 						{/* Mobile stats */}
 						<div
@@ -78,12 +77,12 @@ const Stats = (props) => {
 							</div>
 						</div>
 						{/* Normal stats */}
-						<RankChart
+						{/* <RankChart
 							data={props.data.history}
 							lightweight={props.lightweight}
 							index={props.index}
 							currentRank={props.currentRank}
-						/>
+						/> */}
 						{/* <NormalLineChart
 							data={props.data.history}
 							lightweight={props.lightweight}
@@ -96,11 +95,12 @@ const Stats = (props) => {
 							lightweight={props.lightweight}
 							index={props.index}
 							currentScore={props.currentScore}
+							currentRank={props.currentRank}
 						/>
 					</div>
 					<div
 						className={cn(
-							"flex flex-col md:flex-row items-center justify-center w-full h-1/2 md:h-[55%] px-2 md:pb-2 md:gap-4",
+							"flex flex-col md:flex-row items-center justify-center w-full h-1/2 px-2 md:pb-2 md:gap-4",
 							props.isBetaSeason && "hidden"
 						)}>
 						<MatchesChart
