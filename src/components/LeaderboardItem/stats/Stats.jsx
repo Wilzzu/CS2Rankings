@@ -2,12 +2,11 @@ import { Ring } from "@uiball/loaders";
 import { cn } from "../../../../lib/utils";
 import { useEffect, useState } from "react";
 import infoIcon from "../../../assets/infoIcon.svg";
-import RatingChart from "./RatingChart";
 import MatchesChart from "./MatchesChart";
 import MapsChart from "./MapsChart";
 import Region from "../Region";
 import StatBubble from "./StatBubble";
-// import NormalLineChart from "./NormalLineChart";
+import RankAndRatingChart from "./RankAndRatingChart";
 
 const Stats = (props) => {
 	const [showLoading, setShowLoading] = useState(false);
@@ -27,7 +26,7 @@ const Stats = (props) => {
 				props.index % 2
 					? "bg-[#ECECEC] dark:bg-[#363636]"
 					: "bg-cswhitesemi dark:bg-darkcswhitesemi",
-				props.isBetaSeason ? "h-72 md:h-44" : "h-[36rem] md:h-96"
+				props.isBetaSeason ? "h-52 md:h-[15rem]" : "h-[36rem] md:h-[25rem]"
 			)}>
 			{/* Loading states */}
 			{props.isRefetching && showLoading ? (
@@ -42,8 +41,8 @@ const Stats = (props) => {
 				<div className="flex flex-col w-full h-full items-center md:gap-2">
 					<div
 						className={cn(
-							"flex flex-col md:flex-row items-center justify-center w-full p-2 md:gap-4",
-							props.isBetaSeason ? "h-full" : "h-1/2"
+							"flex flex-col md:flex-row items-center justify-center w-full py-2 md:p-2 md:gap-4",
+							props.isBetaSeason ? "h-full" : "h-[40%] md:h-[55%]"
 						)}>
 						{/* Mobile stats */}
 						<div
@@ -76,21 +75,7 @@ const Stats = (props) => {
 								<Region region={props.region} isBetaSeason={props.isBetaSeason} isStat={true} />
 							</div>
 						</div>
-						{/* Normal stats */}
-						{/* <RankChart
-							data={props.data.history}
-							lightweight={props.lightweight}
-							index={props.index}
-							currentRank={props.currentRank}
-						/> */}
-						{/* <NormalLineChart
-							data={props.data.history}
-							lightweight={props.lightweight}
-							index={props.index}
-							currentRank={props.currentRank}
-							season={props.season}
-						/> */}
-						<RatingChart
+						<RankAndRatingChart
 							data={props.data.history}
 							lightweight={props.lightweight}
 							index={props.index}
@@ -100,7 +85,7 @@ const Stats = (props) => {
 					</div>
 					<div
 						className={cn(
-							"flex flex-col md:flex-row items-center justify-center w-full h-1/2 px-2 md:pb-2 md:gap-4",
+							"flex flex-col md:flex-row items-center justify-center w-full h-[60%] md:h-[45%] px-2 md:pb-2 md:gap-4",
 							props.isBetaSeason && "hidden"
 						)}>
 						<MatchesChart
