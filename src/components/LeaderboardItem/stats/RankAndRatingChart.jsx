@@ -26,15 +26,8 @@ const customRating = (rating) => {
 	return Math.ceil(rating / 100) * 100;
 };
 
-const customRank = (rating) => {
-	if (rating % 1) return "";
-	if (rating <= 30) return rating;
-	return Math.floor(rating / 10) * 10;
-};
-
 const customLegend = (props) => {
 	const { payload } = props;
-	console.log(payload);
 	return (
 		<div className="w-full flex flex-row-reverse items-center justify-center gap-4 pl-6 md:pl-10">
 			{payload.map((entry, index) => (
@@ -49,8 +42,43 @@ const customLegend = (props) => {
 	);
 };
 
+const forceRankTicks = (data) => {
+	const ticks = data.map((entry) => parseInt(entry.rank));
+
+	// If there are less than 3 different ranks, return only the unique ones
+	if (new Set(ticks).size < 3) return [...new Set(ticks)];
+
+	// Calculate the min, max and step for the ticks
+	const min = Math.min(...ticks);
+	const max = Math.max(...ticks);
+	const step = Math.ceil((max - min) / 5);
+
+	// Add the min tick first
+	const newTicks = [min];
+
+	// Add the middle ticks
+	for (let i = 1; i < 4; i++) {
+		let tick = min + step * i;
+
+		// Round the tick to the nearest 10 if it's over 100 and prevent overlapping
+		if (tick > 100) {
+			let roundedTick = Math.floor(tick / 10) * 10;
+			if (roundedTick === Math.floor(min / 10) * 10) continue;
+			tick = roundedTick;
+		}
+
+		// Prevent duplicates
+		if (!newTicks.includes(tick)) newTicks.push(tick);
+	}
+
+	// Add the max tick last, if it's different from the last tick
+	if (max !== newTicks[newTicks.length - 1]) newTicks.push(max);
+	return newTicks;
+};
+
 // Add current stats to the data
-const prepareData = (data, rank, score) => {
+const prepareData = (data, rank, score, isBetaSeason) => {
+	if (isBetaSeason) return data;
 	const newDate = new Date().toISOString();
 	return [...data, { date: newDate, rank, score }];
 };
@@ -58,7 +86,9 @@ const prepareData = (data, rank, score) => {
 const RankAndRatingChart = (props) => {
 	const darkmode = useSelector((state) => state.darkmode);
 	const isMobile = useCheckMobileScreen();
-	const [data] = useState(prepareData(props.data, props.currentRank, props.currentScore));
+	const [data] = useState(
+		prepareData(props.data, props.currentRank, props.currentScore, props.isBetaSeason)
+	);
 
 	const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
@@ -110,25 +140,25 @@ const RankAndRatingChart = (props) => {
 						yAxisId="left"
 						orientation="left"
 						type="number"
-						domain={["dataMin"]}
+						domain={["dataMin", "dataMax"]}
+						interval={0}
+						tickCount={5}
 						dataKey={(e) => parseInt(e.rank)}
-						minTickGap={0}
-						tickCount={9}
 						axisLine={false}
 						tickLine={false}
 						padding={{ bottom: 5 }}
 						reversed
-						tickFormatter={customRank}
+						ticks={forceRankTicks(data)}
 						tick={{ fill: darkmode ? "#D8D8D8" : "#333333" }}
 					/>
 					<YAxis
 						yAxisId="right"
 						orientation="right"
 						type="number"
-						domain={["dataMin - 1000", "dataMax + 100"]}
+						domain={["dataMin - 1000", "dataMax"]}
+						interval={0}
+						tickCount={5}
 						dataKey={"score"}
-						minTickGap={0}
-						tickCount={9}
 						axisLine={false}
 						tickLine={false}
 						padding={{ bottom: 5 }}
