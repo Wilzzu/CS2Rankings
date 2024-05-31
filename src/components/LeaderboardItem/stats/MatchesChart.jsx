@@ -9,7 +9,6 @@ import {
 	Line,
 	LineChart,
 } from "recharts";
-import { cn } from "../../../../lib/utils";
 import { useState } from "react";
 // import infoIcon from "../../../assets/infoIcon.svg";
 
@@ -47,15 +46,11 @@ const MatchesChart = (props) => {
 	const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
 			return (
-				<div className="relative flex flex-col items-start justify-center text-csdarkblue dark:text-cswhitebright px-2 md:py-1 drop-shadow-sm dark:drop-shadow-md font-medium font-poppins">
-					<p
-						className={cn(
-							"desc z-10 dark:drop-shadow-md px-1 pt-1 dark:pl-0 dark:bg-transparent text-[0.6rem] md:text-[0.67rem] leading-3 md:leading-none",
-							props.index % 2 ? "bg-[#ECECEC]" : "bg-cswhitesemi"
-						)}>
+				<div className="relative z-10 flex flex-col items-start justify-center py-2 pl-2 pr-4 bg-cswhitebright/80 dark:bg-csdarkblue/80 backdrop-blur-sm text-csdarkblue dark:text-cswhitebright drop-shadow-sm dark:drop-shadow-md font-poppins rounded">
+					<p className="text-[0.6rem] md:text-[0.67rem] leading-3 md:leading-none mb-1">
 						{customDay(payload[0].payload.date)}
 					</p>
-					<p className="desc z-10 dark:bg-[rgb(37,37,37)] px-1 md:p-1 bg-[#FFF] text-[0.67rem] md:text-xs shadow dark:drop-shadow-md leading-5 md:leading-normal bg-opacity-70 dark:bg-opacity-70">
+					<p className="text-[0.67rem] md:text-xs leading-5 md:leading-normal">
 						Matches:{" "}
 						<span className="text-csbrightblue dark:text-csorange font-bold text-xs md:text-[0.8rem]">
 							{payload[0].value}

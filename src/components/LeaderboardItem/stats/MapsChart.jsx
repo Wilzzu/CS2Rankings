@@ -8,7 +8,6 @@ import {
 	Tooltip,
 	ResponsiveContainer,
 } from "recharts";
-import { cn } from "../../../../lib/utils";
 import { useState } from "react";
 import useCheckMobileScreen from "../../../hooks/useCheckMobileScreen";
 
@@ -59,11 +58,10 @@ const MapsChart = (props) => {
 	const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
 			return (
-				<div
-					className={cn(
-						"flex flex-col items-start justify-center text-csdarkblue dark:text-cswhitebright drop-shadow-sm dark:drop-shadow-md font-medium font-poppins dark:bg-[rgb(37,37,37)] bg-[#FFF] px-1 md:p-[0.4rem] md:pr-3 bg-opacity-90 dark:bg-opacity-90"
-					)}>
-					{payload[0].payload.name}
+				<div className="relative z-10 flex flex-col items-start justify-center py-2 pl-2 pr-4 bg-cswhitebright/80 dark:bg-csdarkblue/80 backdrop-blur-sm text-csdarkblue dark:text-cswhitebright drop-shadow-sm dark:drop-shadow-md font-poppins rounded">
+					<p className="text-xs md:text-[0.8rem] leading-3 md:leading-none mb-1">
+						{payload[0].payload.name}
+					</p>
 					<p>
 						Wins:{" "}
 						<span className="text-csbrightblue dark:text-csorange font-bold text-xs md:text-[0.8rem]">
