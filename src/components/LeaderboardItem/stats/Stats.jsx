@@ -81,6 +81,7 @@ const Stats = (props) => {
 							index={props.index}
 							currentScore={props.currentScore}
 							currentRank={props.currentRank}
+							isBetaSeason={props.isBetaSeason}
 						/>
 					</div>
 					<div
