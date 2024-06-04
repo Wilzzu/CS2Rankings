@@ -39,6 +39,7 @@ const Name = (props) => {
 				</div>
 			) : (
 				<p
+					title={props.name}
 					className={cn(
 						"truncate duration-150",
 						!props.lightweight && "group-hover/main:tracking-wider"

@@ -21,10 +21,30 @@ const customDay = (date) => {
 	return `${day} ${months[month]} ${year}`;
 };
 
-const customRank = (rating) => {
-	if (rating % 1) return Math.ceil(rating);
-	if (rating <= 100) return rating;
-	return Math.ceil(rating / 10) * 10;
+const customTicks = (data) => {
+	const ticks = data.map((entry) => parseInt(entry.matches));
+
+	// If there are less than 4 different amount of matches, return only the unique ones
+	if (new Set(ticks).size < 4) return [...new Set(ticks)];
+
+	// Calculate the min, max and step for the ticks
+	const min = Math.min(...ticks);
+	const max = Math.max(...ticks);
+	const step = Math.ceil((max - min) / 5);
+
+	// Add the min tick first
+	const newTicks = [min];
+
+	// Add the middle ticks
+	for (let i = 1; i < 4; i++) {
+		let tick = min + step * i;
+		// Prevent duplicates
+		if (!newTicks.includes(tick)) newTicks.push(tick);
+	}
+
+	// Add the max tick last, if it's not already in the ticks
+	if (!newTicks.includes(max)) newTicks.push(max);
+	return newTicks;
 };
 
 // Add current stats to the data
@@ -78,18 +98,18 @@ const MatchesChart = (props) => {
 						axisLine={false}
 						tickLine={false}
 						tickFormatter={customDay}
-						tick={{ fill: darkmode ? "#D8D8D8" : "#666666" }}
+						tick={{ fill: darkmode ? "#D8D8D8" : "#333333" }}
 					/>
 					<YAxis
-						domain={["auto", "auto"]}
+						domain={["dataMin", "dataMax"]}
 						dataKey={"matches"}
-						minTickGap={0}
-						tickCount={4}
+						interval={0}
+						tickCount={5}
 						axisLine={false}
 						tickLine={false}
 						padding={{ bottom: 5 }}
-						tickFormatter={customRank}
-						tick={{ fill: darkmode ? "#D8D8D8" : "#666666" }}
+						ticks={customTicks(data)}
+						tick={{ fill: darkmode ? "#D8D8D8" : "#333333" }}
 					/>
 					<Tooltip content={<CustomTooltip />} />
 					<CartesianGrid strokeDasharray="2 1" vertical={false} opacity={darkmode ? 0.1 : 0.25} />

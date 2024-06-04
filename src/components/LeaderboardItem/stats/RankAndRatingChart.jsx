@@ -71,8 +71,8 @@ const forceRankTicks = (data) => {
 		if (!newTicks.includes(tick)) newTicks.push(tick);
 	}
 
-	// Add the max tick last, if it's different from the last tick
-	if (max !== newTicks[newTicks.length - 1]) newTicks.push(max);
+	// Add the max tick last, if it's not already in the ticks
+	if (!newTicks.includes(max)) newTicks.push(max);
 	return newTicks;
 };
 
