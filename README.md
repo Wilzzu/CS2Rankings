@@ -1,4 +1,4 @@
-![Banner]()
+![Banner](https://i.imgur.com/q2uTmfW.png)
 
 <h1 align="center">CS2Rankings</h1>
 
@@ -8,6 +8,8 @@
 
 Check out the live version of the website:
 [CS2rankings.com](https://cs2rankings.com/)
+
+![Screeshots](https://i.imgur.com/0F0tpwL.png)
 
 ## Features
 

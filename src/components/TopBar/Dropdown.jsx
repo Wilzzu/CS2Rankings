@@ -72,7 +72,7 @@ const Dropdown = (props) => {
 								key={e}
 								onClick={() => handleClick(e)}
 								className="text-cswhitebright py-[0.4rem] pl-3 select-none hover:bg-csbrightblue dark:hover:bg-csorange hover:cursor-pointer dark:drop-shadow-sm">
-								{e}
+								<p className="dark:drop-shadow-region">{e}</p>
 							</li>
 						);
 					})}
