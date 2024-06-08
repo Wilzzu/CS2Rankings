@@ -7,7 +7,7 @@
 ## Live Site
 
 Check out the live version of the website:
-[CS2rankings.com](https://cs2rankings.com/)
+[CS2Rankings.com](https://cs2rankings.com/)
 
 ![Screeshots](https://i.imgur.com/0F0tpwL.png)
 
