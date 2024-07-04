@@ -22,10 +22,6 @@ const customDay = (date) => {
 	return `${day} ${months[month]} ${year}`;
 };
 
-const customRating = (rating) => {
-	return Math.ceil(rating / 100) * 100;
-};
-
 const customLegend = (props) => {
 	const { payload } = props;
 	return (
@@ -42,16 +38,32 @@ const customLegend = (props) => {
 	);
 };
 
-const forceRankTicks = (data) => {
-	const ticks = data.map((entry) => parseInt(entry.rank));
-
-	// If there are less than 3 different ranks, return only the unique ones
-	if (new Set(ticks).size < 3) return [...new Set(ticks)];
+const forceTicks = (data, type) => {
+	const ticks = data.map((entry) => parseInt(entry[type]));
+	const roundingMultiplier = type === "score" ? 100 : 10; // Round score to the nearest 100 and matches to the nearest 10
 
 	// Calculate the min, max and step for the ticks
-	const min = Math.min(...ticks);
-	const max = Math.max(...ticks);
-	const step = Math.ceil((max - min) / 5);
+	let min = Math.min(...ticks);
+	let max = Math.max(...ticks);
+
+	// If distance between min and max is less than 2, return all unique values
+	if (type === "rank" && max - min < 2) return [...new Set(ticks)];
+
+	// Round the min and max for the score
+	if (type === "score") {
+		min = Math.floor((min - 1000) / roundingMultiplier) * roundingMultiplier; // Subtract 1000 from the min score to add a bit of padding}
+		max = Math.ceil(max / roundingMultiplier) * roundingMultiplier;
+	}
+
+	// Calculate distance between ticks
+	let step = Math.ceil((max - min) / 4);
+
+	// Round all the values if the step is over 2
+	if (step > 2) {
+		min = type === "score" ? Math.floor(min / roundingMultiplier) * roundingMultiplier : min;
+		max = Math.ceil(max / roundingMultiplier) * roundingMultiplier;
+		step = Math.ceil((max - min) / 4);
+	}
 
 	// Add the min tick first
 	const newTicks = [min];
@@ -61,13 +73,14 @@ const forceRankTicks = (data) => {
 		let tick = min + step * i;
 
 		// Round the tick to the nearest 10 if it's over 100 and prevent overlapping
-		if (tick > 100) {
-			let roundedTick = Math.floor(tick / 10) * 10;
-			if (roundedTick === Math.floor(min / 10) * 10) continue;
+		if (step >= 20) {
+			let roundedTick = Math.floor(tick / roundingMultiplier) * roundingMultiplier;
+			if (roundedTick === Math.floor(min / roundingMultiplier) * roundingMultiplier) continue;
 			tick = roundedTick;
 		}
 
 		// Prevent duplicates
+		if (step > 1 && tick === max - 1) continue; // Don't add the tick if it's one away from the max
 		if (!newTicks.includes(tick)) newTicks.push(tick);
 	}
 
@@ -136,6 +149,7 @@ const RankAndRatingChart = (props) => {
 						tickFormatter={customDay}
 						tick={{ fill: darkmode ? "#D8D8D8" : "#333333" }}
 					/>
+					{/* Rank */}
 					<YAxis
 						yAxisId="left"
 						orientation="left"
@@ -148,21 +162,22 @@ const RankAndRatingChart = (props) => {
 						tickLine={false}
 						padding={{ bottom: 5 }}
 						reversed
-						ticks={forceRankTicks(data)}
+						ticks={forceTicks(data, "rank")}
 						tick={{ fill: darkmode ? "#D8D8D8" : "#333333" }}
 					/>
+					{/* Rating */}
 					<YAxis
 						yAxisId="right"
 						orientation="right"
 						type="number"
-						domain={["dataMin - 1000", "dataMax"]}
+						domain={["dataMin", "dataMax"]}
 						interval={0}
 						tickCount={5}
 						dataKey={"score"}
 						axisLine={false}
 						tickLine={false}
 						padding={{ bottom: 5 }}
-						tickFormatter={customRating}
+						ticks={forceTicks(data, "score")}
 						tick={{ fill: darkmode ? "#D8D8D8" : "#333333" }}
 					/>
 					<Tooltip content={<CustomTooltip />} />

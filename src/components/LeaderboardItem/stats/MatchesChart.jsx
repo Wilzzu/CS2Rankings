@@ -21,16 +21,25 @@ const customDay = (date) => {
 	return `${day} ${months[month]} ${year}`;
 };
 
-const customTicks = (data) => {
+const forceTicks = (data) => {
 	const ticks = data.map((entry) => parseInt(entry.matches));
 
-	// If there are less than 4 different amount of matches, return only the unique ones
-	if (new Set(ticks).size < 4) return [...new Set(ticks)];
-
 	// Calculate the min, max and step for the ticks
-	const min = Math.min(...ticks);
-	const max = Math.max(...ticks);
-	const step = Math.ceil((max - min) / 5);
+	let min = Math.min(...ticks);
+	let max = Math.max(...ticks);
+
+	// If distance between min and max is less than 2, return all unique values
+	if (max - min < 2) return [...new Set(ticks)];
+
+	// Calculate distance between ticks
+	let step = Math.ceil((max - min) / 4);
+
+	// Round all the values if the step is over 2
+	if (step > 2) {
+		min = Math.floor(min / 10) * 10;
+		max = Math.ceil(max / 10) * 10;
+		step = Math.ceil((max - min) / 4);
+	}
 
 	// Add the min tick first
 	const newTicks = [min];
@@ -38,7 +47,15 @@ const customTicks = (data) => {
 	// Add the middle ticks
 	for (let i = 1; i < 4; i++) {
 		let tick = min + step * i;
+		// Round the tick to the nearest 10 if it's over 100 and prevent overlapping
+		if (step >= 20) {
+			let roundedTick = Math.floor(tick / 10) * 10;
+			if (roundedTick === Math.floor(min / 10) * 10) continue;
+			tick = roundedTick;
+		}
+
 		// Prevent duplicates
+		if (step > 1 && tick === max - 1) continue; // Don't add the tick if it's one away from the max
 		if (!newTicks.includes(tick)) newTicks.push(tick);
 	}
 
@@ -108,7 +125,7 @@ const MatchesChart = (props) => {
 						axisLine={false}
 						tickLine={false}
 						padding={{ bottom: 5 }}
-						ticks={customTicks(data)}
+						ticks={forceTicks(data)}
 						tick={{ fill: darkmode ? "#D8D8D8" : "#333333" }}
 					/>
 					<Tooltip content={<CustomTooltip />} />
