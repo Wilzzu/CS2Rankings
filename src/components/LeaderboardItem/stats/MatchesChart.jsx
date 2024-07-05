@@ -47,7 +47,8 @@ const forceTicks = (data) => {
 	// Add the middle ticks
 	for (let i = 1; i < 4; i++) {
 		let tick = min + step * i;
-		// Round the tick to the nearest 10 if it's over 100 and prevent overlapping
+
+		// Round the tick if step size is 20 or over and prevent overlapping
 		if (step >= 20) {
 			let roundedTick = Math.floor(tick / 10) * 10;
 			if (roundedTick === Math.floor(min / 10) * 10) continue;
