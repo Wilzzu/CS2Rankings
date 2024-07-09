@@ -21,7 +21,9 @@ const LeaderboardColumnNames = (props) => {
 			</p>
 			<p className="hidden md:block">{props.isBetaSeason ? "" : "Statistics"}</p>
 			<p>CS Rating</p>
-			<p className="hidden md:block text-left -ml-1">{props.isBetaSeason ? "" : "Reg."}</p>
+			<p className="hidden md:block text-left -ml-1" title="Region">
+				{props.isBetaSeason ? "" : "Reg."}
+			</p>
 		</div>
 	);
 };
