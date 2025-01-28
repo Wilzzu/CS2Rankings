@@ -6,7 +6,7 @@ const defaultCookies = {
 	GDPR: false,
 	lightweight: false,
 	darkmode: false,
-	hideunknown: true,
+	hideunknown: false,
 };
 
 const GdprPopup = () => {

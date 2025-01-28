@@ -2,7 +2,6 @@ import { useState } from "react";
 import { cn } from "../../../lib/utils";
 import ArrowIcon from "../../assets/ArrowIcon";
 import { useSelector } from "react-redux";
-import settings from "../../../lib/settings.json";
 
 const Dropdown = (props) => {
 	const [toggle, setToggle] = useState(false);
@@ -11,10 +10,7 @@ const Dropdown = (props) => {
 	const darkmode = useSelector((state) => state.darkmode);
 
 	const handleClick = (clicked) => {
-		if (props.header !== clicked) {
-			if (clicked === "Current Season") clicked = settings.currentSeasonText;
-			props.setSelected(clicked);
-		}
+		if (props.header !== clicked) props.setSelected(clicked);
 		props.setFocusId(null);
 		setListHover(false);
 		setToggle(false);

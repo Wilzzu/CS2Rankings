@@ -17,11 +17,12 @@ const LeaderboardStatus = (props) => {
 					<p>
 						A new season has just been released!
 						<br />
-						It might take some time until the leaderboard is updated by Valve.
+						It might take some time until the leaderboards are updated by Valve.
 					</p>
-					<p className="mt-4 text-xs md:text-sm">
-						( Also, we store all the past season leaderboards, you can view them in the meantime
-						&#128522; )
+					<p className="mt-1 text-xs md:text-sm font-normal">
+						{
+							"(btw, we store all of the past season's leaderboards, you can view them in the meantime 😊)"
+						}
 					</p>
 				</motion.div>
 			)}

@@ -4,11 +4,12 @@ import LeaderboardColumnNames from "./LeaderboardColumnNames";
 import TopBar from "./TopBar/TopBar";
 import { useState } from "react";
 import { cn } from "../../lib/utils";
+import settings from "../../lib/settings.json";
 
 const MainContent = (props) => {
 	const [focusId, setFocusId] = useState(null);
 	const [selectedRegion, setSelectedRegion] = useState("World");
-	const [selectedSeason, setSelectedSeason] = useState("Season 1");
+	const [selectedSeason, setSelectedSeason] = useState(settings.currentSeasonText || "Season 2");
 	const [showClickInfo, setShowClickInfo] = useState(true);
 
 	const {
