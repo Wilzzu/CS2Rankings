@@ -18,7 +18,7 @@ const customDay = (date) => {
 	const day = new Date(date).getUTCDate();
 	const month = new Date(date).getUTCMonth();
 	const year = new Date(date).getUTCFullYear();
-	return `${day} ${months[month]} ${year}`;
+	return `${months[month]} ${day}, ${year}`;
 };
 
 const forceTicks = (data) => {

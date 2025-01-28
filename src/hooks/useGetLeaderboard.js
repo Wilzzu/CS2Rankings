@@ -19,7 +19,7 @@ const useGetLeaderboard = (season, region) => {
 					throw err;
 				});
 		},
-		{ staleTime: 30000, retry: false }
+		{ staleTime: 5000, retry: false }
 	);
 
 	// Remove this if no stale time
