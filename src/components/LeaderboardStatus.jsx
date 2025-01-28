@@ -13,15 +13,16 @@ const LeaderboardStatus = (props) => {
 					initial={{ y: 40, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ y: { type: "spring", stiffness: 75, velocity: 10 }, delay: 0.2 }}
-					className="w-full bg-csbrightblue p-5 text-cswhitebright text-center mb-10 rounded-xl text-base md:text-lg">
-					<p>
+					className="w-full bg-csbrightblue dark:bg-csorangedark p-5 text-cswhitebright text-center mb-10 rounded-xl text-base md:text-lg">
+					<p className="dark:drop-shadow-signature">
 						A new season has just been released!
 						<br />
-						It might take some time until the leaderboard is updated by Valve.
+						It might take some time for the first players to appear on the leaderboard.
 					</p>
-					<p className="mt-4 text-xs md:text-sm">
-						( Also, we store all the past season leaderboards, you can view them in the meantime
-						&#128522; )
+					<p className="mt-1 text-xs md:text-sm font-normal dark:drop-shadow-signature">
+						{
+							"(btw, we store all of the past seasons' leaderboards, you can view them in the meantime 😊)"
+						}
 					</p>
 				</motion.div>
 			)}

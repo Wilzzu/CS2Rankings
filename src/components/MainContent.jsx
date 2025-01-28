@@ -4,11 +4,13 @@ import LeaderboardColumnNames from "./LeaderboardColumnNames";
 import TopBar from "./TopBar/TopBar";
 import { useState } from "react";
 import { cn } from "../../lib/utils";
+import settings from "../../lib/settings.json";
+import LeaderboardDataInfo from "./LeaderboardDataInfo";
 
 const MainContent = (props) => {
 	const [focusId, setFocusId] = useState(null);
 	const [selectedRegion, setSelectedRegion] = useState("World");
-	const [selectedSeason, setSelectedSeason] = useState("Season 1");
+	const [selectedSeason, setSelectedSeason] = useState(settings.currentSeasonText || "Season 2");
 	const [showClickInfo, setShowClickInfo] = useState(true);
 
 	const {
@@ -44,8 +46,13 @@ const MainContent = (props) => {
 						"w-full max-w-[768px] bg-cswhitebright dark:bg-darkcswhitebright",
 						props.lightweight
 							? "h-[64dvh] 3xl:h-[72dvh] overflow-y-scroll pt-0 pb-1 scrollbar-thin scrollbar-thumb-csbrightblue scrollbar-track-cswhite dark:scrollbar-thumb-csorange dark:scrollbar-track-csgraydarkest"
-							: "shadow-scoreboard min-h-[90dvh] py-2"
+							: "shadow-scoreboard min-h-[90dvh] pb-2"
 					)}>
+					<LeaderboardDataInfo
+						selectedSeason={selectedSeason}
+						data={cachedData}
+						lightweight={props.lightweight}
+					/>
 					<LeaderboardColumnNames
 						lightweight={props.lightweight}
 						isBetaSeason={selectedSeason === "Beta Season"}

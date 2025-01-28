@@ -39,7 +39,7 @@ const LeaderboardContent = (props) => {
 		if (props.focusId && players) {
 			listRef.current.scrollToIndex({
 				index: players.findIndex((e) => e.id === props.focusId),
-				offset: props.lightweight ? -124 : -248, //144 1st
+				offset: props.lightweight ? -138 : -280, //144 1st
 			});
 
 			props.setFocusId("");

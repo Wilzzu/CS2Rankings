@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 import { useQuery, useQueryClient } from "react-query";
-import CryptoJS from "crypto-js";
 
 const useGetLeaderboard = (season, region) => {
 	const [fakeRefetch, setFakeRefetch] = useState(false);
@@ -14,17 +13,13 @@ const useGetLeaderboard = (season, region) => {
 		async () => {
 			return axios
 				.get(`${import.meta.env.VITE_APILOCATION}/leaderboard/${parseSeason}/${parseRegion}`)
-				.then((res) => {
-					const bytes = CryptoJS.AES.decrypt(res.data, import.meta.env.VITE_CRYPTO);
-					const parsedRequest = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-					return parsedRequest;
-				})
+				.then((res) => res.data)
 				.catch((err) => {
 					console.log(err);
 					throw err;
 				});
 		},
-		{ staleTime: 30000, retry: false }
+		{ staleTime: 5000, retry: false }
 	);
 
 	// Remove this if no stale time

@@ -11,15 +11,17 @@ import {
 import { useState } from "react";
 import useCheckMobileScreen from "../../../hooks/useCheckMobileScreen";
 
-const mapIcons = [
-	"/assets/maps/anubis.svg",
-	"/assets/maps/inferno.svg",
-	"/assets/maps/mirage.svg",
-	"/assets/maps/vertigo.svg",
-	"/assets/maps/dust_2.svg",
-	"/assets/maps/nuke.svg",
-	"/assets/maps/ancient.svg",
-];
+const mapIcons = {
+	Anubis: "/assets/maps/anubis.svg",
+	Inferno: "/assets/maps/inferno.svg",
+	Mirage: "/assets/maps/mirage.svg",
+	Vertigo: "/assets/maps/vertigo.svg",
+	Nuke: "/assets/maps/nuke.svg",
+	Ancient: "/assets/maps/ancient.svg",
+	Overpass: "/assets/maps/overpass.svg",
+	"Dust II": "/assets/maps/dust_2.svg",
+	Train: "/assets/maps/train.svg",
+};
 
 // Format data properly
 const prepareData = (data) => {
@@ -39,7 +41,7 @@ const MapIconFormatter = ({ x, y, payload, isMobile }) => {
 		<image
 			x={isMobile ? x - 13 : x - 15}
 			y={isMobile ? y - 12 : y - 14}
-			xlinkHref={mapIcons[payload.index]}
+			xlinkHref={mapIcons[payload.value]}
 			width={isMobile ? 26 : 32}
 			height={isMobile ? 26 : 32}
 			opacity={0.95}

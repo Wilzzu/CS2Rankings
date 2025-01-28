@@ -9,8 +9,8 @@
 		"North America",
 		"South America"
 	],
-	"seasons": ["Current Season", "Beta Season"],
-	"currentSeason": "season1",
-	"currentSeasonText": "Season 1",
-	"newSeasonWarning": false
+	"seasons": ["Season 2", "Season 1", "Beta Season"],
+	"currentSeason": "season2",
+	"currentSeasonText": "Season 2",
+	"newSeasonWarning": true
 }

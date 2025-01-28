@@ -44,11 +44,7 @@ const TopBar = (props) => {
 			/>
 			<div className="flex w-full gap-2 md:gap-6">
 				<Dropdown
-					header={
-						props.selectedSeason.replace(/\s/g, "").toLowerCase() === settings.currentSeason
-							? "Current Season"
-							: props.selectedSeason
-					}
+					header={props.selectedSeason}
 					data={settings.seasons}
 					setSelected={props.setSelectedSeason}
 					isSticky={isSticky}
