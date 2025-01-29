@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { cn } from "../../lib/utils";
 import settings from "../..//lib/settings.json";
 
@@ -33,14 +34,16 @@ const LeaderboardDataInfo = ({ selectedSeason, data, lightweight }) => {
 			</div>
 			<p className="dark:drop-shadow-signature">
 				Data Updated:{" "}
-				{updateTime.toLocaleString("en-US", {
-					day: "2-digit",
-					month: "short",
-					year: "numeric",
-					hour: "2-digit",
-					minute: "2-digit",
-					second: "2-digit",
-				})}
+				{data?.updateTime
+					? updateTime.toLocaleString("en-US", {
+							day: "2-digit",
+							month: "short",
+							year: "numeric",
+							hour: "2-digit",
+							minute: "2-digit",
+							second: "2-digit",
+					  })
+					: "N/A"}
 			</p>
 		</div>
 	);

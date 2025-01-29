@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import { useState } from "react";
 import useCheckMobileScreen from "../../../hooks/useCheckMobileScreen";
+import settings from "../../../../lib/settings.json";
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -90,8 +91,8 @@ const forceTicks = (data, type) => {
 };
 
 // Add current stats to the data
-const prepareData = (data, rank, score, isBetaSeason) => {
-	if (isBetaSeason) return data;
+const prepareData = (data, rank, score, isBetaSeason, liveSeason) => {
+	if (isBetaSeason || !liveSeason) return data;
 	const newDate = new Date().toISOString();
 	return [...data, { date: newDate, rank, score }];
 };
@@ -100,7 +101,13 @@ const RankAndRatingChart = (props) => {
 	const darkmode = useSelector((state) => state.darkmode);
 	const isMobile = useCheckMobileScreen();
 	const [data] = useState(
-		prepareData(props.data, props.currentRank, props.currentScore, props.isBetaSeason)
+		prepareData(
+			props.data,
+			props.currentRank,
+			props.currentScore,
+			props.isBetaSeason,
+			props.season === settings.currentSeasonText
+		)
 	);
 
 	const CustomTooltip = ({ active, payload }) => {

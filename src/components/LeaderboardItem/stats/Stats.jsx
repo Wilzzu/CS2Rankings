@@ -82,6 +82,7 @@ const Stats = (props) => {
 							currentScore={props.currentScore}
 							currentRank={props.currentRank}
 							isBetaSeason={props.isBetaSeason}
+							season={props.season}
 						/>
 					</div>
 					<div
@@ -95,6 +96,7 @@ const Stats = (props) => {
 							index={props.index}
 							currentMatches={props.currentMatches}
 							isBetaSeason={props.isBetaSeason}
+							season={props.season}
 						/>
 						<MapsChart
 							data={props.currentMaps}

@@ -92,7 +92,7 @@ const LeaderboardContent = (props) => {
 				ref={listRef}
 				items={players}
 				initialIndex={0}
-				initialOffset={-300}
+				initialOffset={-314}
 				itemSize={52}
 				key={props.lightweight ? "light" : "normal"}>
 				{/* List items */}

@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import { useState } from "react";
 // import infoIcon from "../../../assets/infoIcon.svg";
+import settings from "../../../../lib/settings.json";
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -66,7 +67,8 @@ const forceTicks = (data) => {
 };
 
 // Add current stats to the data
-const prepareData = (data, matches) => {
+const prepareData = (data, matches, liveSeason) => {
+	if (!liveSeason) return data;
 	const newDate = new Date().toISOString();
 	const newData = [];
 	data.forEach((e) => {
@@ -76,7 +78,9 @@ const prepareData = (data, matches) => {
 };
 
 const MatchesChart = (props) => {
-	const [data] = useState(prepareData(props.data, props.currentMatches));
+	const [data] = useState(
+		prepareData(props.data, props.currentMatches, props.season === settings.currentSeasonText)
+	);
 
 	const darkmode = useSelector((state) => state.darkmode);
 
