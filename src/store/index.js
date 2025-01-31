@@ -3,7 +3,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 const defaultValues = {
 	lightweight: false,
 	darkmode: false,
-	hideunknown: true,
+	hideunknown: false,
 };
 
 function getCookie(name) {
