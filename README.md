@@ -55,10 +55,9 @@ The backend for this project can be found in a separate repository. Follow the s
 
    Rename the `.env.example` file to `.env` and fill in the variables:
 
-   | Variable           | Description                                                                                    |
-   | ------------------ | ---------------------------------------------------------------------------------------------- |
-   | `VITE_APILOCATION` | The URL where your backend server is hosted, e.g., http://localhost:3000/api                   |
-   | `VITE_CRYPTO`      | Random string used for decrypting API responses. Should be same for both frontend and backend. |
+   | Variable           | Description                                                                  |
+   | ------------------ | ---------------------------------------------------------------------------- |
+   | `VITE_APILOCATION` | The URL where your backend server is hosted, e.g., http://localhost:3000/api |
 
 4. **Start the development server:**
    ```

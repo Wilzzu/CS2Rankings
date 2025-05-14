@@ -14,7 +14,7 @@ const LeaderboardDataInfo = ({ selectedSeason, data, lightweight }) => {
 		<div
 			className={cn(
 				"w-full px-2 md:px-4 py-[0.42rem] flex justify-between items-center text-[0.54rem] leading-3 md:text-xs font-normal font-poppins dark:bg-csorangedark bg-csbrightblue sticky text-cswhitebright z-[3]",
-				lightweight ? "top-0" : "top-28 md:top-[6.5rem]"
+				lightweight ? "top-0 ml-0" : "top-28 md:top-[6.5rem] md:ml-[0.0625rem]"
 			)}>
 			<div className="flex items-center gap-1">
 				<p className="dark:drop-shadow-signature">

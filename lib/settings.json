@@ -12,5 +12,5 @@
 	"seasons": ["Season 2", "Season 1", "Beta Season"],
 	"currentSeason": "season2",
 	"currentSeasonText": "Season 2",
-	"newSeasonWarning": true
+	"newSeasonWarning": false
 }
