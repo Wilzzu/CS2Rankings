@@ -6,7 +6,8 @@ const seasonDurations = {
 	"Beta Season": "Sep 01, 2023 - Sep 28, 2023",
 	"Season 1": "Sep 28, 2023 - Jan 27, 2025",
 	"Season 2": "Jan 28, 2025 - July 14, 2025",
-	"Season 3": "July 15, 2025 - Current",
+	"Season 3": "July 15, 2025 - Jan 19, 2026",
+	"Season 4": "Jan 20, 2026 - Current",
 };
 
 const LeaderboardDataInfo = ({ selectedSeason, data, lightweight }) => {
@@ -15,7 +16,7 @@ const LeaderboardDataInfo = ({ selectedSeason, data, lightweight }) => {
 		<div
 			className={cn(
 				"w-full px-2 md:px-4 py-[0.42rem] flex justify-between items-center text-[0.54rem] leading-3 md:text-xs font-normal font-poppins dark:bg-csorangedark bg-csbrightblue sticky text-cswhitebright z-[3]",
-				lightweight ? "top-0 ml-0" : "top-28 md:top-[6.5rem] md:ml-[0.0625rem]"
+				lightweight ? "top-0 ml-0" : "top-28 md:top-[6.5rem] md:ml-[0.0625rem]",
 			)}>
 			<div className="flex items-center gap-1">
 				<p className="dark:drop-shadow-signature">
@@ -27,7 +28,7 @@ const LeaderboardDataInfo = ({ selectedSeason, data, lightweight }) => {
 					<div
 						className={cn(
 							"h-full bg-cswhitebright rounded-sm px-1 text-csbrightblue dark:text-csorangedark dark:drop-shadow-signature",
-							!lightweight && "animate-pulse"
+							!lightweight && "animate-pulse",
 						)}>
 						<p>Live</p>
 					</div>
@@ -43,7 +44,7 @@ const LeaderboardDataInfo = ({ selectedSeason, data, lightweight }) => {
 							hour: "2-digit",
 							minute: "2-digit",
 							second: "2-digit",
-					  })
+						})
 					: "N/A"}
 			</p>
 		</div>
