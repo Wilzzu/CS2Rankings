@@ -7,7 +7,7 @@ const seasonDurations = {
 	"Season 1": "Sep 28, 2023 - Jan 27, 2025",
 	"Season 2": "Jan 28, 2025 - July 14, 2025",
 	"Season 3": "July 15, 2025 - Jan 19, 2026",
-	"Season 4": "Jan 20, 2026 - Current",
+	"Season 4": "Jan 21, 2026 - Current",
 };
 
 const LeaderboardDataInfo = ({ selectedSeason, data, lightweight }) => {
