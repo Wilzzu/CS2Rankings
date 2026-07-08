@@ -26,7 +26,7 @@ const LeaderboardContent = (props) => {
 	// Get player history
 	const { data, isRefetching, isRefetchError, refetchHistory, isSuccess } = useGetPlayerHistory(
 		historyName,
-		props.selectedSeason
+		props.selectedSeason,
 	);
 
 	useEffect(() => {
@@ -76,6 +76,7 @@ const LeaderboardContent = (props) => {
 					props.selectedSeason.replace(/\s/g, "").toLowerCase() === settings.currentSeason &&
 					settings.newSeasonWarning
 				}
+				noDataWarning={settings.noDataSeasons.includes(props.selectedSeason)}
 			/>
 		);
 	}

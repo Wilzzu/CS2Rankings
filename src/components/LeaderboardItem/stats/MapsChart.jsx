@@ -21,6 +21,7 @@ const mapIcons = {
 	Overpass: "/assets/maps/overpass.svg",
 	"Dust II": "/assets/maps/dust_2.svg",
 	Train: "/assets/maps/train.svg",
+	Cache: "/assets/maps/cache.svg",
 };
 
 // Format data properly

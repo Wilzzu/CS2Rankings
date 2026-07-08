@@ -9,8 +9,9 @@
 		"North America",
 		"South America"
 	],
-	"seasons": ["Season 4", "Season 3", "Season 2", "Season 1", "Beta Season"],
-	"currentSeason": "season4",
-	"currentSeasonText": "Season 4",
+	"seasons": ["Season 5", "Season 4", "Season 3", "Season 2", "Season 1", "Beta Season"],
+	"currentSeason": "season5",
+	"currentSeasonText": "Season 5",
+	"noDataSeasons": ["Season 4"],
 	"newSeasonWarning": true
 }
